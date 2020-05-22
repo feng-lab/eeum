@@ -1,6 +1,8 @@
 import JSZip from 'jszip';
 import Vue from 'vue';
 import Vuex from 'vuex';
+import VuexPersistence from 'vuex-persist';
+import axios from 'axios';
 
 import vtk from 'vtk.js/Sources/vtk';
 import vtkProxyManager from 'vtk.js/Sources/Proxy/Core/ProxyManager';
@@ -46,6 +48,11 @@ function merge(dst, src) {
 }
 /* eslint-enable no-param-reassign */
 
+const vuexLocal = new VuexPersistence({
+  storage: window.localStorage,
+  reducer: (state) => ({ isLight: state.isLight }),
+  filter: (mutation) => mutation.type === 'setLightTheme',
+});
 function stepActiveSlice(proxyManager, inc) {
   const view = proxyManager.getActiveView();
   const source = proxyManager.getActiveSource();
@@ -70,10 +77,10 @@ function createStore(pxm = null) {
   }
 
   const $store = new Vuex.Store({
-    plugins: [ProxyManagerVuexPlugin(proxyManager)],
+    plugins: [ProxyManagerVuexPlugin(proxyManager), vuexLocal.plugin],
     state: {
       proxyManager, // TODO remove
-      route: 'landing', // valid values: landing, app
+      route: 'app', // valid values: landing, app
       savingStateName: null,
       loadingState: false,
       screenshotDialog: false,
@@ -83,6 +90,10 @@ function createStore(pxm = null) {
       mostRecentViewPoint: null,
       collapseDatasetPanels: false,
       suppressBrowserWarning: false,
+      isLight: false,
+      controlsDrawer: false,
+      needSetting: false,
+      datasets: [],
     },
     getters: {
       proxyManager(state) {
@@ -101,6 +112,15 @@ function createStore(pxm = null) {
       widgets: widgets(proxyManager),
     },
     mutations: {
+      setLightTheme(state, value) {
+        state.isLight = value;
+      },
+      setControlsDrawer(state, value) {
+        state.controlsDrawer = value;
+      },
+      setNeedSetting(state, value) {
+        state.needSetting = value;
+      },
       showLanding(state) {
         state.route = 'landing';
       },
@@ -118,6 +138,22 @@ function createStore(pxm = null) {
           Vue.set(state.panels, priority, []);
         }
         state.panels[priority].push(component);
+      },
+      setDatasets(state, datasets) {
+        state.datasets = datasets;
+      },
+      setDatasetsAnalysis(state, analyses) {
+        const indexed = {};
+        analyses.forEach((data) => {
+          indexed[data.name] = data;
+        });
+        state.datasets.forEach((sample) => {
+          const use = indexed[sample.cellName];
+          if (use) {
+            sample.analysis = use; // eslint-disable-line no-param-reassign
+          }
+        });
+        console.log(state.datasets);
       },
       openScreenshotDialog(state, screenshot) {
         state.pendingScreenshot = screenshot;
@@ -162,6 +198,7 @@ function createStore(pxm = null) {
             route: state.route,
             views: state.views,
             widgets: state.widgets,
+            isLight: state.isLight,
           },
         };
 
@@ -227,7 +264,8 @@ function createStore(pxm = null) {
               }
 
               let name = ds.name;
-              let url = ds.url;
+              let url = `http://161.122.102.55${ds.url}`;
+              console.log(url);
 
               if (ds.serializedType === 'girder') {
                 const { itemId, itemName } = ds.item;
@@ -353,6 +391,136 @@ function createStore(pxm = null) {
       },
       resetActiveCamera() {
         proxyManager.resetCamera();
+      },
+      retrieveDatasets({ commit }) {
+        axios({
+          url: 'http://161.122.102.55/api',
+          method: 'post',
+          data: {
+            query: `
+            query {
+              allPostneurons {
+                edges {
+                  node {
+                    cellName
+                    anteriorPosterior
+                    medialLateral
+                    deepSuperficial
+                    cellId
+                    confocalImage {
+                      slice {
+                        animal {
+                          animalId
+                          strain
+                          dob
+                          age
+                          sex
+                          injectionCollection {
+                            edges {
+                              node {
+                                injectionID
+                                timestamp
+                                materialIdentifier
+                                materialDescription
+                                titer
+                                dateMaterialProduction
+                                pullerSettingNo
+                                microforgedTipDiameter
+                                bevelingAngle
+                                bevelingDuration
+                                dateMicropipetteProduction
+                                experimenterInitials
+                                dateProcedure
+                                targetStructure
+                                hemisphere
+                                anteriorPosterior
+                                medialLateral
+                                ventralDorsal
+                                injectionType
+                                pauseDurationBefore
+                                pauseDurationAfter
+                                totalProcedureDuration
+                                otherRemarks
+                                totalVolume
+                                rate
+                                currentAmplitude
+                                singleCurrentOnDuration
+                                singleCurrentOffDuration
+                                totalCurrentDuration
+                                retentionCurrent
+                                majorBleeding
+                                breathingDifficulty
+                                ineffectiveAnesthesia
+                                animalDeath
+                                cloggedMicropipetteTip
+                                bregmaToLambdaDistance
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            `,
+          },
+        })
+          .then((result) => {
+            const jsonArr = [];
+            const datasets = result.data.data.allPostneurons.edges;
+            // console.log(datasets);
+            let i;
+            for (i = 0; i < datasets.length; i++) {
+              if (Object.prototype.hasOwnProperty.call(datasets, i)) {
+                jsonArr.push({
+                  cellName: datasets[i].node.cellName,
+                  animalId:
+                    datasets[i].node.confocalImage.slice.animal.animalId,
+                  strain: datasets[i].node.confocalImage.slice.animal.strain,
+                  dob: datasets[i].node.confocalImage.slice.animal.dob,
+                  age: datasets[i].node.confocalImage.slice.animal.age,
+                  sex: datasets[i].node.confocalImage.slice.animal.sex,
+                  coordinate: `${datasets[i].node.anteriorPosterior}, ${datasets[i].node.medialLateral}, ${datasets[i].node.deepSuperficial}`,
+                  injections:
+                    datasets[i].node.confocalImage.slice.animal
+                      .injectionCollection.edges,
+                  image: `http://161.122.102.55/static/data/${datasets[i].node.cellName}.jpg`,
+                  acknowledgement: '',
+                  datasets: [
+                    {
+                      name: `${datasets[i].node.cellName}.glance`,
+                      url: `http://161.122.102.55/static/data/${datasets[i].node.cellName}.glance`,
+                    },
+                  ],
+                  analysis: [],
+                });
+              }
+            }
+            // console.log(jsonArr);
+            commit('setDatasets', jsonArr);
+
+            fetch('http://161.122.102.55/static/analysis/all.json')
+              .then((response) => {
+                if (!response.ok) {
+                  throw new Error(`HTTP error ${response.status}`);
+                }
+                return response.json();
+              })
+              .then((array2) => {
+                // Work with JSON data array2 here
+                console.log(array2);
+                commit('setDatasetsAnalysis', array2);
+              })
+              .catch((err) => {
+                // Do something for an error here
+                console.log(`Error! Could not reach the analysis API. ${err}`);
+              });
+          })
+          .catch((error) => {
+            console.log(`Error! Could not reach the API. ${error}`);
+          });
       },
       increaseSlice({ state }) {
         if (state.route === 'app') {

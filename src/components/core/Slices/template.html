@@ -1,0 +1,81 @@
+<v-container class="mb-5 pb-5" style="height: 100%; overflow-y: auto;">
+      <v-row align-center>
+          <v-col cols=12>
+                  <v-select
+                    v-model="select"
+                    :items="items"
+                    label="Datasets"
+                    outlined
+                  ></v-select>
+          </v-col>
+          
+
+          <v-col cols=12>
+            <v-card-text>
+              <div class="display-2"><a href="http://161.122.102.42:8888/#!{'layers':{'Brightfield':{'type':'image'_'source':'precomputed://http://161.122.102.55/static/neuroglancer_data/Lemur-H_NeuN_VGluT2_SMI99_slice/ch1'_'color':'#ffffff'_'blend':'additive'_'opacity':1}_'DAPI':{'type':'image'_'source':'precomputed://http://161.122.102.55/static/neuroglancer_data/Lemur-H_NeuN_VGluT2_SMI99_slice/ch2'_'color':'#00a0ff'_'blend':'additive'_'opacity':1}_'SMI99':{'type':'image'_'source':'precomputed://http://161.122.102.55/static/neuroglancer_data/Lemur-H_NeuN_VGluT2_SMI99_slice/ch3'_'color':'#00ff33'_'blend':'additive'_'opacity':1}_'VGluT2':{'type':'image'_'source':'precomputed://http://161.122.102.55/static/neuroglancer_data/Lemur-H_NeuN_VGluT2_SMI99_slice/ch4'_'color':'#ff0000'_'blend':'additive'_'opacity':1}_'NeuN':{'type':'image'_'source':'precomputed://http://161.122.102.55/static/neuroglancer_data/Lemur-H_NeuN_VGluT2_SMI99_slice/ch5'_'color':'#0000ff'_'blend':'additive'_'opacity':1}}_'navigation':{'zoomFactor':30000}_'perspectiveZoom':400000}" target="_blank">
+                New Viewer</a
+                ></div>
+            </v-card-text>
+          </v-col>
+        </v-row>
+
+          <v-row align-center class="ma-15 pa-15">
+          <v-col cols=12 class="ma-15 pa-15">
+            <l-map
+              ref="mymap"
+              :zoom="initialZoom"
+              :minZoom="minZoom"
+              :maxZoom="maxZoom"
+              :crs="crs"
+              :center="center"
+              :style="mapStyle"
+              @update:center="centerUpdated"
+              @update:zoom="zoomUpdated"
+              @update:bounds="boundsUpdated"
+            >
+              <l-tile-layer :url="imageUrl" :bounds="bounds" />
+            </l-map>
+          </v-col>
+        </v-row>
+          
+        <v-row>
+          <v-col cols=12>
+            <v-card-text>
+                <!-- <v-row>
+                  <v-col class="pr-4"> -->
+                    <v-slider
+                      v-model="slider"
+                      class="align-center"
+                      :max="max"
+                      :min="min"
+                      label="Slice"
+                      hide-details
+                    >
+                      <template v-slot:append>
+                        <v-text-field
+                          v-model="slider"
+                          class="mt-0 pt-0"
+                          hide-details
+                          single-line
+                          type="number"
+                          style="width: 60px"
+                        ></v-text-field>
+                      </template>
+                    </v-slider>
+                  <!-- </v-col>
+                </v-row> -->
+              </v-card-text>
+            </v-col>
+
+      
+            <v-col cols=12>
+            <swiper :options="swiperOptionThumbs" class="gallery-thumbs" ref="swiperThumbs">
+              <!-- <swiper-slide v-for="image in thumbUrls" :key="image.index" class="slide-img">
+                <img :src="image.link" alt="">
+              </swiper-slide> -->
+            </swiper>
+            
+          </v-col>
+          
+      </v-row>
+    </v-container>

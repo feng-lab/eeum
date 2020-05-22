@@ -1,0 +1,39 @@
+<v-container fluid :class="$style.container">
+  <div
+    :class="$style.grid"
+    :style="{ gridTemplateRows, gridTemplateColumns }"
+  >
+    <!-- v-if not neccessary but vtkview does not redraw after phone flip -->
+    <div
+      v-if="$vuetify.breakpoint.xs && visibleCount > 0" 
+      :class="$style.viewContainer"
+      v-bind:key="`0::${views[0]}`"
+    >
+      <vtk-view
+        v-bind:view-type="views[0]"
+        v-bind:layout-index="0"
+        v-bind:layout-count="1"
+        v-bind:background-color="backgroundColors[views[0]]"
+        v-on:bg-change="setViewBackground(view, arguments[0])"
+      />
+    </div>
+    <div
+      v-else-if="visibleCount > 0"
+      :class="$style.viewContainer"
+      v-bind:key="`0::${views[0]}`"
+    >
+      <vtk-view
+        v-bind:view-type="views[0]"
+        v-bind:layout-index="0"
+        v-bind:layout-count="1"
+        v-bind:background-color="backgroundColors[views[0]]"
+        v-on:bg-change="setViewBackground(view, arguments[0])"
+      />
+    </div>
+    <analysis
+      v-if="visibleCount === 2"
+      v-bind:name="name"
+    >
+    </analysis>
+  </div>
+</v-container>

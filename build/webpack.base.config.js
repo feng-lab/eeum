@@ -155,6 +155,7 @@ module.exports = {
       vue$: 'vue/dist/vue.esm.js',
       'paraview-glance': paths.root,
       'vtk.js/Sources/Rendering/Core/ColorTransferFunction/ColorMaps.json': path.join(paths.source, 'config/ColorMaps.json'),
+      '@': paths.source,
     },
   },
   optimization: {

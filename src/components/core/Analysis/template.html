@@ -1,0 +1,59 @@
+<div :class="$style.root">
+  <v-container fluid class="mb-5 pb-5">
+    <v-layout row wrap>
+      <v-flex text-xs-center>
+        <v-btn
+          @click="panelOpen = [0, 1, 2, 3, 4, 5, 6, 7]"
+          >expand all</v-btn
+        >
+        <v-btn
+          @click="panelOpen = []"
+          >collapse all</v-btn
+        >
+        <v-expansion-panels v-model="panelOpen" multiple>
+          <v-expansion-panel
+            v-show="Object.keys(analyses.summary).length > 0"
+            key="summary"
+          >
+            <v-expansion-panel-header>
+              <div class="title">Summary</div>
+            </v-expansion-panel-header>
+            <v-expansion-panel-content>
+            <v-data-table
+              :headers="headers2"
+              :items="Object.entries(analyses.summary).map(([key, value]) => ({key,value}))"
+              :items-per-page="-1"
+              hide-default-headers
+            >
+              <template v-slot:items="props">
+                <tr>
+                  <td>{{ props.item.key }}:</td>
+                  <td>{{ props.item.value }}</td>
+                </tr>
+              </template>
+            </v-data-table>
+          </v-expansion-panel-content>
+          </v-expansion-panel>
+
+          <v-expansion-panel
+            v-for="(analysis, index) in analyses.analyses"
+            v-show="Object.keys(analyses.analyses[index]).length > 0"
+            :key="index"
+          >
+            <v-expansion-panel-header>
+              <div class="title">{{ analysis.name }}</div>
+            </v-expansion-panel-header>
+            <v-expansion-panel-content>
+            <v-card>
+              <v-card-text>
+                {{ analysis.description }}
+              </v-card-text>
+              <v-img :src="`http://161.122.102.55/${analysis.url}`"></v-img>
+            </v-card>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+        </v-expansion-panels>
+      </v-flex>
+    </v-layout>
+  </v-container>
+</div>

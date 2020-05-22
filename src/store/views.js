@@ -134,18 +134,18 @@ export default (proxyManager) => ({
     swapViews({ commit }, { index, viewType }) {
       commit('swapViews', { index, viewType });
     },
-    singleView({ state, commit }, index) {
-      commit('swapViews', {
-        index: 0,
-        viewType: state.viewOrder[index],
-      });
+    singleView({ commit }) {
+      // commit('swapViews', {
+      //   index: 0,
+      //   viewType: state.viewOrder[index],
+      // });
       commit('visibleCount', 1);
     },
-    splitView({ state, commit }, index) {
-      commit('swapViews', {
-        index,
-        viewType: state.viewOrder[1],
-      });
+    splitView({ commit }) {
+      // commit('swapViews', {
+      //   index,
+      //   viewType: state.viewOrder[1],
+      // });
       commit('visibleCount', 2);
     },
     quadView({ commit }) {

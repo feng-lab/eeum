@@ -99,6 +99,22 @@
         </v-btn>
       </template>
     </v-tooltip>
+    <v-tooltip
+      left
+      :disabled="smallScreen"
+    >
+      <span class="pv-no-select">Screenshot</span>
+      <template v-slot:activator="{ on }">
+        <v-btn
+          icon
+          dark
+          v-on="on"
+          v-on:click="screenCapture()"
+        >
+          <v-icon>mdi-camera-plus</v-icon>
+        </v-btn>
+      </template>
+    </v-tooltip>
   </v-layout>
   <v-layout column fill-height>
     <v-flex
@@ -112,7 +128,7 @@
       v-if="isActive"
       :class="$style.activeView"
     />
-    <div :class="$style.toolbarWrapper">
+    <!-- <div :class="$style.toolbarWrapper">
       <toolbar-sheet v-model="backgroundSheet">
         <v-container grid-list-md class="mr-0">
           <v-layout row>
@@ -257,6 +273,6 @@
           </template>
         </v-tooltip>
       </v-toolbar>
-    </div>
+    </div> -->
   </v-layout>
 </v-container>

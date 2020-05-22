@@ -1,12 +1,17 @@
 {
-  "name": "paraview-glance",
-  "version": "0.0.0-semantically-release",
-  "description": "Web application for Visualizing Scientific and Medical datasets",
+  "name": "eeum",
+  "version": "0.0.1",
+  "description": "Eeum Center",
   "keywords": [
     "3d",
     "visualization",
     "webgl",
-    "medical",
+    "neuron",
+    "neuroscience",
+    "mGRASP",
+    "synaptical connectivity",
+    "connectome",
+    "synapse",
     "scientific",
     "vtk",
     "paraview",
@@ -16,13 +21,13 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/kitware/paraview-glance.git"
+    "url": "https://github.com/feng-lab/eeum.git"
   },
   "license": "BSD-3-Clause",
   "bugs": {
-    "url": "https://github.com/kitware/paraview-glance/issues"
+    "url": "https://github.com/feng-lab/eeum/issues"
   },
-  "homepage": "https://github.com/kitware/paraview-glance#readme",
+  "homepage": "https://github.com/feng-lab/eeum#readme",
   "scripts": {
     "validate": "prettier --config ./prettier.config.js --list-different \"src/**/*.js\"",
     "reformat": "prettier --config ./prettier.config.js --write \"src/**/*.js\"",
@@ -38,25 +43,38 @@
     "semantic-release": "semantic-release",
     "prepublishOnly": "npm run version && npm run bundle"
   },
-  "author": "Kitware",
+  "author": "feng-lab",
   "dependencies": {
     "@girder/components": "^2.0.3",
     "@linusborg/vue-simple-portal": "^0.1.3",
+    "axios": "^0.19.0",
+    "fsevents": "^1.2.9",
     "itk": "12.2.0",
+    "leaflet": "^1.5.1",
+    "leaflet.axesgrid": "^0.0.3",
+    "lodash": "^4.17.11",
+    "material-design-icons-iconfont": "^4.0.5",
     "mousetrap": "^1.6.3",
     "pug": "^2.0.4",
     "pug-plain-loader": "^1.0.0",
+    "slick-carousel": "^1.8.1",
     "typeface-roboto": "0.0.54",
     "vtk.js": "14.0.1",
     "vue": "2.6.10",
+    "vue-agile": "^1.0.10",
+    "vue-awesome-swiper": "^3.1.3",
+    "vue-router": "^3.0.2",
+    "vue2-leaflet": "^2.2.1",
+    "vue2-leaflet-axesgrid": "^1.0.9",
     "vue-cli-plugin-vuetify": "^2.0.3",
     "vuetify": "2.2.0",
     "vuex": "^3.1.1",
-    "webworker-promise": "0.4.1",
-    "workbox-sw": "2.1.2"
+    "vuex-persist": "^2.0.0",
+    "webworker-promise": "^0.4.2",
+    "workbox-sw": "^4.1.1"
   },
   "devDependencies": {
-    "@babel/plugin-syntax-dynamic-import": "7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "7.2.0",
     "@babel/plugin-transform-runtime": "^7.9.0",
     "@mdi/font": "4.4.95",
     "clean-webpack-plugin": "^3.0.0",
@@ -66,16 +84,15 @@
     "kw-doc": "1.3.0",
     "kw-web-suite": "9.0.0",
     "mini-css-extract-plugin": "^0.8.0",
-    "paraview-glance": "4.9.4",
     "sass": "^1.24.4",
     "sass-loader": "^7.3.1",
     "vue-loader": "15.7.1",
-    "vue-style-loader": "4.1.0",
+    "vue-style-loader": "4.1.2",
     "vue-template-compiler": "2.6.10",
     "vuetify-loader": "github:vuetifyjs/vuetify-loader#3a6a2ffcfc4233dbfdd88d549d55e6cea79ef4fb",
-    "webpack-merge": "4.1.2",
+    "webpack-merge": "4.2.1",
     "workbox-webpack-plugin": "5.1.2",
-    "write-file-webpack-plugin": "^4.3.2"
+    "write-file-webpack-plugin": "^4.5.0"
   },
   "config": {
     "commitizen": {

@@ -64,7 +64,7 @@
 
 .rowContentDetails {
   font-style: italic;
-  color: #444;
+  /* color: #444; */
   padding: 0 4px;
 }
 
@@ -78,7 +78,7 @@
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: #fff;
+  /* background-color: #fff; */
   opacity: 0.75;
 }
 

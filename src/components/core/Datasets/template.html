@@ -1,5 +1,10 @@
+<v-container pa-0 fluid>
+<v-row justify="space-around">
+  <v-btn @click="panelStates = [0,1,2]">expand all</v-btn>
+  <v-btn @click="panelStates = []">collapse all</v-btn>
+</v-row>
 <v-expansion-panels
-  v-model="panelState"
+  v-model="panelStates"
   multiple
   accordion
 >
@@ -48,7 +53,8 @@
           </v-btn>
         </template>
       </v-tooltip>
-      <div v-on:click.stop> <!-- prevent panel expansion on menu click -->
+      <!-- prevent panel expansion on menu click -->
+      <!-- <div v-on:click.stop> 
         <v-menu offset-x>
           <template v-slot:activator="{ on }">
             <v-btn
@@ -74,7 +80,7 @@
             </v-list-item>
           </v-list>
         </v-menu>
-      </div>
+      </div> -->
     </v-expansion-panel-header>
     <v-expansion-panel-content :class="$style.panelContent">
       <color-group
@@ -110,3 +116,4 @@
     </v-expansion-panel-content>
   </v-expansion-panel>
 </v-expansion-panels>
+</v-container>

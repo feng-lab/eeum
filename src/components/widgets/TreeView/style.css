@@ -2,7 +2,7 @@
   display: block;
   padding: 4px 16px;
   box-sizing: border-box;
-  background: white;
+  /*background: white;*/
   min-width: 300px;
   overflow: auto;
 }
@@ -32,7 +32,7 @@
 }
 
 .header:hover {
-  background-color: #dfdfdf;
+  /*background-color: #dfdfdf;*/
 }
 
 .expander {

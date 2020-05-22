@@ -1,2 +1,5 @@
 node_modules
 dist
+.DS_Store
+/static/static/data/
+/static/static/analysis/

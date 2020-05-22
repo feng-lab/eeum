@@ -1,0 +1,153 @@
+
+  <v-container
+    class="mb-5 pb-5"
+    style="height: 100%; overflow-y: auto;">
+      <v-row align-center>
+        <v-col cols=12>
+          <v-card-text>
+            <p class="headline">
+              mGRASP:
+            </p>
+            Please refer to the paper published under 
+            <a href="https://www.nature.com/articles/nmeth.1784">
+            Nature Methods</a
+            > for detail.
+          </v-card-text>
+
+          <video height="250" controls preload="auto" loop>
+            <source src="http://161.122.102.55/static/img/mGRASP.m4v" />
+          </video>
+          <br /><br />
+
+          <p>
+            Supplementary References:<br />
+            <li>
+             
+                <a href="https://doi.org/10.1016/j.celrep.2018.06.076">
+                  Combining mGRASP and Optogenetics Enables High-Resolution
+                  Functional Mapping of Descending Cortical Projections (2018)</a
+                ><br /></li>
+            <li>
+                <a href="https://doi.org/10.1523/JNEUROSCI.0155-18.2018"
+                  >Schaffer Collateral Inputs to CA1 Excitatory and Inhibitory
+                  Neurons Follow Different Connectivity Rules (2018)</a
+                ><br /></li>
+              <li>
+                <a href="https://doi.org/10.1523/ENEURO.0049-14.2014"
+                  >neuTube 1.0: A New Design for Efficient Neuron Reconstruction
+                  Software Based on the SWC Format (2015)</a
+                ><br /></li>
+             
+              <li> <a href="https://doi.org/10.1016/j.neuron.2013.11.026"
+                  >Structured Synaptic Connectivity between Hippocampal
+                  Regions (2014)</a
+                ><br /></li> 
+
+             <li>  <a href="https://doi.org/10.1093/bioinformatics/bts221"
+                  >Improved synapse detection for mGRASP-assisted brain
+                  connectivity mapping (2012)</a
+                ><br /></li> 
+              </ul>
+            </li>
+          </p>
+        </v-col>
+        <v-col cols=12><hr /></v-col>
+        </v-row>
+
+    <v-row align-center>
+      <v-col cols=12>
+        <v-card-title class="headline justify-center">
+          Protocol of mGRASPing
+        </v-card-title>
+        <p class="text-xs-center">
+          Published Under
+          <a href="https://www.nature.com/articles/nprot.2014.166#f1">
+            Nature Protocols</a
+          >
+        </p>
+
+        <v-timeline>
+          <v-timeline-item fill-dot right small>
+            <template v-slot:opposite>
+              <span>Timing: 10 d (includes incubation time)</span>
+            </template>
+            <v-card>
+              <v-card-title>
+                <p class="mr-3">
+                  STEP1. <br />Choice of mGRASP variants and AAV production
+                </p>
+              </v-card-title>
+            </v-card>
+          </v-timeline-item>
+
+          <v-timeline-item fill-dot left small>
+            <template v-slot:opposite>
+              <span>Timing: 1-2 h (optionA) / ~2 h (optionB)</span>
+            </template>
+            <v-card>
+              <v-card-title>
+                <p class="mr-3">
+                  STEP2. <br />In utero electroporation and AAV transduction
+                  (optionA) <br />OR streotaxic AAV injection (optionB)
+                </p>
+              </v-card-title>
+            </v-card>
+          </v-timeline-item>
+
+          <v-timeline-item fill-dot right small>
+            <template v-slot:opposite>
+              <span>Timing: 5.5 h</span>
+            </template>
+            <v-card>
+              <v-card-title>
+                <p>
+                  STEP3. <br />Fixation and sectioning of brain slices
+                </p>
+              </v-card-title>
+            </v-card>
+          </v-timeline-item>
+
+          <v-timeline-item fill-dot left small>
+            <template v-slot:opposite>
+              <span>Timing: 20 min</span>
+            </template>
+            <v-card>
+              <v-card-title>
+                <p class="mr-3">
+                  STEP4. <br />Mounting brain slices
+                </p>
+              </v-card-title>
+            </v-card>
+          </v-timeline-item>
+
+          <v-timeline-item fill-dot right small>
+            <template v-slot:opposite>
+              <span>Timing: ~1 week after mounting</span>
+            </template>
+            <v-card>
+              <v-card-title>
+                <p>
+                  STEP5.<br />
+                  Imaging mGRASP
+                </p>
+              </v-card-title>
+            </v-card>
+          </v-timeline-item>
+
+          <v-timeline-item fill-dot left small>
+            <template v-slot:opposite>
+              <span>Timing: 2-4 h</span>
+            </template>
+            <v-card>
+              <v-card-title>
+                <p class="mr-3">
+                  STEP6. <br />Mapping synapses: reconstructing neurons and
+                  detecting mGRASP puncta
+                </p>
+              </v-card-title>
+            </v-card>
+          </v-timeline-item>
+        </v-timeline>
+      </v-col>
+    </v-row>
+  </v-container>

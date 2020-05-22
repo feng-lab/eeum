@@ -1,0 +1,206 @@
+<div :class="[$style.root]">
+  <v-responsive height="250px">
+    <v-container>
+      <v-row align-left>
+        <v-col cols=12>
+          <v-card flat>
+            <v-img src="http://161.122.102.55/static/img/eeum_head.jpg">
+              <v-container>
+                <v-row fill-height align-center justify-center>
+                  <v-col cols=12 flexbox>
+                    <v-card-title class="display-1 white--text"
+                      >mGRASP Connectome Database</v-card-title
+                    >
+                    <v-card-text class="white--text">
+                      Knowledge of neuroanatomical connectivity in a
+                      comprehensive 3D brain atlas that will help in the
+                      inference of dynamics of neural circuits.
+                    </v-card-text>
+                  </v-col>
+                </v-row>
+              </v-container>
+            </v-img>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-responsive>
+  <v-container :class="$style.noSelect" class="mb-5 pb-5">
+    <v-toolbar tabs>
+      <v-text-field
+        v-model="search"
+        append-icon="mdi-microphone"
+        class="mx-3"
+        text
+        label="Search"
+        prepend-inner-icon="mdi-database-search"
+      ></v-text-field>
+      <template v-slot:extension>
+        <p>{{ searchEcho }}</p>
+      </template>
+
+      <template v-slot:extension>
+        <v-tabs v-model="tabs" centered>
+          <v-tab>
+            Image View
+          </v-tab>
+          <v-tab>
+            Table View
+          </v-tab>
+        </v-tabs>
+      </template>
+    </v-toolbar>
+    <p></p>
+    <p>{{ searchEcho }}</p>
+
+    <v-tabs-items v-model="tabs" touchless>
+      <v-tab-item>
+        <v-row wrap>
+          <v-col cols=12>
+            <span class="title">
+              {{ samples.length }}
+              {{ samples.length > 1 ? 'Neurons' : 'Neuron' }}
+            </span>
+          </v-col>
+          <v-col
+            v-for="(sample, i) in samples"
+            :key="i"
+            sm=12 md=4 lg=4 xl=3
+          >
+            <v-card :class="$style.sampleData" flat tile>
+              <v-img
+                :src="sample.image"
+                height="300px"
+                v-on:click.stop="openSample(sample)"
+              >
+              </v-img>
+
+              <v-card-actions>
+                <v-list-item class="grow">
+                  <v-btn
+                    text
+                    :to="{ name: 'Neuron', params: { name: sample.cellName }}"
+                  >
+                    {{ sample.cellName }}
+                  </v-btn>
+                  <v-spacer></v-spacer>
+                  <v-btn icon @click="$emit('download-clicked', sample)">
+                    <v-icon small>mdi-archive</v-icon>
+                  </v-btn>
+                  <v-btn icon @click="$emit('bookmark-clicked', sample)">
+                    <v-icon small>mdi-bookmark</v-icon small>
+                  </v-btn>
+                  <v-btn icon @click="$emit('share-clicked', sample)">
+                    <v-icon small>mdi-share</v-icon small>
+                  </v-btn>
+                </v-list-item>
+              </v-card-actions>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-tab-item>
+      <v-tab-item>
+        <div>
+          <v-data-table
+            :headers="headers"
+            :items="samples"
+            :single-expand="singleExpand"
+            :expanded.sync="expanded"
+            show-expand
+            :items-per-page="20"
+            item-key="cellName"
+            :footer-props="{
+              showFirstLastPage: true,
+              firstIcon: 'mdi-arrow-collapse-left',
+              lastIcon: 'mdi-arrow-collapse-right',
+              prevIcon: 'mdi-minus',
+              nextIcon: 'mdi-plus',
+            }"
+          >
+            <template v-slot:top>
+              <v-toolbar flat>
+                <v-toolbar-title>{{ samples.length }}
+                  {{ samples.length > 1 ? 'Neurons' : 'Neuron' }}</v-toolbar-title>
+                <v-spacer></v-spacer>
+                <v-switch v-model="singleExpand" label="Single expand" class="mt-2"></v-switch>
+              </v-toolbar>
+            </template>
+            <template v-slot:items="item">
+              <tr>
+                <td>{{ item.cellName }}</td>
+                <td>{{ item.animalId }}</td>
+                <td>{{ item.strain }}</td>
+                <td>{{ item.sex }}</td>
+                <td>{{ item.dob }}</td>
+                <td>{{ item.age }}</td>
+                <td>{{ item.coordinate }}</td>
+              </tr>
+            </template>
+            <template v-slot:item.action="item">
+              <v-icon
+                small
+                class="mr-2"
+                @click="$emit('download-clicked', item)"
+              >
+                mdi-download
+              </v-icon>
+            </template>
+            <template v-slot:expanded-item="{headers, item}">
+              <template v-if="item.injections.length === 0">
+                <v-card flat>
+                  <v-card-text>
+                    No Injection Info
+                  </v-card-text>
+                </v-card>
+              </template>
+
+              <template v-else>
+                <td :colspan="headers.length">
+                  <v-card>
+              <v-row>
+                <v-col
+                  cols=6
+                  v-for="(injection, i) in item.injections"
+                  :key="i"
+                >
+                    <v-data-table
+                      :headers="headers2"
+                      :items="Object.entries(item.injections[i].node).map(([key, value]) => ({key,value}))"
+                      :items-per-page="-1"
+                      hide-default-footer
+                      hide-default-header
+                    >
+                      <template v-slot:top>
+                        <v-toolbar flat>
+                          <v-toolbar-title>Injection {{ i + 1 }}/{{
+                            item.injections.length
+                          }}</v-toolbar-title>
+                        </v-toolbar>
+                      </template>
+                      <template v-slot:items="props">
+                        <tr>
+                          <td>{{ props.item.key }}:</td>
+                          <td>{{ props.item.value }}</td>
+                        </tr>
+                      </template>
+                    </v-data-table>
+                </v-col>
+              </v-row>
+                  </v-card>
+                </td>
+              </template>
+            </template>
+            <v-alert
+              v-slot:no-results
+              :value="true"
+              color="error"
+              icon="warning"
+            >
+              Your search for "{{ search }}" found no results.
+            </v-alert>
+          </v-data-table>
+        </div>
+      </v-tab-item>
+    </v-tabs-items>
+  </v-container>
+</div>

@@ -16,6 +16,7 @@ export default {
       internalPanelState: {}, // proxyId -> expanded:bool
       subpanels: {}, // proxyId -> subpanels:[bool]
       activeSourceId: -1,
+      panelStates: [], // somehow panelState is not reactive
     };
   },
   computed: {

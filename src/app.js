@@ -4,6 +4,7 @@ import Vuex from 'vuex';
 import Vuetify from 'vuetify/lib';
 
 import GirderProvider from 'paraview-glance/src/girder';
+import { merge } from 'lodash';
 import { vuetifyConfig as girderVuetifyConfig } from '@girder/components/src/utils';
 
 import vtkURLExtract from 'vtk.js/Sources/Common/Core/URLExtract';
@@ -20,11 +21,13 @@ import 'paraview-glance/src/io/ParaViewGlanceReaders';
 import 'paraview-glance/src/config/ColorMaps';
 
 import ReaderFactory from 'paraview-glance/src/io/ReaderFactory';
-import App from 'paraview-glance/src/components/core/App';
+import EeumApp from 'paraview-glance/src/components/core/EeumApp';
 import Config from 'paraview-glance/src/config';
 import createStore from 'paraview-glance/src/store';
 import { ProxyManagerVuePlugin } from 'paraview-glance/src/plugins';
 import Settings from 'paraview-glance/src/settings';
+
+import router from './router';
 
 // Expose IO API to Glance global object
 export const {
@@ -60,41 +63,75 @@ export function createViewer(container, proxyConfig = null) {
 
   const store = createStore(proxyManager);
 
+  store.dispatch('retrieveDatasets');
+
+  router.beforeEach((to, from, next) => {
+    console.log(to);
+    if (!to.matched.length) {
+      // console.log('here');
+      next('/notFound');
+    } else if (
+      to.matched.some((record) => record.meta.requiresCheck) &&
+      store.state.datasets.length > 0
+    ) {
+      const name = to.params.name;
+      const matched = store.state.datasets.filter((obj) =>
+        obj.cellName.includes(name)
+      );
+      if (matched.length > 0) {
+        next();
+      } else {
+        // console.log('here2');
+        next('/notFound');
+      }
+    } else {
+      next();
+    }
+  });
+
+  const appVuetifyConfig = merge(girderVuetifyConfig, {
+    theme: {
+      dark: true,
+    },
+  });
+
+  /* eslint-disable no-new */
   const app = new Vue({
     el: container,
-    components: { App },
+    components: { EeumApp },
     store,
     provide: GirderProvider,
     // if in the future we want to configure vuetify ourselves, see
     // https://github.com/girder/girder_web_components/blob/master/README.md
-    vuetify: new Vuetify(girderVuetifyConfig),
+    vuetify: new Vuetify(appVuetifyConfig),
     proxyManager,
-    template: '<App />',
+    router,
+    template: '<EeumApp />',
   });
 
-  // support history-based navigation
-  function onRoute(event) {
-    const state = event.state || {};
-    if (state.app) {
-      store.commit('showApp');
-    } else {
-      store.commit('showLanding');
-    }
-  }
-  store.watch(
-    (state) => state.route,
-    (route) => {
-      const state = window.history.state || {};
-      if (route === 'landing' && state.app) {
-        window.history.back();
-      }
-      if (route === 'app' && !state.app) {
-        window.history.pushState({ app: true }, '');
-      }
-    }
-  );
-  window.history.replaceState({ app: false }, '');
-  window.addEventListener('popstate', onRoute);
+  // // support history-based navigation
+  // function onRoute(event) {
+  //   const state = event.state || {};
+  //   if (state.app) {
+  //     store.commit('showApp');
+  //   } else {
+  //     store.commit('showLanding');
+  //   }
+  // }
+  // store.watch(
+  //   (state) => state.route,
+  //   (route) => {
+  //     const state = window.history.state || {};
+  //     if (route === 'landing' && state.app) {
+  //       window.history.back();
+  //     }
+  //     if (route === 'app' && !state.app) {
+  //       window.history.pushState({ app: true }, '');
+  //     }
+  //   }
+  // );
+  // window.history.replaceState({ app: false }, '');
+  // window.addEventListener('popstate', onRoute);
 
   const settings = new Settings();
   settings.syncWithStore(store, {

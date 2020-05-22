@@ -1,0 +1,173 @@
+<v-container
+  class="mb-5 pb-5"
+  style="height: 100%; overflow-y: auto;"
+>
+  <v-row align-center wrap>
+    <v-col cols=4>
+      <v-img src="http://161.122.102.55/static/img/eeum_korean.png" height="150px" contain> </v-img>
+    </v-col>
+    <v-col cols=8 v-if="!$vuetify.breakpoint.xs">
+      <v-card-title primary-title>
+        <div class="display-2">Eeum Brain Center</div>
+        <div>
+          <p>
+            <br />Eeum ( 이음 [ i:um ] ) is a Korean word meaning ‘connection’.
+            <br />
+            Eeum Brain Center from Korean Institute of Science and Technology
+            (KIST) Brain Research Institute provides mapping data of neural
+            connections and international scientific connection by data sharing.
+          </p>
+        </div>
+      </v-card-title>
+    </v-col>
+    <v-col cols=8 v-else>
+      <v-card-title primary-title>
+        <div class="display-2">Eeum Brain Center</div>
+      </v-card-title>
+    </v-col>
+    <v-col cols=12 pa-0 ma-0>
+      <v-img src="http://161.122.102.55/static/img/synapse2.png" height="30px"> </v-img>
+    </v-col>
+    <v-col cols=12 v-if="$vuetify.breakpoint.xs">
+      <v-card-title primary-title>
+        <div>
+          <p>
+            <br />Eeum ( 이음 [ i:um ] ) is a Korean word meaning ‘connection’.
+            <br />
+            Eeum Brain Center from Korean Institute of Science and Technology
+            (KIST) Brain Research Institute provides mapping data of neural
+            connections and international scientific connection by data sharing.
+          </p>
+        </div>
+      </v-card-title>
+    </v-col>
+
+    <v-col cols=12>
+      <v-hover>
+        <v-card slot-scope="{ hover }" class="mx-auto">
+          <v-img src="http://161.122.102.55/static/img/eeum_head.jpg">
+            <v-expand-transition>
+              <div
+                v-if="hover"
+                class="d-flex transition-fast-in-fast-out v-card--reveal white--text mt-4 ml-5 mr-5"
+              >
+                Understanding how neural circuits generate behavior is one of
+                the central goals of neuroscience. <br />
+                • Synaptic and functional connectivity at multiple scales,
+                ranging from the level of individual synapses to the wiring
+                diagram of the entire brain, provides the fundamental
+                information for understanding brain function. <br />
+                • Detailed connectivity mapping provides essential information
+                for the development of diagnostic and therapeutic methods for
+                brain diseases; in addition, it supplies the necessary data for
+                the modelling and simulation of brain circuits. <br />
+                • Furthermore, detailed connectome data will inspire the
+                development of new methods in information technologies (i.e. AI
+                algorithms).
+              </div>
+            </v-expand-transition>
+          </v-img>
+        </v-card>
+      </v-hover>
+    </v-col>
+
+    <v-col sm=12 md=6 lg=6 xl=6>
+      <v-card>
+        <v-card-title class="justify-center">
+          <p class="display-1">Datasets</p>
+        </v-card-title>
+        <v-img src="http://161.122.102.55/static/img/dataset.png" class="mx-3"></v-img>
+        <v-card-text>
+          Mapping of fine-scale connection patterns is an important component
+          for understanding brain functions. Here, using our recently developed
+          synapse detection technology (mGRASP and neuTube), we provide detailed
+          profiles of
+          <strong><em>synaptic connectivity</em></strong> in excitatory and
+          inhibitory neurons across different brain regions, including
+          hippocampus, cortex, and midbrain.
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn to="/datasets">View datasets</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-col>
+
+    <v-col sm=12 md=6 lg=6 xl=6>
+      <v-card>
+        <v-card-title class="justify-center">
+          <p class="display-1">mGRASPing</p>
+        </v-card-title>
+        <v-img src="http://161.122.102.55/static/img/mGRASP.png" class="mx-3"></v-img>
+        <v-card-text>
+          Mammalian GFP reconstitution across synaptic partners (mGRASP), offers
+          an easy, quick and economical approach to map synapses in the complex
+          mammalian brain. mGRASP-assisted circuit mapping (<strong
+            ><em>mGRASPing</em></strong
+          >) is suitable for mapping mammalian synaptic connectivity at multiple
+          scales: microscale for synapse-by-synapse or neuron-by-neuron
+          analysis, and mesoscale for revealing local and long-range circuits.
+        </v-card-text>
+        <v-card-actions
+          ><v-spacer></v-spacer>
+          <v-btn to="/protocol">Check protocol</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-col>
+
+    <v-col sm=12 md=6 lg=6 xl=6>
+      <v-card>
+        <v-card-title class="justify-center">
+          <p class="display-1">API</p>
+        </v-card-title>
+        <v-img src="http://161.122.102.55/static/img/graphql.png" class="mx-3"></v-img>
+        <v-card-text>
+          We offer access to our datasets through a
+          <a href="https://graphql.org/" target="_blank"
+            >GraphQL<v-icon small>mdi-call-made</v-icon></a
+          >
+          application programming interface (API). The GraphQL data query
+          language lets you define precisely the data you want, and fetch the
+          data you specify with a single call. Learn about and explore the Eeum
+          API with the interactive in-browser IDE. Here is our current
+          <a
+            href="https://docs.google.com/forms/d/1gA4BZtuzLz6rYoD4UqhSqh9fpZU2A4zpcpxwQFtj9WM/edit?usp=drive_web"
+            target="_blank"
+            >metadata logging system<v-icon small>mdi-call-made</v-icon></a
+          >.
+        </v-card-text>
+        <v-card-actions
+          ><v-spacer></v-spacer>
+          <v-btn href="http://161.122.102.55/api" target="_blank"
+            >Explore Eeum API<v-icon small>mdi-call-made</v-icon></v-btn
+          >
+        </v-card-actions>
+      </v-card>
+    </v-col>
+
+    <v-col sm=12 md=6 lg=6 xl=6>
+      <v-card>
+        <v-card-title class="justify-center">
+          <p class="display-1">Software</p>
+        </v-card-title>
+        <v-img src="http://161.122.102.55/static/img/software.png" class="mx-3"></v-img>
+        <v-card-text>
+          Brain circuit mapping requires digital reconstruction of neuronal
+          morphologies in complicated networks. We developed an open-source
+          software
+          <strong><em>neuTube</em></strong>
+          for reconstructing neurons from large-scale fluorescence images. The
+          software is equipped with parallel 2D and 3D visualization and
+          intuitive neuron tracing/editing functions, allowing the user to
+          reconstruct neurons efficiently and accurately.
+        </v-card-text>
+        <v-card-actions
+          ><v-spacer></v-spacer>
+          <v-btn href="https://www.neutracing.com/" target="_blank"
+            >Download software<v-icon small>mdi-call-made</v-icon></v-btn
+          >
+        </v-card-actions>
+      </v-card>
+    </v-col>
+  </v-row>
+</v-container>
