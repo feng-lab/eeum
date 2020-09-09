@@ -7,6 +7,9 @@ const Volume = [
   { name: 'ySliceVisibility' },
   { name: 'zSliceVisibility' },
   { name: 'volumeVisibility' },
+  { name: 'sliceOpacity' },
+  { name: 'sliceUseColorByForColor' },
+  { name: 'sliceUseColorByForOpacity' },
   { name: 'useShadow' },
   // cannot save due to bug in  vtkCropFilter
   // { name: 'croppingPlanes' },
@@ -77,6 +80,16 @@ const Geometry = [
 
 const Slice = [
   {
+    name: 'colorBy',
+    domain: {},
+  },
+  {
+    name: 'useColorByForColor',
+  },
+  {
+    name: 'useColorByForOpacity',
+  },
+  {
     name: 'visibility',
   },
   {
@@ -90,6 +103,10 @@ const Slice = [
   {
     name: 'slice',
     domain: { min: 0, max: 255, step: 1 },
+  },
+  {
+    name: 'opacity',
+    domain: { min: 0, max: 1, step: 0.01 },
   },
 ];
 
@@ -135,7 +152,10 @@ const View3D = [
   {
     name: 'presetToOrientationAxes',
     domain: {
-      items: [{ text: 'XYZ', value: 'default' }, { text: 'LPS', value: 'lps' }],
+      items: [
+        { text: 'XYZ', value: 'default' },
+        { text: 'LPS', value: 'lps' },
+      ],
     },
   },
 ];
@@ -154,7 +174,10 @@ const View2D = [
   {
     name: 'presetToOrientationAxes',
     domain: {
-      items: [{ text: 'XYZ', value: 'default' }, { text: 'LPS', value: 'lps' }],
+      items: [
+        { text: 'XYZ', value: 'default' },
+        { text: 'LPS', value: 'lps' },
+      ],
     },
   },
   {

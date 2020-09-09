@@ -2,6 +2,7 @@ import { mapState, mapActions } from 'vuex';
 
 import vtkDataArray from 'vtk.js/Sources/Common/Core/DataArray';
 import vtkPaintFilter from 'vtk.js/Sources/Filters/General/PaintFilter';
+import { SlicingMode } from 'vtk.js/Sources/Rendering/Core/ImageMapper/Constants';
 
 import vtkLabelMap from 'paraview-glance/src/vtk/LabelMap';
 import PalettePicker from 'paraview-glance/src/components/widgets/PalettePicker';
@@ -70,6 +71,7 @@ export default {
       editableLabelmapName: '',
       brushSizeMax: 100,
       radius: 5,
+      brush2D: false,
       // for view purpose only
       // [ { label, color, opacity }, ... ], sorted by label asc
       colormapArray: [],
@@ -438,19 +440,6 @@ export default {
         backgroundColor: `rgba(${rgba.join(',')})`,
       };
     },
-    updateHandleOrientation(view) {
-      const normal = view.getCamera().getDirectionOfProjection();
-      const handle = this.paintProxy.getWidgetState().getHandle();
-      const manipulator = this.paintProxy.getWidget().getManipulator();
-      // since normal points away from camera, have handle normal point
-      // towards camera so the paint widget can render the handle on top
-      // of the image.
-      handle.rotateFromDirections(
-        handle.getDirection(),
-        normal.map((n) => n * -1)
-      );
-      manipulator.setNormal(normal);
-    },
     updateHandleSlice(view) {
       const position = [0, 0, 0];
       const manipulator = this.paintProxy.getWidget().getManipulator();
@@ -465,6 +454,9 @@ export default {
     enablePainting() {
       const paintProxy = this.$proxyManager.createProxy('Widgets', 'Paint');
       paintProxy.getWidget().setRadius(this.radius);
+      paintProxy
+        .getWidget()
+        .placeWidget(this.activeLabelmapProxy.getDataset().getBounds());
 
       this.widgetId = paintProxy.getProxyId();
       this.mousedViewId = -1;
@@ -494,11 +486,15 @@ export default {
           }
           this.mousedViewId = view.getProxyId();
 
-          this.updateHandleOrientation(view);
           this.updateHandleSlice(view);
         }, priority);
 
         const s1 = viewWidget.onStartInteractionEvent(() => {
+          if (this.brush2D) {
+            this.filter.setSlicingMode(SlicingMode['XYZ'[view.getAxis()]]);
+          } else {
+            this.filter.setSlicingMode(SlicingMode.NONE);
+          }
           this.filter.startStroke();
           this.filter.addPoint(
             this.paintProxy.getWidgetState().getTrueOrigin()

@@ -61,7 +61,10 @@ export function createViewer(container, proxyConfig = null) {
   const proxyConfiguration = proxyConfig || activeProxyConfig || Config.Proxy;
   const proxyManager = vtkProxyManager.newInstance({ proxyConfiguration });
 
-  const store = createStore(proxyManager);
+  const store = createStore({
+    proxyManager,
+    girder: GirderProvider,
+  });
 
   store.dispatch('retrieveDatasets');
 

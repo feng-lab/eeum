@@ -79,6 +79,8 @@ export default {
       dataRange: [0, 0],
       origDataRange: [0, 0],
       interpolateScalarsBeforeMapping: true,
+      colorToSlices: false,
+      opacityToSlices: false,
     };
   },
   computed: {
@@ -137,7 +139,7 @@ export default {
           // solid coloring doesn't have a valid data array
           if (dataArray) {
             const dataRange = dataArray.getRange();
-            // this.dataRange = dataRange; // We want to keep the current range
+            this.dataRange = dataRange; // We want to keep the current range
             this.origDataRange = [...dataRange]; // copy
           }
           // Update interpolateScalarsBeforeMapping
@@ -310,6 +312,9 @@ export default {
         const repVolume = myRepresentations.find(
           (r) => r.getProxyName() === 'Volume'
         );
+        const repSliceX = myRepresentations.find(
+          (r) => r.getProxyName() === 'SliceX'
+        );
 
         if (repGeometry) {
           this.available = 'geometry';
@@ -350,6 +355,15 @@ export default {
         if (this.available === 'geometry') {
           this.solidColor = vtkMath.floatRGB2HexCode(repGeometry.getColor());
         }
+
+        if (repSliceX) {
+          this.colorToSlices = repSliceX.getUseColorByForColor();
+          this.opacityToSlices = repSliceX.getUseColorByForOpacity();
+          this.applyFuncsToSlices({
+            color: this.colorToSlices,
+            opacity: this.opacityToSlices,
+          });
+        }
       }
 
       this.setPreset();
@@ -360,8 +374,43 @@ export default {
         this.dataRange = lutProxy.getDataRange();
       }
     },
+    setRange(index, value) {
+      const v = Number.parseFloat(value);
+      if (!Number.isNaN(v)) {
+        const newRange = [...this.dataRange];
+        newRange[index] = value;
+        if (newRange[0] < newRange[1]) {
+          this.dataRange = newRange;
+        }
+      }
+    },
     resetDataRange() {
       this.dataRange = this.origDataRange.slice();
+      this.$proxyManager.renderAllViews();
+    },
+    applyColorToSlices(color) {
+      this.applyFuncsToSlices({ color: !!color });
+    },
+    applyOpacityToSlices(opacity) {
+      this.applyFuncsToSlices({ opacity: !!opacity });
+    },
+    applyFuncsToSlices({ color, opacity }) {
+      this.colorToSlices = color ?? this.colorToSlices;
+      this.opacityToSlices = opacity ?? this.opacityToSlices;
+
+      const reps = this.$proxyManager
+        .getRepresentations()
+        .filter((r) => r.getInput() === this.source);
+
+      const sliceRep = reps.find((r) =>
+        r.isA('vtkCustomSliceRepresentationProxy')
+      );
+      if (sliceRep) {
+        // proxy links will handle syncing slices
+        sliceRep.setUseColorByForColor(this.colorToSlices);
+        sliceRep.setUseColorByForOpacity(this.opacityToSlices);
+      }
+
       this.$proxyManager.renderAllViews();
     },
   },
