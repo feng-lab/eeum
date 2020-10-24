@@ -59,7 +59,7 @@
     "pug-plain-loader": "^1.0.0",
     "slick-carousel": "^1.8.1",
     "typeface-roboto": "0.0.75",
-    "vtk.js": "14.15.1",
+    "vtk.js": "14.17.0",
     "vue": "2.6.11",
     "vue-agile": "^1.0.10",
     "vue-awesome-swiper": "^3.1.3",
