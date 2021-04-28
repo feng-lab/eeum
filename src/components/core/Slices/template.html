@@ -8,47 +8,44 @@
     <v-col cols=12>
       <v-card-text>
         <div class="display-2"><a
-            href="http://161.122.102.42:8080/#!http://161.122.102.55/static/neuroglancer_data/181005_Lemur-Hotsauce_SMI99_VGluT2_NeuN/base.json"
+            href="http://localhost:8080/#!https://fenglab.xyz/static/neuroglancer_data/181005_Lemur-Hotsauce_SMI99_VGluT2_NeuN/base.json"
             target="_blank">
             Hotsauce</a></div>
       </v-card-text>
     </v-col>
   </v-row>
 
-  <v-row align-center class="ma-15 pa-15">
-    <v-col cols=12 class="ma-15 pa-15">
-      <l-map ref="mymap" :zoom="initialZoom" :minZoom="minZoom" :maxZoom="maxZoom" :crs="crs" :center="center"
-        :style="mapStyle" @update:center="centerUpdated" @update:zoom="zoomUpdated" @update:bounds="boundsUpdated">
-        <l-tile-layer :url="imageUrl" :bounds="bounds" />
-      </l-map>
+  <v-row wrap>
+    <!-- <v-col cols=12>
+                                                                                                                                                        <span class="title">
+                                                                                                                                                          {{ samples.length }}
+                                                                                                                                                          {{ samples.length > 1 ? 'Neurons' : 'Neuron' }}
+                                                                                                                                                        </span>
+                                                                                                                                                      </v-col> -->
+    <v-col v-for="i in 180" :key="i" sm=12 md=4 lg=4 xl=3>
+      <v-card flat tile>
+        <v-card-title>Bregma {{((i-1)/179*3-1.5).toFixed(2)}} mm</v-card-title>
+        <v-card-text>
+          <span style="color:#00A0FF">DAPI&nbsp</span>
+          <span style="color:#00FF33">SMI99&nbsp</span>
+          <span style="color:#FF0000">VGluT2&nbsp</span>
+          <span style="color:magenta">NeuN </span>
+        </v-card-text>
+        <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink" width="60px" height="60px" viewBox="0 0 60 60">
+        
+          <image xlink:href="https://fenglab.xyz/static/static/mesh.png" width="60px" height="60px" y="0" x="0" />
+          <g id="g3373">
+            <line :x1="3+(i-1)/179*(56-3)" y1="0" :x2="3+(i-1)/179*(56-3)" y2="60" stroke-miterlimit="10"
+              style="fill:none;stroke-width:3;stroke:cyan" />
+          </g>
+          </svg>
+          <a :href="`http://localhost:8080/#!%7B%22dimensions%22:%7B%22x%22:%5B0.000010444176%2C%22m%22%5D%2C%22y%22:%5B0.000010444176%2C%22m%22%5D%2C%22z%22:%5B0.0001%2C%22m%22%5D%7D%2C%22position%22:%5B871.4232177734375%2C499.79644775390625%2C${i-1}%5D%2C%22crossSectionScale%22:0.9359984280557668%2C%22projectionOrientation%22:%5B0.10610796511173248%2C-0.7816012501716614%2C-0.1282559037208557%2C-0.601158082485199%5D%2C%22projectionScale%22:3172.7811739143044%2C%22layers%22:%5B%7B%22type%22:%22image%22%2C%22source%22:%22precomputed://https://fenglab.xyz/static/neuroglancer_data/181005_Lemur-Hotsauce_SMI99_VGluT2_NeuN/Brightfield%22%2C%22opacity%22:1%2C%22blend%22:%22additive%22%2C%22name%22:%22Brightfield%22%2C%22visible%22:false%7D%2C%7B%22type%22:%22image%22%2C%22source%22:%22precomputed://https://fenglab.xyz/static/neuroglancer_data/181005_Lemur-Hotsauce_SMI99_VGluT2_NeuN/DAPI%22%2C%22opacity%22:1%2C%22blend%22:%22additive%22%2C%22shaderControls%22:%7B%22normalized%22:%7B%22range%22:%5B0%2C17987%5D%7D%2C%22color%22:%22#00a0ff%22%7D%2C%22name%22:%22DAPI%22%7D%2C%7B%22type%22:%22image%22%2C%22source%22:%22precomputed://https://fenglab.xyz/static/neuroglancer_data/181005_Lemur-Hotsauce_SMI99_VGluT2_NeuN/SMI99%22%2C%22opacity%22:1%2C%22blend%22:%22additive%22%2C%22shaderControls%22:%7B%22normalized%22:%7B%22range%22:%5B0%2C15295%5D%7D%2C%22color%22:%22#00ff33%22%7D%2C%22name%22:%22SMI99%22%7D%2C%7B%22type%22:%22image%22%2C%22source%22:%22precomputed://https://fenglab.xyz/static/neuroglancer_data/181005_Lemur-Hotsauce_SMI99_VGluT2_NeuN/VGluT2%22%2C%22opacity%22:1%2C%22blend%22:%22additive%22%2C%22shaderControls%22:%7B%22normalized%22:%7B%22range%22:%5B0%2C14135%5D%7D%2C%22color%22:%22#ff0000%22%7D%2C%22name%22:%22VGluT2%22%7D%2C%7B%22type%22:%22image%22%2C%22source%22:%22precomputed://https://fenglab.xyz/static/neuroglancer_data/181005_Lemur-Hotsauce_SMI99_VGluT2_NeuN/NeuN%22%2C%22opacity%22:1%2C%22blend%22:%22additive%22%2C%22shaderControls%22:%7B%22normalized%22:%7B%22range%22:%5B0%2C6614%5D%7D%2C%22color%22:%22#0000ff%22%7D%2C%22name%22:%22NeuN%22%7D%2C%7B%22type%22:%22segmentation%22%2C%22source%22:%22precomputed://https://fenglab.xyz/static/neuroglancer_data/181005_Lemur-Hotsauce_SMI99_VGluT2_NeuN/bigregion_annotation%22%2C%22tab%22:%22segments%22%2C%22segmentColors%22:%7B%22313%22:%22#af04fa%22%2C%22315%22:%22#facd04%22%2C%22354%22:%22#fa0465%22%2C%22477%22:%22#04b7fa%22%2C%22512%22:%22#fa0422%22%2C%22549%22:%22#5a04fa%22%2C%22771%22:%22#fa04af%22%2C%22803%22:%22#0440fa%22%2C%221009%22:%22#a9b00a%22%2C%221089%22:%22#5dfa04%22%2C%221097%22:%22#e64438%22%2C%223111%22:%22#a35006%22%2C%229101%22:%22#046f12%22%2C%229102%22:%22#97fee8%22%2C%229103%22:%22#fd79ab%22%7D%2C%22segments%22:%5B%221009%22%2C%221089%22%2C%221097%22%2C%223111%22%2C%22313%22%2C%22315%22%2C%22354%22%2C%22477%22%2C%22512%22%2C%22549%22%2C%22771%22%2C%22803%22%2C%229101%22%2C%229102%22%2C%229103%22%5D%2C%22name%22:%22bigregion_annotation%22%2C%22visible%22:false%7D%5D%2C%22showSlices%22:false%2C%22selectedLayer%22:%7B%22layer%22:%22DAPI%22%2C%22visible%22:true%7D%2C%22layout%22:%22xy%22%7D`"
+            target="_blank">
+            <v-img :src="`https://fenglab.xyz/static/static/slice_${i-1}.png`" height="300px">
+            </v-img>
+          </a>
+          </v-card>
     </v-col>
-  </v-row>
-
-  <v-row>
-    <v-col cols=12>
-      <v-card-text>
-        <!-- <v-row>
-                  <v-col class="pr-4"> -->
-        <v-slider v-model="slider" class="align-center" :max="max" :min="min" label="Slice" hide-details>
-          <template v-slot:append>
-            <v-text-field v-model="slider" class="mt-0 pt-0" hide-details single-line type="number" style="width: 60px">
-            </v-text-field>
-          </template>
-        </v-slider>
-        <!-- </v-col>
-                </v-row> -->
-      </v-card-text>
-    </v-col>
-
-
-    <v-col cols=12>
-      <swiper :options="swiperOptionThumbs" class="gallery-thumbs" ref="swiperThumbs">
-        <!-- <swiper-slide v-for="image in thumbUrls" :key="image.index" class="slide-img">
-                <img :src="image.link" alt="">
-              </swiper-slide> -->
-      </swiper>
-
-    </v-col>
-
   </v-row>
 </v-container>
