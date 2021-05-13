@@ -3,13 +3,14 @@
 // import { swiper, swiperSlide } from 'vue-awesome-swiper';
 // import 'leaflet/dist/leaflet.css';
 // import 'swiper/dist/css/swiper.css';
-import { VCard, VImg } from 'vuetify/lib';
+import { VCard, VImg, VOverlays } from 'vuetify/lib';
 
 export default {
   name: 'Slices',
   components: {
     VCard,
     VImg,
+    VOverlays,
   },
   // components: {
   //   LMap,
@@ -23,6 +24,8 @@ export default {
       min: 0,
       max: 179,
       slider: 40,
+      absolute: true,
+      overlay: true,
 
       // crs: L.CRS.Simple,
       // center: L.latLng(-80, 120),
@@ -53,7 +56,10 @@ export default {
       //   slideToClickedSlide: true,
       // },
       select: '181005_Lemur-Hotsauce_SMI99_VGluT2_NeuN',
-      items: ['181005_Lemur-Hotsauce_SMI99_VGluT2_NeuN'],
+      items: [
+        '181005_Lemur-Hotsauce_SMI99_VGluT2_NeuN',
+        '20190813_jellybean_FOXP2_SMI32_NeuN',
+      ],
     };
   },
 
