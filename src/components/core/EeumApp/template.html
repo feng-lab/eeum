@@ -3,32 +3,30 @@
   v-on:drop="openFileList"
 >
   <template v-slot:default="{ dragHover }">
-    <v-app
-      :class="$style.root"
-    >
-	  <v-navigation-drawer
-	    v-model="controlsDrawer"
-	    :clipped="$vuetify.breakpoint.mdAndUp"
-	    :mobile-break-point="$vuetify.breakpoint.thresholds.md"
-		  app
-	    fixed
-	    disable-resize-watcher
-	    touchless
-	    width="300"
-	  >
-	    <controls-drawer />
-	  </v-navigation-drawer>
-  
-	  <v-app-bar app clipped-left>
-	    <v-app-bar-nav-icon
-	      v-if="needSetting"
-	      :disabled="!needSetting"
-	      @click.native.stop="controlsDrawer = !controlsDrawer"
-	    >
-	      <v-icon>mdi-settings</v-icon>
-	    </v-app-bar-nav-icon>
-	    <v-toolbar-title>Eeum Center</v-toolbar-title>
-	    <!-- <v-btn
+    <v-app :class="$style.root">
+      <v-navigation-drawer
+        v-model="controlsDrawer"
+        :clipped="$vuetify.breakpoint.mdAndUp"
+        :mobile-breakpoint="$vuetify.breakpoint.thresholds.md"
+        app
+        fixed
+        disable-resize-watcher
+        touchless
+        width="300"
+      >
+        <controls-drawer />
+      </v-navigation-drawer>
+
+      <v-app-bar app clipped-left>
+        <v-app-bar-nav-icon
+          v-if="needSetting"
+          :disabled="!needSetting"
+          @click.native.stop="controlsDrawer = !controlsDrawer"
+        >
+          <v-icon>mdi-settings</v-icon>
+        </v-app-bar-nav-icon>
+        <v-toolbar-title>Eeum Center</v-toolbar-title>
+        <!-- <v-btn
 	      v-if="errors.length"
 	      key="if-has-errors"
 	      :class="$style.toolbarButton"
@@ -41,89 +39,125 @@
 	      &nbsp;
 	      <span v-show="!smallScreen">error(s)</span>
 	    </v-btn> -->
-	    <v-spacer></v-spacer>
+        <v-spacer></v-spacer>
 
-	    <v-tooltip
-	      bottom
-	      v-if="needSetting && visibleCount > 1"
-	    >
-	        <span :class="$style.noSelect">Hide Neuron Info</span>
-	        <template v-slot:activator="{ on }">
-	          <v-btn
-	            v-on="on"
-	            icon
-	            v-on:click="singleView()"
-	          >
-	            <v-icon>mdi-fullscreen</v-icon>
-	          </v-btn>
-	          </template>
-	    </v-tooltip>
-	    <v-tooltip
-	      bottom
-	      v-if="needSetting && visibleCount === 1"
-	    >
-	        <span :class="$style.noSelect">Show Neuron Info</span>
-	        <template v-slot:activator="{ on }">
-	        <v-btn
-	          v-on="on"
-	          icon
-	          v-on:click="splitView()"
-	        >
-	          <v-icon>mdi-flip-horizontal</v-icon>
-	        </v-btn>
-	        </template>
-	    </v-tooltip>
-    
-	    <v-toolbar-items class="hidden-sm-and-down">
-	      <v-btn v-for="item in menu" :key="item.title" :to="item.link" text>{{
-	        item.title
-	      }}</v-btn>
-		<v-btn href="https://fenglab.xyz/eeum/api" target="_blank" text>
-	        API<v-icon small>mdi-call-made</v-icon>
-	      </v-btn>
-	    </v-toolbar-items>
-	    <div class="hidden-sm-and-down">
-	      <v-switch label="Light theme" v-model="isLight" hide-details></v-switch>
-	    </div>
-	    <v-menu 
-	      class="hidden-md-and-up"
-	      open-on-hover
-	    >
-	      <template v-slot:activator="{ on }">
-	        <v-app-bar-nav-icon v-on="on"></v-app-bar-nav-icon>
+        <v-tooltip bottom v-if="needSetting && visibleCount > 1">
+          <span :class="$style.noSelect">Hide Neuron Info</span>
+          <template v-slot:activator="{ on }">
+            <v-btn v-on="on" icon v-on:click="singleView()">
+              <v-icon>mdi-fullscreen</v-icon>
+            </v-btn>
           </template>
-      
-	      <v-list>
-	        <v-list-item v-for="item in menu" :key="item.title" :to="item.link">
-	          <v-list-item-content>
-	            <v-list-item-title>{{ item.title }}</v-list-item-title>
-	          </v-list-item-content>
-	        </v-list-item>
-			<v-list-item key="API" href="https://fenglab.xyz/eeum/api" target="_blank">
-	          <v-list-item-content>
-	            <v-list-item-title>API<v-icon small>mdi-call-made</v-icon></v-list-item-title>
-	          </v-list-item-content>
-	        </v-list-item>
-	        <v-switch label="Light theme" v-model="isLight" hide-details></v-switch>
-	      </v-list>
-	    </v-menu>
-	  </v-app-bar>
-	  <v-content :class="$style.appContent">
-	    <router-view v-on:open-urls="autoLoadRemotes"></router-view>
-	  </v-content>
+        </v-tooltip>
+        <v-tooltip bottom v-if="needSetting && visibleCount === 1">
+          <span :class="$style.noSelect">Show Neuron Info</span>
+          <template v-slot:activator="{ on }">
+            <v-btn v-on="on" icon v-on:click="splitView()">
+              <v-icon>mdi-flip-horizontal</v-icon>
+            </v-btn>
+          </template>
+        </v-tooltip>
 
-	  <v-footer color="transparent" app>
-	      <v-card
-	        class="flex text-xs-center"
-	        text
-	        item
-	        color="transparent"
-	      >
-	        <v-card-actions class="darken-3 justify-center">
-	          &copy; {{ new Date().getFullYear() }} — <strong>Eeum Center</strong>
-	        </v-card-actions>
-	      </v-card>
-	  </v-footer>
+        <v-toolbar-items class="hidden-sm-and-down">
+          <v-btn key="home" to="/" text>
+            home
+          </v-btn>
+          <v-menu
+            v-for="item in menu"
+			:key="item.title"
+            :close-on-content-click="false"
+            open-on-hover
+            bottom
+            offset-y
+          >
+            <template v-slot:activator="{ on }">
+              <v-btn text v-on="on">{{item.title}}</v-btn>
+            </template>
+            <v-list>
+              <v-list-item
+                v-for="subitem in item.submenu"
+                :key="subitem.title"
+                :to="subitem.link"
+              >
+                <v-list-item-content>
+                  <v-list-item-title>{{ subitem.title }}</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list>
+          </v-menu>
+          <v-btn key="about" to="/about" text>
+            about
+          </v-btn>
+          <v-btn href="https://fenglab.xyz/eeum/api" target="_blank" text>
+            API<v-icon small>mdi-call-made</v-icon>
+          </v-btn>
+        </v-toolbar-items>
+        <div class="hidden-sm-and-down">
+          <v-switch
+            label="Light theme"
+            v-model="isLight"
+            hide-details
+          ></v-switch>
+        </div>
+        <v-menu class="hidden-md-and-up" open-on-hover>
+          <template v-slot:activator="{ on }">
+            <v-app-bar-nav-icon v-on="on"></v-app-bar-nav-icon>
+          </template>
+
+          <v-list>
+            <v-list-item key="home" to="/">
+              <v-list-item-content>
+                <v-list-item-title>home</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+            <v-list-group v-for="item in menu" :key="item.title" :value="true">
+              <template v-slot:activator>
+                <v-list-item-title>{{ item.title }}</v-list-item-title>
+              </template>
+
+              <v-list-item
+                v-for="subitem in item.submenu"
+                :key="subitem.title"
+                :to="subitem.link"
+              >
+                <v-list-item-title v-text="subitem.title"></v-list-item-title>
+              </v-list-item>
+            </v-list-group>
+            <!-- <v-list-item v-for="item in menu" :key="item.title" :to="item.link">
+																									          <v-list-item-content>
+																									            <v-list-item-title>{{ item.title }}</v-list-item-title>
+																									          </v-list-item-content>
+									</v-list-item> -->
+            <v-list-item
+              key="API"
+              href="https://fenglab.xyz/eeum/api"
+              target="_blank"
+            >
+              <v-list-item-content>
+                <v-list-item-title
+                  >API<v-icon small>mdi-call-made</v-icon></v-list-item-title
+                >
+              </v-list-item-content>
+            </v-list-item>
+            <v-switch
+              label="Light theme"
+              v-model="isLight"
+              hide-details
+            ></v-switch>
+          </v-list>
+        </v-menu>
+      </v-app-bar>
+      <v-main :class="$style.appContent">
+        <router-view v-on:open-urls="autoLoadRemotes"></router-view>
+      </v-main>
+
+      <v-footer color="transparent" app>
+        <v-card class="flex text-xs-center" text item color="transparent">
+          <v-card-actions class="darken-3 justify-center">
+            &copy; {{ new Date().getFullYear() }} — <strong>Eeum Center</strong>
+          </v-card-actions>
+        </v-card>
+      </v-footer>
 
       <v-navigation-drawer
         v-model="screenshotsDrawer"
@@ -141,16 +175,11 @@
       </v-navigation-drawer>
 
       <!-- file loader -->
-      <file-loader
-        v-model="fileUploadDialog"
-        v-on:load="doneLoadingFiles"
-      />
+      <file-loader v-model="fileUploadDialog" v-on:load="doneLoadingFiles" />
 
       <v-dialog v-model="autoloadDialog" persistent width="60%">
         <v-card class="pa-4">
-          <v-card-title
-            class="justify-center text-center title pv-break-word"
-          >
+          <v-card-title class="justify-center text-center title pv-break-word">
             Loading {{ autoloadLabel }}...
           </v-card-title>
         </v-card>
@@ -182,11 +211,7 @@
       </component> -->
 
       <!-- error dialog-->
-      <component
-        :is="dialogType"
-        v-model="errorDialog"
-        max-width="50%"
-      >
+      <component :is="dialogType" v-model="errorDialog" max-width="50%">
         <error-box
           :errors="errors"
           v-on:close="errorDialog = false"

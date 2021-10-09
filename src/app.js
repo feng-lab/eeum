@@ -45,6 +45,12 @@ Vue.use(Vuex);
 Vue.use(Vuetify);
 Vue.use(ProxyManagerVuePlugin);
 
+export default new Vuetify({
+  icons: {
+    iconfont: 'mdi', // default - only for display purposes
+  },
+});
+
 let activeProxyConfig = null;
 /**
  * Sets the active proxy configuration to be used by createViewer.

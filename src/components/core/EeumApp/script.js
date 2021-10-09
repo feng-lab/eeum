@@ -62,11 +62,41 @@ export default {
       globalSingleNotification: '',
       notifyPermanent: false,
       menu: [
-        { title: 'home', link: '/' },
-        { title: 'datasets', link: '/datasets' },
-        { title: 'raw data', link: '/slices' },
-        { title: 'protocol', link: '/protocol' },
-        { title: 'contact', link: '/contact' },
+        // { title: 'home', link: '/' },
+        // { title: 'datasets', link: '/datasets' },
+        // { title: 'raw data', link: '/slices' },
+        // { title: 'protocol', link: '/protocol' },
+        // { title: 'contact', link: '/contact' },
+        {
+          title: 'Mouse',
+          submenu: [
+            { title: 'Dataset', link: '' },
+            { title: 'mGRASP', link: '/datasets' },
+          ],
+        },
+        {
+          title: 'Lemur',
+          submenu: [
+            { title: 'Dataset', link: '/slices' },
+            { title: 'eLemur Atlas', link: '' },
+          ],
+        },
+        {
+          title: 'Tools',
+          submenu: [
+            { title: 'mGRASP construct', link: '' },
+            { title: 'mGRASP detection', link: '' },
+            { title: 'neuTube', link: '/about' },
+          ],
+        },
+        {
+          title: 'Protocols & Info',
+          submenu: [
+            { title: 'Nomenclatures', link: '' },
+            { title: 'mGRASPing', link: '' },
+            { title: 'Reference', link: '' },
+          ],
+        },
       ],
     };
   },
