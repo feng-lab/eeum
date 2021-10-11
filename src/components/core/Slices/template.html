@@ -1,48 +1,67 @@
 <v-container class="mb-5 pb-5" style="height: 100%; overflow-y: auto;">
   <v-row align-center wrap>
     <template v-for="(item, i) in items">
-      <v-col cols="4">
-        <v-img :src="item.src" contain></v-img>
-      </v-col>
-      <v-col cols="8">
-        <v-card>
-          <v-card-title class="text-h5" v-text="item.name"></v-card-title>
-          <v-card-text>
-            {{ item.info }}
-          </v-card-text>
-          <v-card-actions>
-            <v-btn class="ml-2 mt-5" outlined rounded small>
-              Gallery View
-            </v-btn>
-            <v-btn class="ml-2 mt-5" outlined rounded small>
-              Full-resolution View
-            </v-btn>
-            <v-btn
-              v-if="item.name === '181005_Lemur-Hotsauce_SMI99_VGluT2_NeuN'"
-              class="ml-2 mt-5"
-              outlined
-              rounded
-              small
-            >
-              3D View
-            </v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-col>
+      <!-- <v-col cols="4">
+        <v-img :src="`${item.sliceSrc}${item.startSlice}.png`" contain></v-img>
+      </v-col> -->
       <v-col cols="12">
-        <swiper :class="$style.swiper" :options="swiperOption">
-          <swiper-slide>Slide 1</swiper-slide>
-          <swiper-slide>Slide 2</swiper-slide>
-          <swiper-slide>Slide 3</swiper-slide>
-          <swiper-slide>Slide 4</swiper-slide>
-          <swiper-slide>Slide 5</swiper-slide>
-          <swiper-slide>Slide 6</swiper-slide>
-          <swiper-slide>Slide 7</swiper-slide>
-          <swiper-slide>Slide 8</swiper-slide>
-          <swiper-slide>Slide 9</swiper-slide>
-          <swiper-slide>Slide 10</swiper-slide>
-          <div class="swiper-pagination" slot="pagination"></div>
-        </swiper>
+        <v-card>
+          <v-row align-center wrap>
+            <v-col cols="6">
+              <v-img
+                :src="`${item.sliceSrc}${item.startSlice}.png`"
+                contain
+              ></v-img>
+            </v-col>
+            <v-col cols="6">
+              <v-card-title class="text-h5" v-text="item.name"></v-card-title>
+              <v-card-text>
+                {{ item.info }}
+              </v-card-text>
+              <v-card-actions>
+                <v-btn class="ml-2 mt-5" outlined rounded small>
+                  Gallery View
+                </v-btn>
+                <v-btn class="ml-2 mt-5" outlined rounded small>
+                  Full-resolution View
+                </v-btn>
+                <v-btn
+                  v-if="item.name === '181005_Lemur-Hotsauce_SMI99_VGluT2_NeuN'"
+                  class="ml-2 mt-5"
+                  outlined
+                  rounded
+                  small
+                >
+                  3D View
+                </v-btn>
+              </v-card-actions>
+            </v-col>
+            <!-- <v-col cols="1"></v-col> -->
+            <v-col cols="12">
+              <swiper :class="$style.swiper" :options="item.swiperOption">
+                <!-- <swiper-slide
+                  v-for="(slide, index) in virtualData.slides"
+                  :key="index"
+                >
+                  <v-img :src="`${item.sliceSrc}${slide}.png`" contain></v-img>
+                </swiper-slide> -->
+                <swiper-slide
+                  v-for="s in item.numSlices"
+                  :key="s"
+                  style="width: 30%;"
+                >
+                  <a
+                    :href="`${item.sliceLinkPre}${s-0.5}${item.sliceLinkPost}`"
+                    target="_blank"
+                  >
+                    <v-img :src="`${item.sliceSrc}${s-1}.png`" contain></v-img>
+                  </a>
+                </swiper-slide>
+                <div class="swiper-scrollbar" slot="scrollbar"></div>
+              </swiper>
+            </v-col>
+          </v-row>
+        </v-card>
       </v-col>
     </template>
   </v-row>
