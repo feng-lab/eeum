@@ -1,11 +1,12 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import EeumDatasets from '@/components/core/EeumDatasets';
+import MousemGRASPDatasets from '@/components/core/MousemGRASPDatasets';
 import Neuron from '@/components/core/Neuron';
 import Home from '@/components/core/Home';
 import Protocol from '@/components/core/Protocol';
 import Contact from '@/components/core/Contact';
-import Slices from '@/components/core/Slices';
+import LemurDatasets from '@/components/core/LemurDatasets';
+import Gallery from '@/components/core/Gallery';
 
 Vue.use(Router);
 
@@ -18,13 +19,13 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: 'Home',
       component: Home,
     },
     {
-      path: '/datasets',
-      name: 'Datasets',
-      component: EeumDatasets,
+      path: '/mousemgraspdatasets',
+      name: 'MousemGRASPDatasets',
+      component: MousemGRASPDatasets,
     },
     {
       path: '/neuron/:name',
@@ -34,9 +35,16 @@ export default new Router({
       props: true,
     },
     {
-      path: '/slices',
-      name: 'Slices',
-      component: Slices,
+      path: '/lemurdatasets',
+      name: 'LemurDatasets',
+      component: LemurDatasets,
+    },
+    {
+      path: '/gallery/:name',
+      name: 'Gallery',
+      component: Gallery,
+      meta: { requiresCheck: false },
+      props: true,
     },
     {
       path: '/protocol',

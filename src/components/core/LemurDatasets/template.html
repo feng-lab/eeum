@@ -19,12 +19,20 @@
                 {{ item.info }}
               </v-card-text>
               <v-card-actions>
-                <v-btn class="ml-2 mt-5" outlined rounded small>
+                <v-btn
+                  class="ml-2 mt-5"
+                  outlined
+                  rounded
+                  small
+                  :to="{ name: 'Gallery', params: { name: item.name }}"
+                >
                   Gallery View
                 </v-btn>
-                <v-btn class="ml-2 mt-5" outlined rounded small>
-                  Full-resolution View
-                </v-btn>
+                <a :href="`${item.fullResolutionView}`" target="_blank">
+                  <v-btn class="ml-2 mt-5" outlined rounded small>
+                    Full-resolution View
+                  </v-btn>
+                </a>
                 <v-btn
                   v-if="item.name === '181005_Lemur-Hotsauce_SMI99_VGluT2_NeuN'"
                   class="ml-2 mt-5"

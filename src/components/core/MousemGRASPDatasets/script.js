@@ -15,7 +15,7 @@ function objectMatchSearch(obj, search) {
 }
 
 export default {
-  name: 'EeumDatasets',
+  name: 'MousemGRASPDatasets',
   data() {
     return {
       search: '',

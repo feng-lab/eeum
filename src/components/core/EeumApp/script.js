@@ -9,7 +9,7 @@ import ControlsDrawer from 'paraview-glance/src/components/core/ControlsDrawer';
 import DragAndDrop from 'paraview-glance/src/components/widgets/DragAndDrop';
 import ErrorBox from 'paraview-glance/src/components/core/ErrorBox';
 import FileLoader from 'paraview-glance/src/components/core/FileLoader';
-import EeumDatasets from 'paraview-glance/src/components/core/EeumDatasets';
+import MousemGRASPDatasets from 'paraview-glance/src/components/core/MousemGRASPDatasets';
 import Neuron from 'paraview-glance/src/components/core/Neuron';
 import Screenshots from 'paraview-glance/src/components/core/Screenshots';
 import StateFileGenerator from 'paraview-glance/src/components/core/StateFileGenerator';
@@ -34,7 +34,7 @@ export default {
     DragAndDrop,
     ErrorBox,
     FileLoader,
-    EeumDatasets,
+    MousemGRASPDatasets,
     Neuron,
     Screenshots,
     StateFileGenerator,
@@ -71,13 +71,13 @@ export default {
           title: 'Mouse',
           submenu: [
             { title: 'Dataset', link: '' },
-            { title: 'mGRASP', link: '/datasets' },
+            { title: 'mGRASP', link: '/mousemgraspdatasets' },
           ],
         },
         {
           title: 'Lemur',
           submenu: [
-            { title: 'Dataset', link: '/slices' },
+            { title: 'Dataset', link: '/lemurdatasets' },
             { title: 'eLemur Atlas', link: '' },
           ],
         },
