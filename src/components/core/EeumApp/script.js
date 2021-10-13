@@ -83,9 +83,13 @@ export default {
         {
           title: 'Tools',
           submenu: [
-            { title: 'mGRASP construct', link: '' },
+            {
+              title: 'mGRASP construct',
+              link:
+                'https://www.addgene.org/search/catalog/plasmids/?q=Jinhyun+kim',
+            },
             { title: 'mGRASP detection', link: '' },
-            { title: 'neuTube', link: '/about' },
+            { title: 'neuTube', link: 'https://neutracing.com' },
           ],
         },
         {

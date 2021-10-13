@@ -58,6 +58,16 @@ export default new Router({
       name: 'Contact',
       component: Contact,
     },
+    {
+      // This is a hack to use :to tag for absolute paths.
+      path: '/http*',
+      beforeEnter: (to) => window.open(to.fullPath.substring(1), '_blank'),
+    },
+    {
+      path: '/:catchAll(.*)',
+      name: 'NotFound',
+      component: NotFound,
+    },
     { path: '/notFound', component: NotFound },
   ],
   // scrollBehavior(to, from, savedPosition) {
