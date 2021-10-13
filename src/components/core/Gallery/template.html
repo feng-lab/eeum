@@ -7,10 +7,19 @@
         </template>
       </v-card-text>
     </v-col>
-    <v-col v-for="i in item.numSlices" :key="i" cols="12" sm="4" md="3" lg="2" xl="2">
+    <v-col
+      v-for="i in item.numSlices"
+      :key="i"
+      cols="12"
+      sm="4"
+      md="3"
+      lg="2"
+      xl="2"
+    >
       <a
         :href="`${item.sliceLinkPre}${i-0.5}${item.sliceLinkPost}`"
         target="_blank"
+        :id="`slice${i}`"
       >
         <svg
           xmlns:svg="http://www.w3.org/2000/svg"

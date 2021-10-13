@@ -66,6 +66,7 @@ export function setActiveProxyConfiguration(config) {
 export function createViewer(container, proxyConfig = null) {
   const proxyConfiguration = proxyConfig || activeProxyConfig || Config.Proxy;
   const proxyManager = vtkProxyManager.newInstance({ proxyConfiguration });
+  const settings = new Settings();
 
   const store = createStore({
     proxyManager,
@@ -142,7 +143,9 @@ export function createViewer(container, proxyConfig = null) {
   // window.history.replaceState({ app: false }, '');
   // window.addEventListener('popstate', onRoute);
 
-  const settings = new Settings();
+  // always enable history setting. Users must explicitly disable it.
+  settings.set('noHistory', false);
+
   settings.syncWithStore(store, {
     collapseDatasetPanels: {
       set: (val) => store.dispatch('collapseDatasetPanels', val),
@@ -159,7 +162,16 @@ export function createViewer(container, proxyConfig = null) {
     store,
 
     processURLArgs() {
-      const { name, url } = vtkURLExtract.extractURLParameters();
+      const params = vtkURLExtract.extractURLParameters();
+
+      Object.keys(params)
+        .filter((key) => key.startsWith('setting.'))
+        .forEach((key) => {
+          const name = key.substr('setting.'.length);
+          settings.set(name, params[key]);
+        });
+
+      const { name, url } = params;
       if (name && url) {
         const names = typeof name === 'string' ? [name] : name;
         const urls = typeof url === 'string' ? [url] : url;

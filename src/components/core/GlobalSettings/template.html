@@ -1,4 +1,12 @@
 <v-container :class="$style.container">
+  <v-card flat :class="$style.card" v-if="isAnimated">
+    <div :class="$style.heading">
+      <span class="subtitle-2">Animation controls</span>
+    </div>
+    <v-divider class="mb-4" />
+    <animationControls />
+  </v-card>
+
   <v-card flat :class="$style.card">
     <div :class="$style.heading">
       <span class="subtitle-2">General Settings</span>
@@ -19,6 +27,46 @@
       </v-layout>
     </v-container>
   </v-card>
+
+  <!-- measurement unit selection -->
+  <v-card flat :class="$style.card">
+    <div :class="$style.heading">
+      <span class="subtitle-2">Measurements</span>
+    </div>
+    <v-divider class="mb-4" />
+    <v-container grid-list-xs class="pa-0">
+      <v-layout row align-center class="pt-1">
+        <v-flex xs9>
+          <span class="body-2">Distance unit symbol</span>
+        </v-flex>
+        <v-flex xs3>
+          <v-text-field
+            :class="$style.slimInput"
+            hint="Symbol"
+            hide-details
+            v-model="distanceUnitSymbolModel"
+            required
+          />
+        </v-flex>
+        <v-flex xs9>
+          <span class="body-2">Distance unit factor</span>
+        </v-flex>
+        <v-flex xs3>
+          <v-text-field
+            :class="$style.slimInput"
+            type="number"
+            hint="Factor"
+            hide-details
+            v-model="distanceUnitFactorModel"
+            :min="0"
+            :step="0.1"
+            required
+          />
+        </v-flex>
+      </v-layout>
+    </v-container>
+  </v-card>
+
   <v-card flat :class="$style.card">
     <div :class="$style.heading">
       <span class="subtitle-2">Background</span>
@@ -84,7 +132,6 @@
           <v-slider
             :class="$style.slimInput"
             hide-details
-
             v-model="annotationOpacityModel"
             :min="0"
             :max="1"
@@ -125,7 +172,6 @@
             flat
             hide-details
             :disabled="!orientationAxis"
-
             v-model="axisTypeModel"
             :items="axisTypes"
           />
@@ -142,7 +188,6 @@
             dense
             flat
             hide-details
-
             v-model="orientationPresetModel"
             :items="orientationPresets"
           />
@@ -150,10 +195,7 @@
       </v-layout>
     </v-container>
   </v-card>
-  <gpu-information
-    :width="250"
-    :proxyManager="$proxyManager"
-  />
+  <gpu-information :width="250" :proxyManager="$proxyManager" />
   <v-card flat :class="$style.card" v-if="hasVR()">
     <div :class="$style.heading">
       <v-container grid-list-xs class="pa-0">
@@ -182,7 +224,6 @@
           <v-slider
             :class="$style.slimInput"
             hide-details
-
             v-model="physicalScale"
             min="0.1"
             max="10"
@@ -209,7 +250,7 @@
             type="number"
             v-model="maxTextureLODSizeModel"
             :min="100"
-            suffix='KiB'
+            suffix="KiB"
           />
         </v-flex>
       </v-layout>

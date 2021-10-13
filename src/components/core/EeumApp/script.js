@@ -1,6 +1,6 @@
 import { mapGetters, mapState, mapActions, mapMutations } from 'vuex';
 import Mousetrap from 'mousetrap';
-import { VBottomSheet, VDialog, VCardTitle } from 'vuetify/lib';
+import { VBottomSheet, VDialog } from 'vuetify/lib';
 import macro from 'vtk.js/Sources/macro';
 
 import AboutBox from 'paraview-glance/src/components/core/AboutBox';
@@ -41,7 +41,6 @@ export default {
     SvgIcon,
     VBottomSheet,
     VDialog,
-    VCardTitle,
   },
   provide() {
     return {
@@ -174,6 +173,7 @@ export default {
       this.fileUploadDialog = true;
     });
     this.initViews();
+    this.initializeAnimations();
 
     // attach keyboard shortcuts
     shortcuts.forEach(({ key, action }) =>
@@ -220,6 +220,7 @@ export default {
       'load',
       'resetQueue',
     ]),
+    ...mapActions('animations', ['initializeAnimations']),
     showFileUpload() {
       this.fileUploadDialog = true;
     },

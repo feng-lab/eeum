@@ -1,4 +1,4 @@
-import { VContainer, VRow, VFlex, VCol } from 'vuetify/lib';
+import { VRow, VCol } from 'vuetify/lib';
 
 export default {
   name: 'Gallery',
@@ -9,9 +9,7 @@ export default {
     },
   },
   components: {
-    VContainer,
     VRow,
-    VFlex,
     VCol,
   },
   data() {
@@ -95,5 +93,9 @@ export default {
       }
     }
     console.log(this.item);
+  },
+  mounted() {
+    // this.$nextTick(() => document.getElementById('slice90').scrollIntoView());
+    document.getElementById('slice90').scrollIntoView();
   },
 };

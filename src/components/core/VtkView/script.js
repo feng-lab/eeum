@@ -12,7 +12,6 @@ import {
 import PalettePicker from 'paraview-glance/src/components/widgets/PalettePicker';
 import ToolbarSheet from 'paraview-glance/src/components/core/ToolbarSheet';
 import { BACKGROUND } from 'paraview-glance/src/components/core/VtkView/palette';
-import { VFlex } from 'vuetify/lib';
 
 const ROTATION_STEP = 2;
 
@@ -25,7 +24,6 @@ export default {
   components: {
     PalettePicker,
     ToolbarSheet,
-    VFlex,
   },
   props: {
     layoutIndex: {

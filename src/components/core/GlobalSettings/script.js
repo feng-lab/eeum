@@ -1,5 +1,6 @@
 import { mapState, mapActions } from 'vuex';
 
+import AnimationControls from 'paraview-glance/src/components/widgets/AnimationControls';
 import GpuInformation from 'paraview-glance/src/components/widgets/GPUInformation';
 import PalettePicker from 'paraview-glance/src/components/widgets/PalettePicker';
 import { BACKGROUND } from 'paraview-glance/src/components/core/VtkView/palette';
@@ -38,6 +39,7 @@ function getViewForVR() {
 export default {
   name: 'GlobalSettings',
   components: {
+    AnimationControls,
     PalettePicker,
     GpuInformation,
   },
@@ -53,6 +55,22 @@ export default {
     };
   },
   computed: {
+    distanceUnitSymbolModel: {
+      get() {
+        return this.distanceUnitSymbol;
+      },
+      set(symbol) {
+        this.setDistanceUnitSymbol(symbol);
+      },
+    },
+    distanceUnitFactorModel: {
+      get() {
+        return this.distanceUnitFactor;
+      },
+      set(factor) {
+        this.setDistanceUnitFactor(factor);
+      },
+    },
     collapseDatasetPanelsModel: {
       get() {
         return this.collapseDatasetPanels;
@@ -135,6 +153,9 @@ export default {
       },
     },
     ...mapState(['collapseDatasetPanels']),
+    ...mapState('animations', {
+      isAnimated: (state) => state.frames.length > 0,
+    }),
     ...mapState('views', {
       backgroundColor: (state) => state.globalBackgroundColor,
       orientationAxis: (state) => state.axisVisible,
@@ -144,6 +165,10 @@ export default {
       interactionStyle3D: (state) => state.interactionStyle3D,
       firstPersonMovementSpeed: (state) => state.firstPersonMovementSpeed,
       maxTextureLODSize: (state) => state.maxTextureLODSize,
+    }),
+    ...mapState('widgets', {
+      distanceUnitSymbol: (state) => state.distanceUnitSymbol,
+      distanceUnitFactor: (state) => state.distanceUnitFactor,
     }),
   },
   watch: {
@@ -220,6 +245,12 @@ export default {
         dispatch('resetFirstPersonMovementSpeed'),
       setMaxTextureLODSize: (dispatch, size) =>
         dispatch('setMaxTextureLODSize', size),
+    }),
+    ...mapActions('widgets', {
+      setDistanceUnitSymbol: (dispatch, symbol) =>
+        dispatch('setDistanceUnitSymbol', symbol),
+      setDistanceUnitFactor: (dispatch, factor) =>
+        dispatch('setDistanceUnitFactor', factor),
     }),
   },
 };

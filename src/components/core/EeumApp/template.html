@@ -3,11 +3,13 @@
   v-on:drop="openFileList"
 >
   <template v-slot:default="{ dragHover }">
-    <v-app :class="$style.root">
+    <v-app
+      :class="$style.root"
+    >
       <v-navigation-drawer
         v-model="controlsDrawer"
         :clipped="$vuetify.breakpoint.mdAndUp"
-        :mobile-breakpoint="$vuetify.breakpoint.thresholds.md"
+        :mobile-breakpoint="$vuetify.breakpoint.thresholds.sm"
         app
         fixed
         disable-resize-watcher
@@ -180,11 +182,16 @@
       </v-navigation-drawer>
 
       <!-- file loader -->
-      <file-loader v-model="fileUploadDialog" v-on:load="doneLoadingFiles" />
+      <file-loader
+        v-model="fileUploadDialog"
+        v-on:load="doneLoadingFiles"
+      />
 
       <v-dialog v-model="autoloadDialog" persistent width="60%">
         <v-card class="pa-4">
-          <v-card-title class="justify-center text-center title pv-break-word">
+          <v-card-title
+            class="justify-center text-center title pv-break-word"
+          >
             Loading {{ autoloadLabel }}...
           </v-card-title>
         </v-card>
@@ -216,7 +223,11 @@
       </component> -->
 
       <!-- error dialog-->
-      <component :is="dialogType" v-model="errorDialog" max-width="50%">
+      <component
+        :is="dialogType"
+        v-model="errorDialog"
+        max-width="50%"
+      >
         <error-box
           :errors="errors"
           v-on:close="errorDialog = false"

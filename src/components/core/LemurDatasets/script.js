@@ -1,26 +1,9 @@
-import {
-  VCard,
-  VImg,
-  VBtn,
-  VAvatar,
-  VSpacer,
-  VCardTitle,
-  VCardActions,
-} from 'vuetify/lib';
-
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
 import 'swiper/css/swiper.css';
 
 export default {
   name: 'LemurDatasets',
   components: {
-    VCard,
-    VImg,
-    VBtn,
-    VAvatar,
-    VSpacer,
-    VCardTitle,
-    VCardActions,
     Swiper,
     SwiperSlide,
   },

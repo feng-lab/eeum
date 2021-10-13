@@ -7,6 +7,7 @@ import Protocol from '@/components/core/Protocol';
 import Contact from '@/components/core/Contact';
 import LemurDatasets from '@/components/core/LemurDatasets';
 import Gallery from '@/components/core/Gallery';
+// import goTo from 'vuetify/lib/services/goto';
 
 Vue.use(Router);
 
@@ -16,6 +17,7 @@ const NotFound = Vue.extend({
 });
 
 export default new Router({
+  // mode: 'history',
   routes: [
     {
       path: '/',
@@ -58,17 +60,30 @@ export default new Router({
     },
     { path: '/notFound', component: NotFound },
   ],
-  scrollBehavior(to, from, savedPosition) {
-    // not working now
-    if (savedPosition) {
-      console.log(savedPosition);
-      return savedPosition;
-    }
-    return { x: 0, y: 0 };
-    // return new Promise((resolve, reject) => {
-    //   setTimeout(() => {
-    //     resolve(savedPosition || { x: 0, y: 0 });
-    //   }, 500);
-    // });
-  },
+  // scrollBehavior(to, from, savedPosition) {
+  //   // need history mode to work
+  //   let scrollTo = 0;
+
+  //   if (to.hash) {
+  //     scrollTo = to.hash;
+  //   } else if (savedPosition) {
+  //     scrollTo = savedPosition.y;
+  //   }
+  //   console.log(scrollTo);
+  //   return goTo(scrollTo);
+  //   // // not working now
+  //   // if (to.hash) {
+  //   //   return { selector: to.hash };
+  //   // }
+  //   // if (savedPosition) {
+  //   //   console.log(savedPosition);
+  //   //   return savedPosition;
+  //   // }
+  //   // return { x: 0, y: 0 };
+  //   // return new Promise((resolve, reject) => {
+  //   //   setTimeout(() => {
+  //   //     resolve(savedPosition || { x: 0, y: 0 });
+  //   //   }, 500);
+  //   // });
+  // },
 });
