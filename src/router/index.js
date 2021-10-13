@@ -7,6 +7,7 @@ import Protocol from '@/components/core/Protocol';
 import Contact from '@/components/core/Contact';
 import LemurDatasets from '@/components/core/LemurDatasets';
 import Gallery from '@/components/core/Gallery';
+import LemurAtlas from '@/components/core/LemurAtlas';
 // import goTo from 'vuetify/lib/services/goto';
 
 Vue.use(Router);
@@ -47,6 +48,11 @@ export default new Router({
       component: Gallery,
       meta: { requiresCheck: false },
       props: true,
+    },
+    {
+      path: '/lemuratlas',
+      name: 'LemurAtlas',
+      component: LemurAtlas,
     },
     {
       path: '/protocol',

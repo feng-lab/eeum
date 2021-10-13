@@ -1,0 +1,115 @@
+<v-container class="mb-5 pb-5" style="height: 100%; overflow-y: auto;">
+  <v-row align-center wrap>
+    <v-col cols="3">
+      <v-card>
+        <v-card-title>Props</v-card-title>
+        <v-select
+          v-model="showLabels"
+          :items="showLabelsOptions"
+          item-text="text"
+          item-value="value"
+          label="Show Labels"
+        >
+        </v-select>
+        <v-checkbox
+          v-model="overrideColorScale"
+          label="Use custom color scheme"
+        >
+        </v-checkbox>
+        <v-select
+          v-model="colorScheme"
+          :items="colorSchemes"
+          label="Color Scheme"
+        >
+        </v-select>
+        <v-card-subtitle>Minimal arc angle (radian) to be displayed</v-card-subtitle>
+        <v-slider
+          v-model="minAngleDisplayed"
+          label=""
+          min="0"
+          step="0.005"
+          max="0.5"
+          thumb-label="always"
+        >
+        </v-slider>
+        <v-card-subtitle>Central circle relative size (%)</v-card-subtitle>
+        <v-slider
+          v-model="centralCircleRelativeSize"
+          label=""
+          min="0"
+          step="1"
+          max="50"
+          thumb-label="always"
+        >
+        </v-slider>
+        <v-card-subtitle>Duration animation in (ms)</v-card-subtitle>
+        <v-slider
+          v-model="inAnimationDuration"
+          label=""
+          min="0"
+          step="5"
+          max="250"
+          thumb-label="always"
+        >
+        </v-slider>
+        <v-card-subtitle>Duration animation out (ms)</v-card-subtitle>
+        <v-slider
+          v-model="outAnimationDuration"
+          label=""
+          min="0"
+          step="5"
+          max="2000"
+          thumb-label="always"
+        >
+        </v-slider>
+      </v-card>
+    </v-col>
+    <v-col cols="9">
+      <v-card style="height: 600px;">
+        <v-card-title>region size</v-card-title>
+        <sunburst
+          id="resizable"
+          class="sunburst"
+          :data="tree"
+          :max-label-text="20"
+          :centralCircleRelativeSize="centralCircleRelativeSize"
+          :showLabels="showLabels"
+          :minAngleDisplayed="minAngleDisplayed"
+          :colorScheme="colorScheme"
+          :colorScale="colorScale"
+          :inAnimationDuration="inAnimationDuration"
+          :outAnimationDuration="outAnimationDuration"
+        >
+          <breadcrumbTrail
+            slot="legend"
+            slot-scope="{ nodes, colorGetter, width }"
+            :current="nodes.mouseOver"
+            :root="nodes.root"
+            :colorGetter="colorGetter"
+            :from="nodes.zoomed"
+            :width="width"
+          />
+
+          <nodeInfoDisplayer
+            slot="top"
+            slot-scope="{ nodes }"
+            :current="nodes.mouseOver"
+            :root="nodes.root"
+            :clicked="nodes.clicked"
+            description="of selected"
+          />
+
+          <template slot="pop-up" slot-scope="{ data }">
+            <div class="pop-up">{{data.name}}</div>
+          </template>
+
+          <template slot-scope="{ on, actions }">
+            <highlightOnHover v-bind="{ on, actions }" />
+            <zoomOnClick v-bind="{ on, actions }" />
+            <popUpOnHover v-bind="{ on, actions }" />
+          </template>
+        </sunburst>
+      </v-card>
+    </v-col>
+  </v-row>
+</v-container>

@@ -77,7 +77,7 @@ export default {
           title: 'Lemur',
           submenu: [
             { title: 'Dataset', link: '/lemurdatasets' },
-            { title: 'eLemur Atlas', link: '' },
+            { title: 'eLemur Atlas', link: '/lemuratlas' },
           ],
         },
         {

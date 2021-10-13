@@ -1,5 +1,3 @@
-import { VRow, VCol } from 'vuetify/lib';
-
 export default {
   name: 'Gallery',
   props: {
@@ -7,10 +5,6 @@ export default {
       type: String,
       required: true,
     },
-  },
-  components: {
-    VRow,
-    VCol,
   },
   data() {
     return {
