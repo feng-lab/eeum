@@ -1,0 +1,111 @@
+<v-container class="mb-5 pb-5" style="height: 100%; overflow-y: auto;">
+  <v-row align-center>
+    <v-col cols=12>
+      <v-card-text>
+        <p class="headline">
+          mGRASP:
+        </p>
+        Please refer to the paper published on
+        <a href="https://www.nature.com/articles/nmeth.1784">
+          Nature Methods</a> for detail.
+      </v-card-text>
+
+      <video height="250" controls preload="auto" loop>
+        <source src="https://fenglab.xyz/static/img/mGRASP.m4v" />
+      </video>
+      <br /><br />
+
+      <v-card-title class="headline justify-center">
+        Protocol of mGRASPing
+      </v-card-title>
+      <p class="text-xs-center">
+        Published on
+        <a href="https://www.nature.com/articles/nprot.2014.166#f1">
+          Nature Protocols</a>
+      </p>
+
+      <v-timeline>
+        <v-timeline-item fill-dot right small>
+          <template v-slot:opposite>
+            <span>Timing: 10 d (includes incubation time)</span>
+          </template>
+          <v-card>
+            <v-card-title>
+              <p class="mr-3">
+                STEP1. <br />Choice of mGRASP variants and AAV production
+              </p>
+            </v-card-title>
+          </v-card>
+        </v-timeline-item>
+
+        <v-timeline-item fill-dot left small>
+          <template v-slot:opposite>
+            <span>Timing: 1-2 h (optionA) / ~2 h (optionB)</span>
+          </template>
+          <v-card>
+            <v-card-title>
+              <p class="mr-3">
+                STEP2. <br />In utero electroporation and AAV transduction
+                (optionA) <br />OR streotaxic AAV injection (optionB)
+              </p>
+            </v-card-title>
+          </v-card>
+        </v-timeline-item>
+
+        <v-timeline-item fill-dot right small>
+          <template v-slot:opposite>
+            <span>Timing: 5.5 h</span>
+          </template>
+          <v-card>
+            <v-card-title>
+              <p>
+                STEP3. <br />Fixation and sectioning of brain slices
+              </p>
+            </v-card-title>
+          </v-card>
+        </v-timeline-item>
+
+        <v-timeline-item fill-dot left small>
+          <template v-slot:opposite>
+            <span>Timing: 20 min</span>
+          </template>
+          <v-card>
+            <v-card-title>
+              <p class="mr-3">
+                STEP4. <br />Mounting brain slices
+              </p>
+            </v-card-title>
+          </v-card>
+        </v-timeline-item>
+
+        <v-timeline-item fill-dot right small>
+          <template v-slot:opposite>
+            <span>Timing: ~1 week after mounting</span>
+          </template>
+          <v-card>
+            <v-card-title>
+              <p>
+                STEP5.<br />
+                Imaging mGRASP
+              </p>
+            </v-card-title>
+          </v-card>
+        </v-timeline-item>
+
+        <v-timeline-item fill-dot left small>
+          <template v-slot:opposite>
+            <span>Timing: 2-4 h</span>
+          </template>
+          <v-card>
+            <v-card-title>
+              <p class="mr-3">
+                STEP6. <br />Mapping synapses: reconstructing neurons and
+                detecting mGRASP puncta
+              </p>
+            </v-card-title>
+          </v-card>
+        </v-timeline-item>
+      </v-timeline>
+    </v-col>
+  </v-row>
+</v-container>

@@ -1,0 +1,107 @@
+<v-container class="mb-5 pb-5" style="height: 100%; overflow-y: auto;">
+  <v-row align-center>
+    <v-col cols=12>
+      <p class="text-h5">
+        mGRASP Puncta Detection Package
+      </p>
+      <v-btn outlined href="https://fenglab.xyz/static/installers/puncta-matlab-v1.04.zip" download>
+        Download
+      </v-btn>
+      <p class="text-h6">Usage:</p>
+      <p class="text-body-1">
+        See example.m file.
+      </p>
+      <p class="text-h6">Changelog:</p>
+      <p class="text-body-1">
+        version 1.04
+      <ul class="text-body-1">
+        <li>Fix map_puncta error</li>
+      </ul>
+      </p>
+      <p class="text-body-1">
+        version 1.03
+      <ul class="text-body-1">
+        <li>Fix auto threshold search range</li>
+      </ul>
+      </p>
+      <p class="text-body-1">
+        version 1.02
+      <ul class="text-body-1">
+        <li>Add branch level mapping</li>
+        <li>Fix threshold error</li>
+        <li>Add scale_swc, save_swc, and save_puncta_as_apo functions</li>
+      </ul>
+      </p>
+      <p class="text-body-1">
+        version 1.01
+      <ul class="text-body-1">
+        <li>Fixed error when no soma is detected</li>
+      </ul>
+      </p>
+      <p class="text-body-1">
+        version 1.0
+      <ul class="text-body-1">
+        <li>Future updates will be available at http://jinny.kist.re.kr</li>
+      </ul>
+      </p>
+      <p class="text-h6">Mex Files:</p>
+      <p class="text-body-1">
+        Most of this package is written in Matlab, so should run on any system. However, a few functions also have C
+        versions for speed. Mex files must be generated for each type of OS. Currently we have only included 64-bit Mac
+        and Windows versions. Note that windows version mex files depends on some visual c++ 2013 dlls. You can download
+        "vcredist_x64.exe" from "http://www.microsoft.com/en-us/download/details.aspx?id=40784" and install it if the
+        mex
+        files don't work properly. If you are using another OS, the package should still function fine because we have
+        'backup' .m files, which are called automatically if a mex version cannot be found. If you run into problems,
+        or want increased speed, you may need to compile files manually by calling "compile.m".
+        Before you run the mex command for the first time, you need to type "mex -setup" to tell Matlab what compiler to
+        use.
+        This only has to be done once per Matlab installation.
+      </p>
+      <p class="text-h6">Image Stack File Formats:</p>
+      <p class="text-body-1">
+        Image file reading is handled by "read_stack.m". You can modify this file to support your own file format.
+      <table>
+        <tr>
+          <td>"V3DRAW" any size</td>
+          <td>Supported (www.vaa3d.org)</td>
+        </tr>
+        <tr>
+          <td>"Zeiss LSM"</td>
+          <td>Supported through "tiffread.m" (http://www.cytosim.org/other/)</td>
+        </tr>
+        <tr>
+          <td>"ClassicTiff" file <= 4GB</td>
+          <td>Supported</td>
+        </tr>
+        <tr>
+          <td>"BigTiff" any size</td>
+          <td>Supported if Matlab version is R2012b or higher</td>
+        </tr>
+        <tr>
+          <td>"ClassicTiff" file > 4GB</td>
+          <td>Not Supported. Some software like ImageJ can generate non-standard large
+            "ClassicTiff" file.</td>
+        </tr>
+      </table>
+      </p>
+      <p class="text-h6">License:</p>
+      <p class="text-body-1">
+        Copyright (c) 2013 <a href="http://jinny.kist.re.kr" target="_blank">Jinny's Lab<v-icon small>mdi-call-made
+          </v-icon></a>
+        , Korea Institute of Science and Technology. All Rights Reserved.
+      </p>
+      <p class="text-body-1">
+        Permission to use, copy, modify, and distribute this software and its documentation for
+        any purposes, without fee, and without a written agreement is hereby granted, provided
+        that the above copyright notice, this paragraph and the following one paragraphs appear in all copies.
+
+        The software program and documentation are supplied "as is", without any accompanying services from The
+        Regents. The Regents does not warrant that the operation of the program will be uninterrupted or
+        error-free.
+        The end-user understands that the program was developed for research purposes and is advised not to rely
+        exclusively on the program for any reason.
+      </p>
+    </v-col>
+  </v-row>
+</v-container>

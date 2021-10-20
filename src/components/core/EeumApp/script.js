@@ -8,7 +8,6 @@ import BrowserIssues from 'paraview-glance/src/components/core/BrowserIssues';
 import ControlsDrawer from 'paraview-glance/src/components/core/ControlsDrawer';
 import DragAndDrop from 'paraview-glance/src/components/widgets/DragAndDrop';
 import ErrorBox from 'paraview-glance/src/components/core/ErrorBox';
-import FileLoader from 'paraview-glance/src/components/core/FileLoader';
 import MousemGRASPDatasets from 'paraview-glance/src/components/core/MousemGRASPDatasets';
 import Neuron from 'paraview-glance/src/components/core/Neuron';
 import Screenshots from 'paraview-glance/src/components/core/Screenshots';
@@ -33,7 +32,6 @@ export default {
     ControlsDrawer,
     DragAndDrop,
     ErrorBox,
-    FileLoader,
     MousemGRASPDatasets,
     Neuron,
     Screenshots,
@@ -69,35 +67,38 @@ export default {
         {
           title: 'Mouse',
           submenu: [
-            { title: 'Dataset', link: '' },
-            { title: 'mGRASP', link: '/mousemgraspdatasets' },
+            { title: 'Dataset IHC', link: '' },
+            { title: 'Dataset mGRASP', link: '/mousemgraspdatasets' },
           ],
         },
         {
           title: 'Lemur',
           submenu: [
-            { title: 'Dataset', link: '/lemurdatasets' },
-            { title: 'eLemur Atlas', link: '/lemuratlas' },
+            { title: 'Dataset IHC', link: '/lemurdatasets' },
+            { title: 'eLemur Brain Ontology', link: '/lemurbrainontology' },
+            { title: 'eLemur 2D Atlas', link: '/lemur2datlas' },
+            { title: 'eLemur 3D Atlas', link: '/lemur3datlas' },
+            { title: 'eLemur Cell Atlas', link: '/lemurcellatlas' },
           ],
         },
         {
           title: 'Tools',
           submenu: [
             {
-              title: 'mGRASP construct',
+              title: 'mGRASP Construct',
               link:
                 'https://www.addgene.org/search/catalog/plasmids/?q=Jinhyun+kim',
             },
-            { title: 'mGRASP detection', link: '' },
+            { title: 'mGRASP Detection', link: '/mgraspdetection' },
             { title: 'neuTube', link: 'https://neutracing.com' },
           ],
         },
         {
-          title: 'Protocols & Info',
+          title: 'Info & Protocols',
           submenu: [
-            { title: 'Nomenclatures', link: '' },
-            { title: 'mGRASPing', link: '' },
-            { title: 'Reference', link: '' },
+            { title: 'Brain Nomenclature', link: '/brainnomenclature' },
+            { title: 'mGRASP Mapping', link: '/mgraspmapping' },
+            { title: 'Publication', link: '/publication' },
           ],
         },
       ],

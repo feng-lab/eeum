@@ -1,7 +1,7 @@
 import { Breakpoints } from '@/constants';
 
 export default {
-  name: 'Contact',
+  name: 'BrainNomenclature',
   computed: {
     smallScreen() {
       return this.$vuetify.breakpoint.width < Breakpoints.md;

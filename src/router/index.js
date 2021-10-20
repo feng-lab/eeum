@@ -3,11 +3,16 @@ import Router from 'vue-router';
 import MousemGRASPDatasets from '@/components/core/MousemGRASPDatasets';
 import Neuron from '@/components/core/Neuron';
 import Home from '@/components/core/Home';
-import Protocol from '@/components/core/Protocol';
-import Contact from '@/components/core/Contact';
 import LemurDatasets from '@/components/core/LemurDatasets';
+import LemurBrainOntology from '@/components/core/LemurBrainOntology';
+import Lemur2DAtlas from '@/components/core/Lemur2DAtlas';
+import Lemur3DAtlas from '@/components/core/Lemur3DAtlas';
+import mGRASPDetection from '@/components/core/mGRASPDetection';
+import BrainNomenclature from '@/components/core/BrainNomenclature';
+import mGRASPMapping from '@/components/core/mGRASPMapping';
+import Publication from '@/components/core/Publication';
+import About from '@/components/core/About';
 import Gallery from '@/components/core/Gallery';
-import LemurAtlas from '@/components/core/LemurAtlas';
 // import goTo from 'vuetify/lib/services/goto';
 
 Vue.use(Router);
@@ -50,19 +55,44 @@ export default new Router({
       props: true,
     },
     {
-      path: '/lemuratlas',
-      name: 'LemurAtlas',
-      component: LemurAtlas,
+      path: '/lemurbrainontology',
+      name: 'LemurBrainOntology',
+      component: LemurBrainOntology,
     },
     {
-      path: '/protocol',
-      name: 'Protocol',
-      component: Protocol,
+      path: '/lemur2datlas',
+      name: 'Lemur2DAtlas',
+      component: Lemur2DAtlas,
     },
     {
-      path: '/contact',
-      name: 'Contact',
-      component: Contact,
+      path: '/lemur3datlas',
+      name: 'Lemur3DAtlas',
+      component: Lemur3DAtlas,
+    },
+    {
+      path: '/mgraspdetection',
+      name: 'mGRASPDetection',
+      component: mGRASPDetection,
+    },
+    {
+      path: '/brainnomenclature',
+      name: 'BrainNomenclature',
+      component: BrainNomenclature,
+    },
+    {
+      path: '/mgraspmapping',
+      name: 'mGRASPMapping',
+      component: mGRASPMapping,
+    },
+    {
+      path: '/publication',
+      name: 'Publication',
+      component: Publication,
+    },
+    {
+      path: '/about',
+      name: 'About',
+      component: About,
     },
     {
       // This is a hack to use :to tag for absolute paths.

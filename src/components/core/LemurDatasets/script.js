@@ -9,12 +9,58 @@ export default {
   },
   data() {
     return {
+      markerHeader: [
+        { text: 'name', value: 'name' },
+        { text: 'info', value: 'info' },
+      ],
+      markers: [
+        {
+          name: 'NeuN',
+          info: 'Neuron-specific nuclear protein',
+        },
+        {
+          name: 'VGluT1',
+          info: 'Vesicular glutamate transporter 1',
+        },
+        {
+          name: 'VGluT2',
+          info: 'Vesicular glutamate transporter 2',
+        },
+        {
+          name: 'SMI32',
+          info: 'Neurofilament protein',
+        },
+        {
+          name: 'SMI99',
+          info: 'Myelin basic protein',
+        },
+        {
+          name: 'PV',
+          info: 'Parvalbumin',
+        },
+        {
+          name: 'TH',
+          info: 'Tyrosin hydroxylase',
+        },
+        {
+          name: 'FOXP2',
+          info: 'Forkhead box protein P2',
+        },
+        {
+          name: 'M2',
+          info: 'Muscarinic receptor',
+        },
+      ],
       items: [
         {
           src: 'https://fenglab.xyz/static/static/slices2/slice_128.png',
-          name: '181005_Lemur-Hotsauce_SMI99_VGluT2_NeuN',
-          info:
-            'Animals were anesthetized and perfused transcardially with 0.1 M phosphate buffered saline (PBS) and 4% paraformaldehyde in 0.1M phosphate buffer (PFA). Brains were post-fixed in 4% PFA overnight and incubated in 20% sucrose in PBS at 4 °C for cryoprotection. Brains were sectioned coronally in 50 µm thickness on a freezing microtome (Fisher Scientific HM450). During the sectioning, the block-faces (  or the cutting planes) of the entire brains were photographed with a CMOS camera (Leica IC90 E) mounted on a stereomicroscope (Leica M60). For immunofluorescence, brain sections with a 100-µm interval were permeabilized in 0.3% Triton X-100 in tris-buffered saline (TBS) and blocked in 3% normal goat serum, 3% bovine serum albumin, and 0.3% Triton X-100 in TBS. The sections were incubated with primary antibodies overnight at 4 ºC (See Table 1 for the details of antibodies used in this study). After washing, sections were incubated with secondary antibodies for 3 h at room temperature and counterstained with DAPI. Sections were mounted with mounting media (Vector Labs, VectaShield). Secondary antibodies (1:000) used were Alexa Fluor 488 goat anti-rabbit IgG (Invitrogen, A11008), Alexa Fluor 488 goat anti-mouse IgG (Invitrogen, A00000), Alexa Fluor 555 goat anti-mouse IgG (Invitrogen, A00000), Alexa Fluor 555 goat anti-rabbit IgG (Invitrogen, A00000), and Alexa Fluor 633 goat anti-guinea pig IgG (Invitrogen, A00000) Widefield images were acquired by an Axioscan Z1. slide scanner (Carl Zeiss Microscopy) equipped with a 10X 0.45 NA Plan-Apochromat air lens. For cell counting analysis, confocal images were obtained at 0.54 μm depth intervals using a LSM 780 confocal microscope (Carl Zeiss Microscopy) equipped with a 40x 1.4 NA Plan Apochromat oil lens.',
+          name: 'Reference brain',
+          infos: [
+            'Section interval : 100-µm',
+            'Counterstain: DAPI',
+            'Pixel size: 0.65µm x 0.65µm',
+            'Widefield image available',
+          ],
           numSlices: 180,
           sliceSrc: 'https://fenglab.xyz/static/static/slices2/slice_',
           startSlice: 128,
@@ -37,12 +83,34 @@ export default {
           empty: '',
           fullResolutionView:
             'http://localhost:8080/#!https://fenglab.xyz/static/neuroglancer_data/181005_Lemur-Hotsauce_SMI99_VGluT2_NeuN/base.json',
+          channels: [
+            {
+              name: 'DAPI',
+              color: '#00A0FF',
+            },
+            {
+              name: 'SMI99',
+              color: '#00FF33',
+            },
+            {
+              name: 'VGluT2',
+              color: '#FF0000',
+            },
+            {
+              name: 'NeuN',
+              color: 'magenta',
+            },
+          ],
         },
         {
           src: 'https://fenglab.xyz/static/static/slices3/slice_56.png',
-          name: '20190813_jellybean_FOXP2_SMI32_NeuN',
-          info:
-            'Animals were anesthetized and perfused transcardially with 0.1 M phosphate buffered saline (PBS) and 4% paraformaldehyde in 0.1M phosphate buffer (PFA). Brains were post-fixed in 4% PFA overnight and incubated in 20% sucrose in PBS at 4 °C for cryoprotection. Brains were sectioned coronally in 50 µm thickness on a freezing microtome (Fisher Scientific HM450). During the sectioning, the block-faces (  or the cutting planes) of the entire brains were photographed with a CMOS camera (Leica IC90 E) mounted on a stereomicroscope (Leica M60). For immunofluorescence, brain sections with a 100-µm interval were permeabilized in 0.3% Triton X-100 in tris-buffered saline (TBS) and blocked in 3% normal goat serum, 3% bovine serum albumin, and 0.3% Triton X-100 in TBS. The sections were incubated with primary antibodies overnight at 4 ºC (See Table 1 for the details of antibodies used in this study). After washing, sections were incubated with secondary antibodies for 3 h at room temperature and counterstained with DAPI. Sections were mounted with mounting media (Vector Labs, VectaShield). Secondary antibodies (1:000) used were Alexa Fluor 488 goat anti-rabbit IgG (Invitrogen, A11008), Alexa Fluor 488 goat anti-mouse IgG (Invitrogen, A00000), Alexa Fluor 555 goat anti-mouse IgG (Invitrogen, A00000), Alexa Fluor 555 goat anti-rabbit IgG (Invitrogen, A00000), and Alexa Fluor 633 goat anti-guinea pig IgG (Invitrogen, A00000) Widefield images were acquired by an Axioscan Z1. slide scanner (Carl Zeiss Microscopy) equipped with a 10X 0.45 NA Plan-Apochromat air lens. For cell counting analysis, confocal images were obtained at 0.54 μm depth intervals using a LSM 780 confocal microscope (Carl Zeiss Microscopy) equipped with a 40x 1.4 NA Plan Apochromat oil lens.',
+          name: 'eLemur brain01',
+          infos: [
+            'Section interval : 100-µm',
+            'Counterstain: DAPI',
+            'Pixel size: 0.65µm x 0.65µm',
+            'Widefield image available',
+          ],
           numSlices: 180,
           sliceSrc: 'https://fenglab.xyz/static/static/slices3/slice_',
           startSlice: 56,
@@ -65,6 +133,24 @@ export default {
           empty: '',
           fullResolutionView:
             'http://localhost:8080/#!https://fenglab.xyz/static/neuroglancer_data/20190813_jellybean_FOXP2_SMI32_NeuN/base.json',
+          channels: [
+            {
+              name: 'DAPI',
+              color: '#00A0FF',
+            },
+            {
+              name: 'SMI99',
+              color: '#00FF33',
+            },
+            {
+              name: 'VGluT2',
+              color: '#FF0000',
+            },
+            {
+              name: 'NeuN',
+              color: 'magenta',
+            },
+          ],
         },
       ],
       // swiperOption: {

@@ -16,7 +16,7 @@ const colorSchemesNames = Object.keys(colorSchemes).map((key) => ({
 }));
 
 export default {
-  name: 'LemurAtlas',
+  name: 'LemurBrainOntology',
   components: {
     sunburst,
     nodeInfoDisplayer,
