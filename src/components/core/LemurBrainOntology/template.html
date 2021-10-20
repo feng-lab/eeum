@@ -1,8 +1,35 @@
 <v-container class="mb-5 pb-5" style="height: 100%; overflow-y: auto;">
   <v-row align-center wrap>
-    <v-col cols="3">
-      <v-card>
-        <v-card-title>Props</v-card-title>
+    <v-col cols="6">
+      <v-card class="mx-auto" max-width="500">
+        <v-text-field
+          v-model="search"
+          label="Search Region"
+          flat
+          solo-inverted
+          hide-details
+          clearable
+          clear-icon="mdi-close-circle-outline"
+        ></v-text-field>
+        <v-card-text>
+          <v-treeview
+            dense
+            hoverable
+            :items="ontology"
+            :search="search"
+            :filter="filter"
+            open-all="true"
+          >
+            <template v-slot:label="{item}">
+              <div>{{item.name}} ({{item.acronym}})</div>
+            </template>
+          </v-treeview>
+        </v-card-text>
+      </v-card>
+    </v-col>
+    <v-col cols="6">
+      <v-card style="height: 600px;">
+        <v-card-title>region size</v-card-title>
         <v-select
           v-model="showLabels"
           :items="showLabelsOptions"
@@ -22,7 +49,9 @@
           label="Color Scheme"
         >
         </v-select>
-        <v-card-subtitle>Minimal arc angle (radian) to be displayed</v-card-subtitle>
+        <v-card-subtitle
+          >Minimal arc angle (radian) to be displayed</v-card-subtitle
+        >
         <v-slider
           v-model="minAngleDisplayed"
           label=""
@@ -62,11 +91,6 @@
           thumb-label="always"
         >
         </v-slider>
-      </v-card>
-    </v-col>
-    <v-col cols="9">
-      <v-card style="height: 600px;">
-        <v-card-title>region size</v-card-title>
         <sunburst
           id="resizable"
           class="sunburst"
