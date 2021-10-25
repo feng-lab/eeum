@@ -63,7 +63,7 @@ export default {
           numSlices: 180,
           sliceSrc:
             'https://fenglab.xyz/static/static/reference_gallery/reference_wo_dapi/slice',
-          startSlice: 90,
+          startSlice: 128,
           swiperOption: {
             lazy: true,
             direction: 'horizontal',
@@ -74,7 +74,7 @@ export default {
             scrollbar: {
               el: '.swiper-scrollbar',
             },
-            initialSlide: 90,
+            initialSlide: 128,
           },
           sliceLinkPre:
             'http://fenglab.xyz/static/static/min/#!%7B%22dimensions%22:%7B%22x%22:%5B0.000010444176%2C%22m%22%5D%2C%22y%22:%5B0.000010444176%2C%22m%22%5D%2C%22z%22:%5B0.0001%2C%22m%22%5D%7D%2C%22position%22:%5B1759.8031005859375%2C616.8143310546875%2C',
@@ -85,20 +85,16 @@ export default {
             'http://fenglab.xyz/static/static/min/#!https://fenglab.xyz/static/neuroglancer_data/181005_Lemur-Hotsauce_SMI99_VGluT2_NeuN/base.json',
           channels: [
             {
-              name: 'DAPI',
+              name: 'SMI99',
               color: '#00A0FF',
             },
             {
-              name: 'SMI99',
+              name: 'VGluT2',
               color: '#00FF33',
             },
             {
-              name: 'VGluT2',
-              color: '#FF0000',
-            },
-            {
               name: 'NeuN',
-              color: 'magenta',
+              color: '#FF0000',
             },
           ],
         },
@@ -135,20 +131,16 @@ export default {
             'http://fenglab.xyz/static/static/min/#!https://fenglab.xyz/static/neuroglancer_data/20190813_jellybean_FOXP2_SMI32_NeuN/base.json',
           channels: [
             {
-              name: 'DAPI',
+              name: 'TH',
               color: '#00A0FF',
             },
             {
-              name: 'SMI99',
+              name: 'PV',
               color: '#00FF33',
             },
             {
-              name: 'VGluT2',
-              color: '#FF0000',
-            },
-            {
               name: 'NeuN',
-              color: 'magenta',
+              color: 'red',
             },
           ],
         },

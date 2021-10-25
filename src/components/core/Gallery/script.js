@@ -25,20 +25,16 @@ export default {
           empty: '',
           channels: [
             {
-              name: 'DAPI',
+              name: 'SMI99',
               color: '#00A0FF',
             },
             {
-              name: 'SMI99',
+              name: 'VGluT2',
               color: '#00FF33',
             },
             {
-              name: 'VGluT2',
-              color: '#FF0000',
-            },
-            {
               name: 'NeuN',
-              color: 'magenta',
+              color: '#FF0000',
             },
           ],
         },
@@ -56,20 +52,16 @@ export default {
           empty: '',
           channels: [
             {
-              name: 'DAPI',
+              name: 'TH',
               color: '#00A0FF',
             },
             {
-              name: 'SMI99',
+              name: 'PV',
               color: '#00FF33',
             },
             {
-              name: 'VGluT2',
-              color: '#FF0000',
-            },
-            {
               name: 'NeuN',
-              color: 'magenta',
+              color: 'red',
             },
           ],
         },
