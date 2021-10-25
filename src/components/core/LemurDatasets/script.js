@@ -53,7 +53,6 @@ export default {
       ],
       items: [
         {
-          src: 'https://fenglab.xyz/static/static/slices2/slice_128.png',
           name: 'Reference brain',
           infos: [
             'Section interval : 100-µm',
@@ -62,7 +61,8 @@ export default {
             'Widefield image available',
           ],
           numSlices: 180,
-          sliceSrc: 'https://fenglab.xyz/static/static/slices2/slice_',
+          sliceSrc:
+            'https://fenglab.xyz/static/static/reference_gallery/reference_wo_dapi/slice',
           startSlice: 128,
           swiperOption: {
             lazy: true,
@@ -103,7 +103,6 @@ export default {
           ],
         },
         {
-          src: 'https://fenglab.xyz/static/static/slices3/slice_56.png',
           name: 'eLemur brain01',
           infos: [
             'Section interval : 100-µm',
