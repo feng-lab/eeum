@@ -29,7 +29,7 @@ export default ({ proxyManager }) => ({
     firstPersonMovementSpeed: null,
     maxTextureLODSize: 50000, // Units are in KiB
     viewOrder: VIEW_TYPES.map((v) => v.value),
-    visibleCount: 1,
+    visibleCount: 2,
   },
   mutations: {
     setGlobalBackground(state, background) {
