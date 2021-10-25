@@ -45,7 +45,7 @@ module.exports = merge.smart(baseConfig, {
   devServer: {
     contentBase: baseConfig.output.path,
     host: HOST || '0.0.0.0',
-    port: PORT || 9999,
+    port: PORT || 80,
     disableHostCheck: true,
     hot: false,
     quiet: false,
