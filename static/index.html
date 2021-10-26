@@ -28,7 +28,6 @@
       gtag('config', 'UA-90338862-10');
     </script>
     <% } %>
-    <script inline type="text/javascript" src="version.js"></script>
     <% for (key in htmlWebpackPlugin.files.js) { %>
       <script
         <% if (!htmlWebpackPlugin.files.js[key].startsWith('glance-external-')) { %> inline <% } %>
