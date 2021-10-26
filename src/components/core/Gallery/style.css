@@ -2,3 +2,8 @@
   overflow-y: auto;
   margin: 0;
 }
+
+.custom-color {
+  background-color: aquamarine;
+  border-color: aqua;
+}
