@@ -77,7 +77,11 @@ export default {
             { title: 'Dataset IHC', link: '/lemurdatasets' },
             { title: 'eLemur Brain Ontology', link: '/lemurbrainontology' },
             { title: 'eLemur 2D Atlas', link: '/lemur2datlas' },
-            { title: 'eLemur 3D Atlas', link: '/lemur3datlas' },
+            {
+              title: 'eLemur 3D Atlas',
+              link:
+                'http://eeum-brain.com/neuroglancer/#!http://eeum-brain.com/static/neuroglancer_data/Atlas/base.json',
+            },
             { title: 'eLemur Cell Atlas', link: '/lemurcellatlas' },
           ],
         },

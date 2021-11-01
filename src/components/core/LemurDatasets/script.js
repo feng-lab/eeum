@@ -58,7 +58,7 @@ export default {
             'Section interval : 100-µm',
             'Counterstain: DAPI',
             'Pixel size: 0.65µm x 0.65µm',
-            'Widefield image available',
+            'Brightfield image available',
           ],
           numSlices: 180,
           sliceSrc:
@@ -104,7 +104,7 @@ export default {
             'Section interval : 100-µm',
             'Counterstain: DAPI',
             'Pixel size: 0.65µm x 0.65µm',
-            'Widefield image available',
+            'Brightfield image available',
           ],
           numSlices: 180,
           sliceSrc:

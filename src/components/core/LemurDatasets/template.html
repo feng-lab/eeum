@@ -1,21 +1,29 @@
-<v-container class="mb-5 pb-5" style="height: 100%; overflow-y: auto;">
+<v-container class="mb-5 pb-5">
   <v-row align-center wrap>
     <v-col cols="12">
       <p class="text-body-1">
-        These datasets of immumohistochemistry (IHC) of the mouse lemur brain provide information on the
-        cytoarchitecture,
-        chemoarchitecture, and myeloarchitecture of the mouse lemur brain. Brain-wide coronal sections in
-        50-µm-thickness
-        were
-        processed for combinatorial IHC with three of following markers.
+        These datasets of immumohistochemistry (IHC) of the mouse lemur brain
+        provide information on the cytoarchitecture, chemoarchitecture, and
+        myeloarchitecture of the mouse lemur brain. Brain-wide coronal sections
+        in 50-µm-thickness were processed for combinatorial IHC with three of
+        following markers.
       </p>
     </v-col>
-    <v-col cols="2"></v-col>
+    <v-col cols="3"></v-col>
     <v-col cols="6">
-      <v-data-table :headers="markerHeader" :items="markers" hide-default-header hide-default-footer :items-per-page="10"
-        class="elevation-1">
+      <v-data-table
+        :headers="markerHeader"
+        :items="markers"
+        hide-default-header
+        hide-default-footer
+        :items-per-page="10"
+        class="elevation-1"
+      >
+        <template v-slot:item.name="{ item }">
+          <div class="text-body-1 font-weight-bold">{{ item.name }}</div>
+        </template>
         <template v-slot:item.info="{ item }">
-          <div class="font-italic">{{ item.info }}</div>
+          <div class="text-body-1 font-italic">{{ item.info }}</div>
         </template>
       </v-data-table>
     </v-col>
@@ -23,10 +31,13 @@
       <v-col cols="12">
         <v-card>
           <v-row align-center wrap>
-            <v-col cols="4">
-              <v-img :src="`${item.sliceSrc}${item.startSlice}.png`" contain></v-img>
+            <v-col cols="12" sm="4" md="4" lg="4" xl="4">
+              <v-img
+                :src="`${item.sliceSrc}${item.startSlice}.png`"
+                contain
+              ></v-img>
             </v-col>
-            <v-col cols="8">
+            <v-col cols="12" sm="8" md="8" lg="8" xl="8">
               <v-card-title class="text-h5">
                 {{item.name}}:&nbsp
                 <template v-for="ch in item.channels">
@@ -39,7 +50,13 @@
                 </ul>
               </v-card-text>
               <v-card-actions>
-                <v-btn class="ml-2 mt-5" outlined rounded small :to="{ name: 'Gallery', params: { name: item.name }}">
+                <v-btn
+                  class="ml-2 mt-5"
+                  outlined
+                  rounded
+                  small
+                  :to="{ name: 'Gallery', params: { name: item.name }}"
+                >
                   Gallery View
                 </v-btn>
                 <a :href="`${item.fullResolutionView}`" target="_blank">
@@ -47,7 +64,13 @@
                     Full-resolution View
                   </v-btn>
                 </a>
-                <v-btn v-if="item.name === 'Reference brain'" class="ml-2 mt-5" outlined rounded small>
+                <v-btn
+                  v-if="item.name === 'Reference brain'"
+                  class="ml-2 mt-5"
+                  outlined
+                  rounded
+                  small
+                >
                   3D View
                 </v-btn>
               </v-card-actions>
