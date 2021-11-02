@@ -104,7 +104,9 @@ export default {
     this.$proxyManager.resizeAllViews();
   },
   beforeRouteEnter(to, from, next) {
-    const urls = [`https://eeum-brain.com/static/data/${to.params.name}.glance`];
+    const urls = [
+      `https://eeum-brain.com/static/data/${to.params.name}.glance`,
+    ];
     const names = [`${to.params.name}.glance`];
     next((vm) => {
       vm.updateUI();
@@ -116,7 +118,9 @@ export default {
   beforeRouteUpdate(to, from, next) {
     this.controlsDrawer = false;
     this.needSetting = false;
-    const urls = [`https://eeum-brain.com/static/data/${to.params.name}.glance`];
+    const urls = [
+      `https://eeum-brain.com/static/data/${to.params.name}.glance`,
+    ];
     const names = [`${to.params.name}.glance`];
     this.updateUI();
     this.openSample(urls, names);
