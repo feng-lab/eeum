@@ -25,7 +25,7 @@ import {
 
 const STATE_VERSION = 2;
 
-// http://jsperf.com/typeofvar
+// https://jsperf.com/typeofvar
 function typeOf(o) {
   return {}.toString
     .call(o)
@@ -272,7 +272,7 @@ function createStore(injected) {
               }
 
               let name = ds.name;
-              let url = `http://eeum-brain.com${ds.url}`;
+              let url = `https://eeum-brain.com${ds.url}`;
               console.log(url);
 
               const options = {};
@@ -408,7 +408,7 @@ function createStore(injected) {
       },
       retrieveDatasets({ commit }) {
         axios({
-          url: 'http://eeum-brain.com/eeum/api',
+          url: 'https://eeum-brain.com/eeum/api',
           method: 'post',
           data: {
             query: `
@@ -500,12 +500,12 @@ function createStore(injected) {
                   injections:
                     datasets[i].node.confocalImage.slice.animal
                       .injectionCollection.edges,
-                  image: `http://eeum-brain.com/static/data/${datasets[i].node.cellName}.jpg`,
+                  image: `https://eeum-brain.com/static/data/${datasets[i].node.cellName}.jpg`,
                   acknowledgement: '',
                   datasets: [
                     {
                       name: `${datasets[i].node.cellName}.glance`,
-                      url: `http://eeum-brain.com/static/data/${datasets[i].node.cellName}.glance`,
+                      url: `https://eeum-brain.com/static/data/${datasets[i].node.cellName}.glance`,
                     },
                   ],
                   analysis: [],
@@ -515,7 +515,7 @@ function createStore(injected) {
             // console.log(jsonArr);
             commit('setDatasets', jsonArr);
 
-            fetch('http://eeum-brain.com/static/analysis/all.json')
+            fetch('https://eeum-brain.com/static/analysis/all.json')
               .then((response) => {
                 if (!response.ok) {
                   throw new Error(`HTTP error ${response.status}`);
