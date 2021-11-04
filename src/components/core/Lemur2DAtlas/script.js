@@ -12,7 +12,8 @@ export default {
   data() {
     return {
       options: {
-        toolbar: true,
+        title: false,
+        navbar: false,
         url: 'data-source',
       },
     };
