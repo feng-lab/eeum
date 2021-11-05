@@ -45,12 +45,12 @@
                   <span :style="`color:${ch.color}`">{{ch.name}}&nbsp</span>
                 </template>
               </v-card-title>
-              <v-card-text v-if="item.isReady === true">
+              <v-card-text v-if="item.isReady == true">
                 <ul v-for="info in item.infos" class="text-body-1">
                   <li>{{info}}</li>
                 </ul>
               </v-card-text>
-              <v-card-text v-if="item.isReady === false">
+              <v-card-text v-if="item.isReady == false">
                   <p class="text-h5"> Full dataset coming soon !</p>
               </v-card-text>
               <v-card-actions>
@@ -66,7 +66,7 @@
                 </v-btn>
                 <a :href="`${item.fullResolutionView}`" target="_blank">
                   <v-btn
-                    v-if="item.isReady === true"
+                    v-if="item.isReady == true"
                     class="ml-2 mt-5"
                     outlined
                     rounded small>
