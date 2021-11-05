@@ -39,12 +39,12 @@ export default {
           ],
         },
         {
-          name: 'eLemur brain01',
+          name: 'eLemur A2',
           info:
             'Animals were anesthetized and perfused transcardially with 0.1 M phosphate buffered saline (PBS) and 4% paraformaldehyde in 0.1M phosphate buffer (PFA). Brains were post-fixed in 4% PFA overnight and incubated in 20% sucrose in PBS at 4 °C for cryoprotection. Brains were sectioned coronally in 50 µm thickness on a freezing microtome (Fisher Scientific HM450). During the sectioning, the block-faces (  or the cutting planes) of the entire brains were photographed with a CMOS camera (Leica IC90 E) mounted on a stereomicroscope (Leica M60). For immunofluorescence, brain sections with a 100-µm interval were permeabilized in 0.3% Triton X-100 in tris-buffered saline (TBS) and blocked in 3% normal goat serum, 3% bovine serum albumin, and 0.3% Triton X-100 in TBS. The sections were incubated with primary antibodies overnight at 4 ºC (See Table 1 for the details of antibodies used in this study). After washing, sections were incubated with secondary antibodies for 3 h at room temperature and counterstained with DAPI. Sections were mounted with mounting media (Vector Labs, VectaShield). Secondary antibodies (1:000) used were Alexa Fluor 488 goat anti-rabbit IgG (Invitrogen, A11008), Alexa Fluor 488 goat anti-mouse IgG (Invitrogen, A00000), Alexa Fluor 555 goat anti-mouse IgG (Invitrogen, A00000), Alexa Fluor 555 goat anti-rabbit IgG (Invitrogen, A00000), and Alexa Fluor 633 goat anti-guinea pig IgG (Invitrogen, A00000) Widefield images were acquired by an Axioscan Z1. slide scanner (Carl Zeiss Microscopy) equipped with a 10X 0.45 NA Plan-Apochromat air lens. For cell counting analysis, confocal images were obtained at 0.54 μm depth intervals using a LSM 780 confocal microscope (Carl Zeiss Microscopy) equipped with a 40x 1.4 NA Plan Apochromat oil lens.',
-          numSlices: 180,
-          sliceSrc: 'https://eeum-brain.com/static/static/slices3/slice_',
-          startSlice: 56,
+          numSlices: 168,
+          sliceSrc: 'https://eeum-brain.com/static/static/eLemur-A2/slice',
+          startSlice: 46,
           sliceLinkPre:
             'neuroglancer/#!%7B%22dimensions%22:%7B%22x%22:%5B0.000010444176%2C%22m%22%5D%2C%22y%22:%5B0.000010444176%2C%22m%22%5D%2C%22z%22:%5B0.0001%2C%22m%22%5D%7D%2C%22position%22:%5B1759.8031005859375%2C616.8143310546875%2C',
           sliceLinkPost:
@@ -52,11 +52,11 @@ export default {
           empty: '',
           channels: [
             {
-              name: 'TH',
+              name: 'PV',
               color: '#00A0FF',
             },
             {
-              name: 'PV',
+              name: 'TH',
               color: '#00FF33',
             },
             {

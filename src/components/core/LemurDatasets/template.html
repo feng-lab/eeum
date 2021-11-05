@@ -34,7 +34,7 @@
           <v-row align-center wrap>
             <v-col cols="12" sm="4" md="4" lg="4" xl="4">
               <v-img
-                :src="`${item.sliceSrc}${item.startSlice}.png`"
+                :src="`${item.sliceSrc}_main.png`"
                 contain
               ></v-img>
             </v-col>
@@ -45,13 +45,17 @@
                   <span :style="`color:${ch.color}`">{{ch.name}}&nbsp</span>
                 </template>
               </v-card-title>
-              <v-card-text>
+              <v-card-text v-if="item.isReady === true">
                 <ul v-for="info in item.infos" class="text-body-1">
                   <li>{{info}}</li>
                 </ul>
               </v-card-text>
+              <v-card-text v-if="item.isReady === false">
+                  <p class="text-h5"> Full dataset coming soon !</p>
+              </v-card-text>
               <v-card-actions>
                 <v-btn
+                  v-if="item.isReady === true"
                   class="ml-2 mt-5"
                   outlined
                   rounded
@@ -61,7 +65,11 @@
                   Gallery View
                 </v-btn>
                 <a :href="`${item.fullResolutionView}`" target="_blank">
-                  <v-btn class="ml-2 mt-5" outlined rounded small>
+                  <v-btn
+                    v-if="item.isReady === true"
+                    class="ml-2 mt-5"
+                    outlined
+                    rounded small>
                     Full-resolution View
                   </v-btn>
                 </a>
