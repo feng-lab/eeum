@@ -1,6 +1,8 @@
 .root {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
   overflow-y: auto;
-  margin: 0;
 }
 
 .custom-color {

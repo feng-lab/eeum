@@ -38,3 +38,10 @@
   display: flex;
   justify-content: space-between;
 }
+
+.root {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  overflow-y: auto;
+}

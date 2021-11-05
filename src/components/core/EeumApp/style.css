@@ -21,9 +21,9 @@
   height: 100%;
   width: 100%;
   -webkit-overflow-scrolling: touch;
-  display: flex;
+  /* display: flex;
   flex-flow: column;
-  overflow-y: auto;
+  overflow-y: auto; */
 }
 
 /* vuetify overrides */
