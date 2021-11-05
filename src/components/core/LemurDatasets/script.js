@@ -109,8 +109,7 @@ export default {
           ],
           isReady: true,
           numSlices: 168,
-          sliceSrc:
-            'https://eeum-brain.com/static/static/eLemur-A2/slice',
+          sliceSrc:'https://eeum-brain.com/static/static/eLemur-A2/slice',
           startSlice: 1,
           swiperOption: {
             lazy: true,
@@ -156,8 +155,7 @@ export default {
           ],
           isReady: false,
           numSlices: 168,
-          sliceSrc:
-            'https://eeum-brain.com/static/static/eLemur-B1/slice',
+          sliceSrc:'https://eeum-brain.com/static/static/eLemur-B1/slice',
           startSlice: 1,
           swiperOption: {
             lazy: true,
@@ -203,8 +201,7 @@ export default {
           ],
           isReady: false,
           numSlices: 168,
-          sliceSrc:
-            'https://eeum-brain.com/static/static/eLemur-B2/slice',
+          sliceSrc:'https://eeum-brain.com/static/static/eLemur-B2/slice',
           startSlice: 1,
           swiperOption: {
             lazy: true,
