@@ -67,7 +67,7 @@ export default {
         {
           title: 'Mouse',
           submenu: [
-            { title: 'Dataset IHC', link: '' },
+            { title: 'Dataset IHC', link: '/mousedatasets' },
             { title: 'Dataset mGRASP', link: '/mousemgraspdatasets' },
           ],
         },
