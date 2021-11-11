@@ -1,24 +1,24 @@
 <div :class="[$style.root]">
-<v-container class="mb-5 pb-5">
-  <v-row align-center v-viewer="options" class="images clearfix">
-    <v-col
-      class="mx-0 px-0 my-0 py-0"
-      v-for="i in 177"
-      :key="i"
-      cols="10"
-      sm="6"
-      md="4"
-      lg="3"
-      xl="2"
-    >
-      <img
-        :src="`https://eeum-brain.com/static/static/reference_gallery/atlas/elemur_slice${i+2}.svg`"
-        :data-source="`https://eeum-brain.com/static/static/reference_gallery/atlas/elemur_slice${i+2}.svg`"
-        :class="$style.image"
-        :key="`slice${i+2}`"
-        :alt="`slice${i+2}`"
-      />
-    </v-col>
-  </v-row>
-</v-container>
+  <v-container class="mb-5 pb-5">
+    <v-row align-center v-viewer="options" class="images clearfix">
+      <v-col
+        class="mx-0 px-0 my-0 py-0"
+        v-for="i in 177"
+        :key="i"
+        cols="10"
+        sm="6"
+        md="4"
+        lg="3"
+        xl="2"
+      >
+        <img
+          :src="`https://eeum-brain.com/static/static/reference_gallery/atlas/elemur_slice${i+2}.svg`"
+          :data-source="`https://eeum-brain.com/static/static/reference_gallery/atlas/elemur_slice${i+2}.svg`"
+          :class="$style.image"
+          :key="`slice${i+2}`"
+          :alt="`slice${i+2}`"
+        />
+      </v-col>
+    </v-row>
+  </v-container>
 </div>
