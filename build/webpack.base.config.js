@@ -125,6 +125,10 @@ module.exports = {
           to: '[name][ext]',
         },
         { from: path.join('static', 'atlas.png') },
+        {
+          from: path.join('static', 'neuroglancer'),
+          to: 'neuroglancer',
+        },
       ]
     }),
     new GenerateSW({
