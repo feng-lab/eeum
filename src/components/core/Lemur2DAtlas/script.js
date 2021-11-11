@@ -1,6 +1,6 @@
+import { directive as viewer } from 'v-viewer';
 import { Breakpoints } from '@/constants';
 import 'viewerjs/dist/viewer.css';
-import { directive as viewer } from 'v-viewer';
 
 export default {
   name: 'Lemur2DAtlas',

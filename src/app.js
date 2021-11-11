@@ -5,13 +5,15 @@ import Vuetify from 'vuetify/lib';
 
 import GirderProvider from 'paraview-glance/src/girder';
 import { merge } from 'lodash';
+// import { vuetify as girderVuetify } from '@girder/components/src';
 import { vuetifyConfig as girderVuetifyConfig } from '@girder/components/src/utils';
 
-import vtkURLExtract from 'vtk.js/Sources/Common/Core/URLExtract';
-import vtkProxyManager from 'vtk.js/Sources/Proxy/Core/ProxyManager';
+import '@kitware/vtk.js/Rendering/Profiles/All';
 
-/* eslint-disable-next-line import/extensions */
-import 'typeface-roboto';
+import vtkURLExtract from '@kitware/vtk.js/Common/Core/URLExtract';
+import vtkProxyManager from '@kitware/vtk.js/Proxy/Core/ProxyManager';
+
+import 'typeface-roboto/index.css';
 import '@mdi/font/css/materialdesignicons.css';
 import 'paraview-glance/static/global.css';
 
@@ -44,12 +46,6 @@ export const {
 Vue.use(Vuex);
 Vue.use(Vuetify);
 Vue.use(ProxyManagerVuePlugin);
-
-export default new Vuetify({
-  icons: {
-    iconfont: 'mdi', // default - only for display purposes
-  },
-});
 
 let activeProxyConfig = null;
 /**

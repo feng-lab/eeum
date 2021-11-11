@@ -1,40 +1,7 @@
-/**
- * NOTE: should technically modify stylus rules instead of patching
- * individual classnames.
- */
-/* not correct under dark mode: */
-/* .root :global(.v-application--wrap) { */
-.root {
-  position: absolute;
-  /* Fill to parent height, which will be the height of <html> */
-  height: 100%;
-  width: 100%;
-  /* override vuetify's min-height: 100vh.
-   * 100vh also includes navbar height, which we don't
-   * want b/c we want to contrain our app between the address bar
-   * and the bottom navbar.
-   */
-  min-height: 0;
-}
-
-.appContent {
+#appContent {
   height: 100%;
   width: 100%;
   -webkit-overflow-scrolling: touch;
-  /* display: flex;
-  flex-flow: column;
-  overflow-y: auto; */
-}
-
-/* vuetify overrides */
-.toolbarButton {
-  min-width: 48px;
-  margin: 0;
-  height: inherit;
-}
-
-.toolbarButton span {
-  margin-left: 4px;
 }
 
 .overlay {
@@ -68,13 +35,4 @@
 
 .noTransition {
   transition: none;
-}
-
-.aboutIcon {
-  width: 100%;
-  max-height: 80px;
-}
-
-.noSelect {
-  user-select: none;
 }

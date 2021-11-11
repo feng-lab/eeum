@@ -1,8 +1,6 @@
 <v-container pa-0 fluid>
-  <v-row justify="space-around">
-    <v-btn @click="panelStates = [0,1,2]">expand all</v-btn>
-    <v-btn @click="panelStates = []">collapse all</v-btn>
-  </v-row>
+  <v-btn @click="panelStates = [0,1,2]">expand all</v-btn>
+  <v-btn @click="panelStates = []">collapse all</v-btn>
   <v-expansion-panels v-model="panelStates" multiple accordion>
     <v-expansion-panel
       v-for="(sourceId, index) in datasets"

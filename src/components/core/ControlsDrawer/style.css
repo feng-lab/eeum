@@ -7,7 +7,7 @@
 .tabItems {
   flex: 2;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: auto !important;
   display: flex;
   flex-flow: column;
 }

@@ -4,8 +4,8 @@ import Vuex from 'vuex';
 import VuexPersistence from 'vuex-persist';
 import axios from 'axios';
 
-import vtk from 'vtk.js/Sources/vtk';
-import vtkProxyManager from 'vtk.js/Sources/Proxy/Core/ProxyManager';
+import vtk from '@kitware/vtk.js/vtk';
+import vtkProxyManager from '@kitware/vtk.js/Proxy/Core/ProxyManager';
 
 import { ProxyManagerVuexPlugin } from 'paraview-glance/src/plugins';
 
@@ -27,10 +27,7 @@ const STATE_VERSION = 2;
 
 // https://jsperf.com/typeofvar
 function typeOf(o) {
-  return {}.toString
-    .call(o)
-    .slice(8, -1)
-    .toLowerCase();
+  return {}.toString.call(o).slice(8, -1).toLowerCase();
 }
 
 // quick object merge using Vue.set
@@ -147,20 +144,19 @@ function createStore(injected) {
         }
         state.panels[priority].push(component);
       },
-      setDatasets(state, datasets) {
-        state.datasets = datasets;
-      },
-      setDatasetsAnalysis(state, analyses) {
+      setDatasets(state, all) {
+        const tmpDatasets = all.dataset;
         const indexed = {};
-        analyses.forEach((data) => {
+        all.analyses.forEach((data) => {
           indexed[data.name] = data;
         });
-        state.datasets.forEach((sample) => {
+        tmpDatasets.forEach((sample) => {
           const use = indexed[sample.cellName];
           if (use) {
             sample.analysis = use; // eslint-disable-line no-param-reassign
           }
         });
+        state.datasets = tmpDatasets;
         console.log(state.datasets);
       },
       openScreenshotDialog(state, screenshot) {
@@ -190,8 +186,9 @@ function createStore(injected) {
         const t = new Date();
         const fileName =
           fileNameToUse ||
-          `${t.getFullYear()}${t.getMonth() +
-            1}${t.getDate()}_${t.getHours()}-${t.getMinutes()}-${t.getSeconds()}.glance`;
+          `${t.getFullYear()}${
+            t.getMonth() + 1
+          }${t.getDate()}_${t.getHours()}-${t.getMinutes()}-${t.getSeconds()}.glance`;
 
         commit('savingState', fileName);
 
@@ -512,8 +509,6 @@ function createStore(injected) {
                 });
               }
             }
-            // console.log(jsonArr);
-            commit('setDatasets', jsonArr);
 
             fetch('https://eeum-brain.com/static/analysis/all.json')
               .then((response) => {
@@ -524,8 +519,9 @@ function createStore(injected) {
               })
               .then((array2) => {
                 // Work with JSON data array2 here
+                console.log(jsonArr);
                 console.log(array2);
-                commit('setDatasetsAnalysis', array2);
+                commit('setDatasets', { dataset: jsonArr, analyses: array2 });
               })
               .catch((err) => {
                 // Do something for an error here

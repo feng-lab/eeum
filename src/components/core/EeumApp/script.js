@@ -1,7 +1,7 @@
 import { mapGetters, mapState, mapActions, mapMutations } from 'vuex';
 import Mousetrap from 'mousetrap';
 import { VBottomSheet, VDialog } from 'vuetify/lib';
-import macro from 'vtk.js/Sources/macro';
+import macro from '@kitware/vtk.js/macro';
 
 import AboutBox from 'paraview-glance/src/components/core/AboutBox';
 import BrowserIssues from 'paraview-glance/src/components/core/BrowserIssues';
@@ -79,8 +79,7 @@ export default {
             { title: 'eLemur 2D Atlas', link: '/lemur2datlas' },
             {
               title: 'eLemur 3D Atlas',
-              link:
-                'https://eeum-brain.com/neuroglancer/#!https://eeum-brain.com/static/neuroglancer_data/Atlas/base.json',
+              link: 'https://eeum-brain.com/neuroglancer/#!https://eeum-brain.com/static/neuroglancer_data/Atlas/base.json',
             },
             { title: 'eLemur Cell Atlas', link: '/lemurcellatlas' },
           ],
@@ -90,8 +89,7 @@ export default {
           submenu: [
             {
               title: 'mGRASP Construct',
-              link:
-                'https://www.addgene.org/search/catalog/plasmids/?q=Jinhyun+kim',
+              link: 'https://www.addgene.org/search/catalog/plasmids/?q=Jinhyun+kim',
             },
             { title: 'mGRASP Detection', link: '/mgraspdetection' },
             { title: 'neuTube', link: 'https://neutracing.com' },
