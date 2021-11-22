@@ -11,6 +11,37 @@
           </template>
         </v-card-text>
       </v-col>
+      <!---
+      <v-col
+        v-for="i in item.numSlices"
+        :key="i"
+        class="mx-0 px-0 my-0 py-0"
+        cols="10"
+        sm="6"
+        md="4"
+        lg="3"
+        xl="2"
+      >
+        <v-img
+          :src="`${item.sliceSrc}${i}.png`"
+          y="0"
+          x="0"
+        >
+          <template v-slot:placeholder>
+            <v-row
+              class="fill-width ma-0"
+              align="center"
+              justify="center"
+            >
+              <v-progress-circular
+                indeterminate
+                color="grey lighten-5"
+              ></v-progress-circular>
+            </v-row>
+          </template>
+        </v-img>
+      </v-col>
+      --->
       <v-col
         class="mx-0 px-0 my-0 py-0"
         v-for="i in item.numSlices"
@@ -26,38 +57,48 @@
           target="_blank"
           :id="`slice${i}`"
         >
-          <svg
-            xmlns:svg="https://www.w3.org/2000/svg"
-            xmlns="https://www.w3.org/2000/svg"
-            xmlns:xlink="https://www.w3.org/1999/xlink"
-            width="100%"
-            viewBox="0 0 512 370"
+          <v-lazy
+            v-model="isActive"
+            :options="{
+          threshold: .5
+        }"
+            min-height="200"
+            transition="fade-transition"
           >
-            <image
-              :xlink:href="`${item.sliceSrc}${i}.png`"
-              width="512px"
-              height="370px"
-              y="0"
-              x="0"
-            />
-            <image
-              xlink:href="https://eeum-brain.com/static/static/mesh.png"
-              width="96px"
-              height="96px"
-              y="270"
-              x="400"
-            />
-            <g id="g3373">
-              <line
-                :x1="410+(i-1)/(item.numSlices)*(80-3)"
-                y1="270"
-                :x2="410+(i-1)/(item.numSlices)*(80-3)"
-                y2="370"
-                stroke-miterlimit="10"
-                style="fill:none;stroke-width:3;stroke:cyan"
+            <svg
+              xmlns:svg="https://www.w3.org/2000/svg"
+              xmlns="https://www.w3.org/2000/svg"
+              xmlns:xlink="https://www.w3.org/1999/xlink"
+              viewBox="0 0 512 370"
+              width="100%"
+            >
+              <image
+                :xlink:href="`${item.sliceSrc}${i}.png`"
+                width="512px"
+                height="370px"
+                y="0"
+                x="0"
               />
-            </g>
-          </svg>
+
+              <image
+                xlink:href="https://eeum-brain.com/static/static/mesh.png"
+                width="96px"
+                height="96px"
+                y="270"
+                x="400"
+              />
+              <g id="g3373">
+                <line
+                  :x1="410+(i-1)/(item.numSlices)*(80-3)"
+                  y1="270"
+                  :x2="410+(i-1)/(item.numSlices)*(80-3)"
+                  y2="370"
+                  stroke-miterlimit="10"
+                  style="fill:none;stroke-width:3;stroke:cyan"
+                />
+              </g>
+            </svg>
+          </v-lazy>
         </a>
       </v-col>
     </v-row>
