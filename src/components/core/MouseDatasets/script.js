@@ -7,6 +7,12 @@ export default {
     Swiper,
     SwiperSlide,
   },
+  methods: {
+    remove(item) {
+      this.chips.splice(this.chips.indexOf(item), 1);
+      this.chips = [...this.chips];
+    },
+  },
   data() {
     return {
       markerHeader: [
@@ -78,7 +84,7 @@ export default {
           },
           empty: '',
           fullResolutionView:
-            'neuroglancer/#!https://eeum-brain.com/static/neuroglancer_data/mouse-W3M01/base.json',
+            'neuroglancer/#!https://eeum-brain.com/static/neuroglancer_data/JK979_PV_VGluT2_NeuN/base.json',
           channels: [
             {
               name: 'PV',
@@ -120,7 +126,7 @@ export default {
           },
           empty: '',
           fullResolutionView:
-            'neuroglancer/#!https://eeum-brain.com/static/neuroglancer_data/mouse-W3M02/base.json',
+            'neuroglancer/#!https://eeum-brain.com/static/neuroglancer_data/JK980_PV_TH_NeuN/base.json',
           channels: [
             {
               name: 'PV',

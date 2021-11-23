@@ -10,15 +10,33 @@
           three of following markers.
         </p>
       </v-col>
-      <v-col cols="12" sm="3" md="3" lg="3" xl="3"></v-col>
-      <v-col cols="12" sm="6" md="6" lg="6" xl="6">
+      <v-col cols="12" >
+        <!--
+          <v-combobox
+            :items="markers"
+            clearable
+            multiple
+            prepend-icon="mdi-filter-variant"
+            solo
+          >
+            <template v-slot:item="{ index, item }">
+              <v-list-tile-content >{{item.name +' : ' + item.info}}</v-list-tile-content>
+            </template>
+            <template v-slot:selection="{ index, item }">
+              <v-chip close @click:close="remove(item)" >{{ item.name }}</v-chip>
+            </template>
+          </v-combobox>
+          -->
+
         <v-data-table
+          dense
+          height="200px"
           :headers="markerHeader"
           :items="markers"
           hide-default-header
           hide-default-footer
           :items-per-page="10"
-          class="elevation-1"
+          class="elevation-5"
         >
           <template v-slot:item.name="{ item }">
             <div class="text-body-1 font-weight-bold">{{ item.name }}</div>

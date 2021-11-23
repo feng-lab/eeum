@@ -10,15 +10,16 @@
           three of following markers.
         </p>
       </v-col>
-      <v-col cols="12" sm="3" md="3" lg="3" xl="3"></v-col>
-      <v-col cols="12" sm="6" md="6" lg="6" xl="6">
+      <v-col cols="12" >
         <v-data-table
+          dense
+          height="200px"
           :headers="markerHeader"
           :items="markers"
           hide-default-header
           hide-default-footer
           :items-per-page="10"
-          class="elevation-1"
+          class="elevation-5"
         >
           <template v-slot:item.name="{ item }">
             <div class="text-body-1 font-weight-bold">{{ item.name }}</div>
@@ -73,6 +74,7 @@
                       Full-resolution View
                     </v-btn>
                   </a>
+                  <!--
                   <v-btn
                     v-if="item.name === 'Reference brain'"
                     class="ml-2 mt-5"
@@ -82,6 +84,7 @@
                   >
                     3D View
                   </v-btn>
+                  -->
                 </v-card-actions>
               </v-col>
               <!-- <v-col cols="12">
