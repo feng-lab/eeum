@@ -2,19 +2,26 @@ import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
 import 'swiper/css/swiper.css';
 
 export default {
-  name: 'LemurDatasets',
+  name: 'MouseDatasets',
   components: {
     Swiper,
     SwiperSlide,
   },
   methods: {
     remove(item) {
-      this.chips.splice(this.chips.indexOf(item), 1);
-      this.chips = [...this.chips];
+      this.selectedMarker.splice(this.selectedMarker.indexOf(item), 1);
+      this.selectedMarker = [...this.selectedMarker];
     },
   },
+  computed: {
+    icon() {
+      return 'mdi-checkbox-blank-outline';
+    },
+  },
+
   data() {
     return {
+      selectedMarker: [],
       markerHeader: [
         { text: 'name', value: 'name' },
         { text: 'info', value: 'info' },

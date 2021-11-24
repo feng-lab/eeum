@@ -153,7 +153,7 @@ export default {
             'Pixel size: 0.65µm x 0.65µm',
             'Brightfield image available',
           ],
-          isReady: true,
+          isReady: false,
           numSlices: 180,
           sliceSrc: 'https://eeum-brain.com/static/static/eLemur-B1/slice',
           startSlice: 1,
