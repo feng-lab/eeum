@@ -11,7 +11,7 @@
         </p>
       </v-col>
       <v-col cols="12" >
-        <!---
+
         <v-select
           v-model="selectedMarker"
           :items="markers"
@@ -32,10 +32,10 @@
                 <v-list-item-title>
                   <v-row no-gutters align="center">
                     <v-col lg="2">
-                      <v-chip text-color="white" :color="item.color" medium> {{ item.name }} </v-chip>
+                      <v-chip class="font-weight-bold" text-color="black" :color="item.color" medium> {{ item.name }} </v-chip>
                     </v-col>
                     <v-col md="auto">
-                      <span  text-color="white">{{  item.info}}</span>
+                      <span  text-color="white">{{item.info}}</span>
                     </v-col>
                   </v-row>
                 </v-list-item-title>
@@ -43,7 +43,7 @@
             </v-list-item>
           </template>
         </v-select>
-        -->
+
         <v-data-table
           dense
           height="200px"
@@ -62,9 +62,10 @@
           </template>
         </v-data-table>
       </v-col>
+
       <v-spacer></v-spacer>
       <template v-for="(item, i) in items">
-        <v-col cols="12">
+        <v-col cols="12" v-if="check_match(item.channels)">
           <v-card class="pa-3">
             <v-row align-center wrap>
               <v-col cols="12" sm="4" md="4" lg="4" xl="4">

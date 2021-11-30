@@ -7,12 +7,7 @@ export default {
     Swiper,
     SwiperSlide,
   },
-  methods: {
-    remove(item) {
-      this.selectedMarker.splice(this.selectedMarker.indexOf(item), 1);
-      this.selectedMarker = [...this.selectedMarker];
-    },
-  },
+
   computed: {
     icon() {
       return 'mdi-checkbox-blank-outline';
@@ -30,14 +25,17 @@ export default {
         {
           name: 'NeuN',
           info: 'Neuron-specific nuclear protein',
+          color: '#FF0000',
         },
         {
           name: 'VGluT1',
           info: 'Vesicular glutamate transporter 1',
+          color: '#00A0FF',
         },
         {
           name: 'VGluT2',
           info: 'Vesicular glutamate transporter 2',
+          color: '#00FF33',
         },
         {
           name: 'SMI32',
@@ -50,6 +48,7 @@ export default {
         {
           name: 'PV',
           info: 'Parvalbumin',
+          color: '#00A0FF',
         },
         {
           name: 'TH',
@@ -161,6 +160,19 @@ export default {
       //   },
       // },
     };
+  },
+  methods: {
+    remove(item) {
+      this.selectedMarker.splice(this.selectedMarker.indexOf(item), 1);
+      this.selectedMarker = [...this.selectedMarker];
+    },
+    check_match(ch) {
+      if (this.selectedMarker.length === 0) return true;
+      for (let i = 0; i < ch.length; i++) {
+        if (this.selectedMarker.includes(ch[i].name)) return true;
+      }
+      return false;
+    },
   },
   setup() {
     const onSwiper = (swiper) => {
