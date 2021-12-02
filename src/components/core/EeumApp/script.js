@@ -69,6 +69,7 @@ export default {
           submenu: [
             { title: 'Dataset IHC', link: '/mousedatasets' },
             { title: 'Dataset mGRASP', link: '/mousemgraspdatasets' },
+            { title: 'STN Connectivity', link: '/mouseconnectivity' },
           ],
         },
         {

@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import MousemGRASPDatasets from '@/components/core/MousemGRASPDatasets';
 import MouseDatasets from '@/components/core/MouseDatasets';
+import MouseConnectivity from '@/components/core/MouseConnectivity';
 import Neuron from '@/components/core/Neuron';
 import Home from '@/components/core/Home';
 import LemurDatasets from '@/components/core/LemurDatasets';
@@ -35,6 +36,11 @@ export default new Router({
       path: '/mousemgraspdatasets',
       name: 'MousemGRASPDatasets',
       component: MousemGRASPDatasets,
+    },
+    {
+      path: '/mouseconnectivity',
+      name: 'MouseConnectivity',
+      component: MouseConnectivity,
     },
     {
       path: '/neuron/:name',
