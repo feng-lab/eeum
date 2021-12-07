@@ -1,42 +1,23 @@
 <div :class="[$style.root]">
   <v-container class="mb-5 pb-5">
-    <v-row align-center wrap>
-      <v-col align-center cols="12">
-        <v-hover>
-        <template v-slot:default="{ hover }">
-          <v-card
-            class="mx-auto"
-            width="60%"
-          >
-            <v-card-text>
-              <h2 class="text-h4 primary--text">
-                GPe-STN Connectivity
-              </h2>
-              Overview of individual indirect pathway dataset
-            </v-card-text>
-            <v-fade-transition>
-              <v-overlay
-                v-if="hover"
-                relative
-              >
-                <v-btn
-                  block
-                >
-                  Under Construction
-                </v-btn>
-                <v-btn
-                block
-              >
-                More Data Coming Soon
-              </v-btn>
-              </v-overlay>
-            </v-fade-transition>
-            <v-img  src="https://eeum-brain.com/static/static/SupplementaryFigure.png"></v-img>
+    <v-row align-center wrap :class="[$style.imgwrap]">
+        <div :class="[$style.text]">
+          Under Construction
+          More Data Coming Soon
+        </div>
 
-          </v-card>
-        </template>
-        </v-hover>
-      </v-col>
+        <v-card
+          :class="[$style.blurImg]"
+          width="100%"
+        >
+          <v-card-text>
+            <h2 class="text-h4 primary--text">
+              GPe-STN Connectivity
+            </h2>
+            Overview of individual indirect pathway dataset
+          </v-card-text>
+          <v-img  src="https://eeum-brain.com/static/static/SupplementaryFigure.png" />
+      </v-card>
     </v-row>
   </v-container>
 </div>
