@@ -95,6 +95,7 @@ export default {
           empty: '',
           fullResolutionView:
             'neuroglancer/#!https://eeum-brain.com/static/neuroglancer_data/181005_Lemur-Hotsauce_SMI99_VGluT2_NeuN/base.json',
+          fullResolutionViewv2: 'nv2.html#/atlas/eeum-Lemur',
           channels: [
             {
               name: 'SMI99',
@@ -141,6 +142,7 @@ export default {
           empty: '',
           fullResolutionView:
             'neuroglancer/#!https://eeum-brain.com/static/neuroglancer_data/eLemur-A2/base.json',
+          fullResolutionViewv2: 'nv2.html#/atlas/eeum-eLemur-A2',
           channels: [
             {
               name: 'PV',
@@ -187,6 +189,7 @@ export default {
           empty: '',
           fullResolutionView:
             'neuroglancer/#!https://eeum-brain.com/static/neuroglancer_data/eLemur-B1/base.json',
+          fullResolutionViewv2: 'nv2.html#/atlas/eeum-eLemur-B1',
           channels: [
             {
               name: 'VGluT2',
@@ -229,6 +232,7 @@ export default {
           empty: '',
           fullResolutionView:
             'neuroglancer/#!https://eeum-brain.com/static/neuroglancer_data/eLemur-B2/base.json',
+          fullResolutionViewv2: 'nv2.html#/atlas/eeum-eLemur-B2',
           channels: [
             {
               name: 'PV',
