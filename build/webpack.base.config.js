@@ -129,10 +129,6 @@ module.exports = {
           from: path.join('static', 'neuroglancer'),
           to: 'neuroglancer',
         },
-        {
-          from: path.join('static', 'nv2'),
-          to: 'nv2',
-        },
       ]
     }),
     new GenerateSW({
