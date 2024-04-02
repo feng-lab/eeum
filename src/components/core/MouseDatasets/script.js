@@ -90,7 +90,7 @@ export default {
           },
           empty: '',
           fullResolutionView:
-            'neuroglancer/#!https://eeum-brain.com/static/neuroglancer_data/JK979_PV_VGluT2_NeuN/base.json',
+            'neuroglancer/index.html#!https://eeum-brain.com/static/neuroglancer_data/JK979_PV_VGluT2_NeuN/base.json',
           channels: [
             {
               name: 'PV',
@@ -132,7 +132,7 @@ export default {
           },
           empty: '',
           fullResolutionView:
-            'neuroglancer/#!https://eeum-brain.com/static/neuroglancer_data/JK980_PV_TH_NeuN/base.json',
+            'neuroglancer/index.html#!https://eeum-brain.com/static/neuroglancer_data/JK980_PV_TH_NeuN/base.json',
           channels: [
             {
               name: 'PV',
