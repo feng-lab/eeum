@@ -83,7 +83,11 @@ export default {
               // link: 'https://eeum-brain.com/neuroglancer/index.html#!https://eeum-brain.com/static/neuroglancer_data/Atlas/base.json',
               link: 'https://eeum-brain.com/nv2.html#/atlas/eeum-Lemur-Atlas',
             },
-            // { title: 'eLemur Cell Atlas', link: '/lemurcellatlas' },
+            {
+              title: 'eLemur Cell Atlas',
+              link: '/lemurcellatlas',
+              // link: 'https://eeum-brain.com/nv2.html#/atlas/elemur-cell-atlas',
+            },
           ],
         },
         {

@@ -1,0 +1,13 @@
+.root {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.image {
+  width: 100%;
+  cursor: pointer;
+  margin: 5px;
+  display: inline-block;
+}
