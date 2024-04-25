@@ -37,11 +37,12 @@
     "build": "webpack --config build/webpack.dev.config.js",
     "build:release": "webpack --progress --config build/webpack.prod.config.js",
     "version": "node ./build/writeVersion.js",
-    "dev": "webpack-dev-server --config build/webpack.dev.config.js",
+    "dev": "SET NODE_OPTIONS=--openssl-legacy-provider && webpack-dev-server --config build/webpack.dev.config.js",
     "bundle": "inline-source --compress false --root ./dist ./dist/index.html ./dist/ParaViewGlance.html",
     "commit": "git cz",
     "semantic-release": "semantic-release",
-    "prepublishOnly": "npm run version && npm run bundle"
+    "prepublishOnly": "npm run version && npm run bundle",
+    "fix-memory-limit": "cross-env LIMIT=10000 increase-memory-limit"
   },
   "author": "feng-lab",
   "dependencies": {
@@ -49,6 +50,7 @@
     "@kitware/vtk.js": "20.0.0",
     "@linusborg/vue-simple-portal": "0.1.5",
     "axios": "0.22.0",
+    "echarts": "^5.5.0",
     "itk": "14.1.1",
     "jszip": "3.7.1",
     "material-design-icons-iconfont": "^6.0.0",
