@@ -30,6 +30,7 @@ export default {
       selectType: 'id',
       model: 0,
       imgLoading: false,
+      totalNum: 177,
     };
   },
   computed: {

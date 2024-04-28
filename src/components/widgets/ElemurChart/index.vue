@@ -13,8 +13,8 @@
 
 <script>
 import * as echarts from 'echarts';
-import { eeum_region_desc } from '../../../locals/eeum_region_desc.js';
-// import { graphData, graphLinks } from '@/utils/common.js';
+import axios from 'axios';
+// import { eeum_region_desc } from '../../../locals/eeum_region_desc.js';
 
 export default {
   props: {
@@ -148,16 +148,27 @@ export default {
   },
   methods: {
     async getMapData(mapCode = '2') {
-      const res = await import(
-        `../../../locals/geojson/eLemur_geojson_slice${mapCode}.json`
+      // const res = await import(
+      //   `../../../locals/geojson/eLemur_geojson_slice${mapCode}.json`
+      // );
+      // return res.default;
+      const res = await axios.get(
+        `https://fenglab.xyz/static/lemur/geojson/eLemur_geojson_slice${mapCode}.json`
       );
-      return res.default;
+      return res.data;
     },
-    mapChartInit(mapJson) {
+    async getEeumRegionDesc() {
+      const res = await axios.get(
+        'https://fenglab.xyz/static/lemur/eeum_region_desc.json'
+      );
+      return res.data;
+    },
+    async mapChartInit(mapJson) {
       console.log('mapChartInit-->', mapJson);
       if (this.myChart) {
         this.myChart.clear();
       }
+      const eeum_region_desc = await this.getEeumRegionDesc();
       this.option.series[0].map = this.mapName;
       this.option.geo.map = this.mapName;
       const chartDom = document.getElementById(`geo-map-${this.id}`);
@@ -249,7 +260,6 @@ export default {
 
       this.myChart.on('georoam', async (params) => {
         const chartOption = this.myChart.getOption();
-        console.log('chartOption--->1', chartOption);
         if (params.zoom !== null || params.zoom !== undefined) {
           chartOption.geo[0].zoom = chartOption.series[0].zoom;
           chartOption.series[1].zoom = chartOption.series[0].zoom;
@@ -259,7 +269,6 @@ export default {
         }
         chartOption.geo[0].center = chartOption.series[0].center;
         chartOption.series[1].center = chartOption.series[0].center;
-        console.log('chartOption--->2', chartOption);
         this.myChart.setOption(chartOption);
       });
       setTimeout(() => {

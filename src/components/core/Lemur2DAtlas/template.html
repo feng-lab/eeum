@@ -3,7 +3,7 @@
     <v-container >
       <v-row no-gutters>
         <div class="d-flex flex-row">
-          <v-btn-toggle v-model="showType" @change="typeChange">
+          <v-btn-toggle v-model="showType" @change="typeChange" mandatory>
             <v-btn :value="1">
               <v-icon>mdi-view-gallery</v-icon>
             </v-btn>
@@ -44,7 +44,7 @@
           @change="slideChange"
         >
           <v-slide-item
-            v-for="n in 50"
+            v-for="n in totalNum"
             :key="n"
             v-slot="{ active, toggle }"
           >
@@ -67,7 +67,7 @@
       </v-sheet>
       </v-row>
       <v-row v-if="showType === 2 && !imgLoading" no-gutters class="d-flex flex-row flex-lg-wrap flex-sm-wrap">
-        <elemur-chart :id="n + 2" :mtype="selectType" v-for="n in 50" :full="false"></elemur-chart>
+        <elemur-chart :id="n + 2" :mtype="selectType" v-for="n in totalNum" :full="false"></elemur-chart>
       </v-row>
     </v-container>
     <v-overlay :value="imgLoading">
