@@ -32,6 +32,7 @@ export default {
     },
     eeumRegionDesc: {
       type: Object,
+      // eslint-disable-next-line vue/require-valid-default-prop
       default: {},
     },
     netOpen: {
@@ -119,6 +120,7 @@ export default {
               const label = {
                 color: '#ccc',
                 offset:
+                  // eslint-disable-next-line no-nested-ternary
                   index >= 30 ? [0, -10] : index === 0 ? [0, -10] : [30, 0],
                 show: index % 4 === 1 || index === 0,
                 formatter: (params) => this.valueFormat(params, index),
@@ -151,6 +153,7 @@ export default {
     window.removeEventListener('resize', () => {
       this.myChart.clear();
     });
+    // eslint-disable-next-line no-unused-expressions
     this.myChart && this.myChart.dispose();
   },
   methods: {

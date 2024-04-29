@@ -55,11 +55,11 @@ let activeProxyConfig = null;
  * Proxy config precedence (decreasing order):
  *   createViewer param, active proxy config, Generic config
  */
-export function setActiveProxyConfiguration (config) {
+export function setActiveProxyConfiguration(config) {
   activeProxyConfig = config;
 }
 
-export function createViewer (container, proxyConfig = null) {
+export function createViewer(container, proxyConfig = null) {
   const proxyConfiguration = proxyConfig || activeProxyConfig || Config.Proxy;
   const proxyManager = vtkProxyManager.newInstance({ proxyConfiguration });
   const settings = new Settings();
@@ -160,7 +160,7 @@ export function createViewer (container, proxyConfig = null) {
     proxyManager,
     store,
 
-    processURLArgs () {
+    processURLArgs() {
       const params = vtkURLExtract.extractURLParameters();
 
       Object.keys(params)
@@ -178,16 +178,16 @@ export function createViewer (container, proxyConfig = null) {
       }
     },
     // All components must have a unique name
-    addDatasetPanel (component) {
+    addDatasetPanel(component) {
       store.commit('addPanel', { component });
     },
-    showApp () {
+    showApp() {
       store.commit('showApp');
     },
-    getSetting (name) {
+    getSetting(name) {
       return settings.get(name);
     },
-    setSetting (name, value) {
+    setSetting(name, value) {
       return settings.set(name, value);
     },
   };

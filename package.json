@@ -37,7 +37,7 @@
     "build": "webpack --config build/webpack.dev.config.js",
     "build:release": "webpack --progress --config build/webpack.prod.config.js",
     "version": "node ./build/writeVersion.js",
-    "dev": "SET NODE_OPTIONS=--openssl-legacy-provider && webpack-dev-server --config build/webpack.dev.config.js",
+    "dev": "set NODE_OPTIONS=--openssl-legacy-provider && webpack-dev-server --config build/webpack.dev.config.js",
     "bundle": "inline-source --compress false --root ./dist ./dist/index.html ./dist/ParaViewGlance.html",
     "commit": "git cz",
     "semantic-release": "semantic-release",

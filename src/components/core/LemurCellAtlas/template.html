@@ -1,5 +1,93 @@
-<div :class="[$style.root]">
-  <v-container class="mb-5 pb-5">
+<div :class="[$style.root]" ref="elemurChartRef">
+    <v-container>
+      <v-row no-gutters>
+        <div class="d-flex flex-row align-center">
+          <v-btn-toggle v-model="showType" @change="typeChange" mandatory>
+            <v-btn :value="1">
+              <v-icon>mdi-view-gallery</v-icon>
+            </v-btn>
+            <v-btn :value="2">
+              <v-icon>mdi-view-comfy</v-icon>
+            </v-btn>
+          </v-btn-toggle>
+      
+          <v-select
+            :class="$style.selectList"
+            class="ml-5"
+            v-model="selectType"
+            solo-inverted
+            hide-details
+            :items="selectList"
+            label="Select by"
+            style="width: 300px"
+            @change="slideChange"
+          >
+          </v-select>
+          <v-switch
+            v-model="isNetOpen"
+            label="grid"
+            class="ml-5"
+            @change="slideChange"
+          ></v-switch>
+        </div>
+      </v-row>
+      <v-row v-if="showType === 1" no-gutters>
+        <elemur-chart v-if="!imgLoading" :id="selectImg + 2" :netOpen="isNetOpen" :mtype="selectType" :full="true" :eeumRegionDesc="eeumRegionDesc"></elemur-chart>
+        <div v-else :class="$style.empty"></div>
+      </v-row>
+      <v-row v-if="showType === 1" no-gutters>
+        <v-sheet
+        class="my-4"
+        elevation="8"
+        max-width="100%"
+      >
+        <v-slide-group
+          v-model="selectImg"
+          class="pa-4"
+          center-active
+          show-arrows
+          @change="slideChange"
+        >
+          <v-slide-item
+            v-for="n in itemTotalNum"
+            :key="n"
+            v-slot="{ active, toggle }"
+          >
+          <v-card
+            :color="active ? 'green darken-2' : 'grey lighten-1'"
+            class="px-4 py-0 mx-2"
+            height="160"
+            width="200"
+            @click="toggle"
+            >
+            <v-img
+              :lazy-src="`https://eeum-brain.com/static/static/reference_gallery/atlas/elemur_slice${n+2}.svg`"
+              :src="`https://eeum-brain.com/static/static/reference_gallery/atlas/elemur_slice${n+2}.svg`"use
+              :class="$style.image"
+              :key="`slice${n+2}`"
+              :alt="`slice${n+2}`"
+            />
+            </v-card>
+          </v-slide-item>
+        </v-slide-group>
+      </v-sheet>
+      </v-row>
+      <v-row v-if="showType === 2 && !imgLoading" no-gutters class="d-flex flex-row flex-lg-wrap flex-sm-wrap">
+        <elemur-chart v-for="item in currentItemTotal" :netOpen="isNetOpen" :id="item + 2" :mtype="selectType" :full="false" :eeumRegionDesc="eeumRegionDesc"></elemur-chart>
+      </v-row>
+      <v-row v-if="showType === 2 && !imgLoading">
+        <div v-if="isLazyLoading" :class="$style.loading">Loading, please wait ...</div>
+        <div v-if="noMore" :class="$style.loading">No more</div>
+      </v-row>
+    </v-container>
+    <v-overlay :value="imgLoading">
+      <v-progress-circular
+        indeterminate
+        size="64"
+      ></v-progress-circular>
+    </v-overlay>
+    
+  <!-- <v-container class="mb-5 pb-5">
     <v-row align-center v-viewer="options" class="images clearfix">
       <v-col
         class="mx-0 px-0 my-0 py-0"
@@ -20,5 +108,6 @@
         />
       </v-col>
     </v-row>
-  </v-container>
+  </v-container> -->
+  
 </div>
