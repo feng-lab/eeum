@@ -1,5 +1,5 @@
 <div :class="[$style.root]" ref="elemurChartRef">
-    <v-container>
+    <v-container :class="$style.containerStyle">
       <v-row no-gutters>
         <div class="d-flex flex-row align-center">
           <v-btn-toggle v-model="showType" @change="typeChange" mandatory>
@@ -40,6 +40,7 @@
         class="my-4"
         elevation="8"
         max-width="100%"
+        :class="$style.sheetStyle"
       >
         <v-slide-group
           v-model="selectImg"
@@ -61,11 +62,11 @@
             @click="toggle"
             >
             <v-img
-              :lazy-src="`https://eeum-brain.com/static/static/reference_gallery/atlas/elemur_slice${n+2}.svg`"
-              :src="`https://eeum-brain.com/static/static/reference_gallery/atlas/elemur_slice${n+2}.svg`"use
+              :lazy-src="`https://eeum-brain.com/static/static/reference_gallery/atlas/elemur_slice${n+1}.svg`"
+              :src="`https://eeum-brain.com/static/static/reference_gallery/atlas/elemur_slice${n+1}.svg`"use
               :class="$style.image"
-              :key="`slice${n+2}`"
-              :alt="`slice${n+2}`"
+              :key="`slice${n+1}`"
+              :alt="`slice${n+1}`"
             />
             </v-card>
           </v-slide-item>
@@ -73,7 +74,7 @@
       </v-sheet>
       </v-row>
       <v-row v-if="showType === 2 && !imgLoading" no-gutters class="d-flex flex-row flex-lg-wrap flex-sm-wrap">
-        <elemur-chart v-for="item in currentItemTotal" :netOpen="isNetOpen" :id="item + 2" :mtype="selectType" :full="false" :eeumRegionDesc="eeumRegionDesc"></elemur-chart>
+        <elemur-chart v-for="item in currentItemTotal" :netOpen="isNetOpen" :id="item + 1" :mtype="selectType" :full="false" :eeumRegionDesc="eeumRegionDesc"></elemur-chart>
       </v-row>
       <v-row v-if="showType === 2 && !imgLoading">
         <div v-if="isLazyLoading" :class="$style.loading">Loading, please wait ...</div>
