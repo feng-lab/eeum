@@ -1,8 +1,7 @@
-<div :class="[$style.root]">
-
-    <v-container >
+<div :class="[$style.root]" ref="elemurChartRef">
+    <v-container>
       <v-row no-gutters>
-        <div class="d-flex flex-row">
+        <div class="d-flex flex-row align-center">
           <v-btn-toggle v-model="showType" @change="typeChange" mandatory>
             <v-btn :value="1">
               <v-icon>mdi-view-gallery</v-icon>
@@ -23,11 +22,17 @@
             style="width: 300px"
             @change="slideChange"
           >
-        </v-select>
+          </v-select>
+          <v-switch
+            v-model="isNetOpen"
+            label="grid"
+            class="ml-5"
+            @change="netChange"
+          ></v-switch>
         </div>
       </v-row>
       <v-row v-if="showType === 1" no-gutters>
-        <elemur-chart :id="model + 2" :mtype="selectType" :full="true" v-if="!imgLoading"></elemur-chart>
+        <elemur-chart v-if="!imgLoading" :id="selectImg + 2" :netOpen="isNetOpen" :mtype="selectType" :full="true" :eeumRegionDesc="eeumRegionDesc"></elemur-chart>
         <div v-else :class="$style.empty"></div>
       </v-row>
       <v-row v-if="showType === 1" no-gutters>
@@ -37,14 +42,14 @@
         max-width="100%"
       >
         <v-slide-group
-          v-model="model"
+          v-model="selectImg"
           class="pa-4"
           center-active
           show-arrows
           @change="slideChange"
         >
           <v-slide-item
-            v-for="n in totalNum"
+            v-for="n in itemTotalNum"
             :key="n"
             v-slot="{ active, toggle }"
           >
@@ -67,7 +72,11 @@
       </v-sheet>
       </v-row>
       <v-row v-if="showType === 2 && !imgLoading" no-gutters class="d-flex flex-row flex-lg-wrap flex-sm-wrap">
-        <elemur-chart :id="n + 2" :mtype="selectType" v-for="n in totalNum" :full="false"></elemur-chart>
+        <elemur-chart v-for="item in currentItemTotal" :netOpen="isNetOpen" :id="item + 2" :mtype="selectType" :full="false" :eeumRegionDesc="eeumRegionDesc"></elemur-chart>
+      </v-row>
+      <v-row v-if="showType === 2 && !imgLoading">
+        <div v-if="isLazyLoading" :class="$style.loading">Loading, please wait ...</div>
+        <div v-if="noMore" :class="$style.loading">No more</div>
       </v-row>
     </v-container>
     <v-overlay :value="imgLoading">

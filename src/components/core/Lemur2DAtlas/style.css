@@ -1,8 +1,8 @@
 .root {
-  display: flex;
-  flex-flow: column;
-  height: 100%;
-  overflow-y: auto;
+  /* display: flex;
+  flex-flow: column; */
+  height: calc(100% + 50px);
+  overflow-y: scroll;
 }
 
 .image {
@@ -30,4 +30,11 @@
 .empty {
   height: 60vh;
   width: 100%;
+}
+
+.loading {
+  text-align: center;
+  width: 100%;
+  height: 80px;
+  /* line-height: 80px; */
 }

@@ -30,6 +30,14 @@ export default {
       type: Boolean,
       default: true,
     },
+    eeumRegionDesc: {
+      type: Object,
+      default: {},
+    },
+    netOpen: {
+      type: Boolean,
+      default: true,
+    },
   },
   data() {
     let graphData = [];
@@ -55,7 +63,7 @@ export default {
       myChart: null,
       option: {
         title: {
-          text: 'atlas',
+          text: '',
           left: 20,
           top: 20,
         },
@@ -98,7 +106,7 @@ export default {
           },
           {
             type: 'graph',
-            zlevel: 0,
+            zlevel: -1,
             zoom: 1,
             coordinateSystem: 'geo',
             animationDurationUpdate: 0,
@@ -113,6 +121,7 @@ export default {
                 offset:
                   index >= 30 ? [0, -10] : index === 0 ? [0, -10] : [30, 0],
                 show: index % 4 === 1 || index === 0,
+                formatter: (params) => this.valueFormat(params, index),
               };
 
               return {
@@ -122,7 +131,7 @@ export default {
                   color: '#b2b2b2',
                 },
                 tooltip: {
-                  valueFormatter: () => '',
+                  formatter: (params) => this.valueFormat(params, index),
                 },
               };
             }),
@@ -136,9 +145,7 @@ export default {
   },
   async mounted() {
     const mapdata = await this.getMapData(this.id);
-    this.$nextTick(() => {
-      this.mapChartInit(mapdata);
-    });
+    this.mapChartInit(mapdata);
   },
   destroyed() {
     window.removeEventListener('resize', () => {
@@ -157,18 +164,14 @@ export default {
       );
       return res.data;
     },
-    async getEeumRegionDesc() {
-      const res = await axios.get(
-        'https://fenglab.xyz/static/lemur/eeum_region_desc.json'
-      );
-      return res.data;
-    },
-    async mapChartInit(mapJson) {
+    mapChartInit(mapJson) {
       console.log('mapChartInit-->', mapJson);
       if (this.myChart) {
         this.myChart.clear();
       }
-      const eeum_region_desc = await this.getEeumRegionDesc();
+      if (!this.netOpen) {
+        this.option.series[1] = {};
+      }
       this.option.series[0].map = this.mapName;
       this.option.geo.map = this.mapName;
       const chartDom = document.getElementById(`geo-map-${this.id}`);
@@ -178,22 +181,22 @@ export default {
         const id = one.properties.id;
         const valueObj = {
           id,
-          DAPI: eeum_region_desc[id]['DAPI density (# / um^3)'],
-          NeuN: eeum_region_desc[id]['NeuN density (# / um^3)'],
-          PV: eeum_region_desc[id]['PV density (# / um^3)'],
+          DAPI: this.eeumRegionDesc[id]['DAPI density (# / um^3)'],
+          NeuN: this.eeumRegionDesc[id]['NeuN density (# / um^3)'],
+          PV: this.eeumRegionDesc[id]['PV density (# / um^3)'],
           NeuronCellRatio:
-            eeum_region_desc[id]['NeuN density (# / um^3)'] /
-            eeum_region_desc[id]['DAPI density (# / um^3)'],
+            this.eeumRegionDesc[id]['NeuN density (# / um^3)'] /
+            this.eeumRegionDesc[id]['DAPI density (# / um^3)'],
           PVNeuronRatio:
-            eeum_region_desc[id]['PV density (# / um^3)'] /
-            eeum_region_desc[id]['NeuN density (# / um^3)'],
+            this.eeumRegionDesc[id]['PV density (# / um^3)'] /
+            this.eeumRegionDesc[id]['NeuN density (# / um^3)'],
         };
         return {
           name: one.properties.name,
           value: valueObj[this.mtype],
           itemStyle: {
             backgroundColor: '#fff',
-            areaColor: `#${eeum_region_desc[id].color_hex_triplet}`,
+            areaColor: `#${this.eeumRegionDesc[id].color_hex_triplet}`,
           },
         };
       });
@@ -203,12 +206,12 @@ export default {
         let minData = 0;
         let precision = 2;
         if (this.mtype === 'NeuronCellRatio') {
-          this.option.title.text = 'Neuron/Cell Ratio';
+          // this.option.title.text = 'Neuron/Cell Ratio';
           this.option.series[0].name = 'Neuron/Cell Ratio';
         } else if (this.mtype === 'PVNeuronRatio') {
-          this.option.title.text = 'PV/Neuron Ratio';
+          // this.option.title.text = 'PV/Neuron Ratio';
           this.option.series[0].name = 'PV/Neuron Ratio';
-          const valueArr = Object.values(eeum_region_desc).map(
+          const valueArr = Object.values(this.eeumRegionDesc).map(
             (one) =>
               one['PV density (# / um^3)'] / one['NeuN density (# / um^3)']
           );
@@ -216,8 +219,8 @@ export default {
           minData = 0;
         } else {
           const showType = `${this.mtype} density (# / um^3)`;
-          this.option.title.text = showType;
-          const valueArr = Object.values(eeum_region_desc).map(
+          // this.option.title.text = showType.slice(0, -11);
+          const valueArr = Object.values(this.eeumRegionDesc).map(
             (one) => one[showType]
           );
           maxData = Math.max(...valueArr);
@@ -245,10 +248,12 @@ export default {
             ],
           },
           precision,
+          calculable: true,
+          itemHeight: this.full ? 160 : 80,
+          itemWidth: this.full ? 20 : 14,
           // textStyle: {
           //   color: '#ffdddd',
           // },
-          calculable: true,
         };
       }
       this.myChart.showLoading('default', {
@@ -278,13 +283,23 @@ export default {
         this.myChart.resize();
       });
     },
+    valueFormat(params, index) {
+      let label = '0';
+      if (params.name) {
+        label =
+          index >= 30 || index === 0
+            ? `${params.name.split(',')[0] / 100} mm`
+            : `${params.name.split(',')[1] / 100} mm`;
+      }
+      return label;
+    },
   },
 };
 </script>
 
 <style scoped lang="scss">
 .geo-map-wrap {
-  height: 30vh;
+  height: 28vh;
 }
 .geo-full-map-wrap {
   height: 70vh;
