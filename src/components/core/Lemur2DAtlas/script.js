@@ -71,6 +71,7 @@ export default {
   },
   methods: {
     slideChange (timer = 100) {
+      this.itemPage = 1;
       this.imgLoading = true;
       setTimeout(() => {
         this.imgLoading = false;
@@ -78,7 +79,6 @@ export default {
     },
     typeChange () {
       this.selectImg = 0;
-      this.itemPage = 1;
       this.slideChange(2000);
     },
     async getEeumRegionDesc () {
@@ -94,10 +94,6 @@ export default {
         this.itemPage += 1;
         this.isLazyLoading = false;
       }, 2000);
-    },
-    netChange () {
-      this.itemPage = 1;
-      this.slideChange();
     },
   },
 };

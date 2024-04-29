@@ -27,7 +27,7 @@
             v-model="isNetOpen"
             label="grid"
             class="ml-5"
-            @change="netChange"
+            @change="slideChange"
           ></v-switch>
         </div>
       </v-row>
@@ -62,7 +62,7 @@
             >
             <v-img
               :lazy-src="`https://eeum-brain.com/static/static/reference_gallery/atlas/elemur_slice${n+2}.svg`"
-              :src="`https://eeum-brain.com/static/static/reference_gallery/atlas/elemur_slice${n+2}.svg`"
+              :src="`https://eeum-brain.com/static/static/reference_gallery/atlas/elemur_slice${n+2}.svg`"use
               :class="$style.image"
               :key="`slice${n+2}`"
               :alt="`slice${n+2}`"
