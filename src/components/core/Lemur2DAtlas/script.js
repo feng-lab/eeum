@@ -33,7 +33,7 @@ export default {
       imgLoading: false,
       eeumRegionDesc: {},
       isLazyLoading: false,
-      itemTotalNum: 40,
+      itemTotalNum: 177,
       itemPerPage: 24,
       itemPage: 1,
       elemurChartRef: null,

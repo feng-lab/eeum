@@ -60,7 +60,8 @@
             width="200"
             @click="toggle"
             >
-            <img
+            <v-img
+              :lazy-src="`https://eeum-brain.com/static/static/reference_gallery/atlas/elemur_slice${n+2}.svg`"
               :src="`https://eeum-brain.com/static/static/reference_gallery/atlas/elemur_slice${n+2}.svg`"
               :class="$style.image"
               :key="`slice${n+2}`"
