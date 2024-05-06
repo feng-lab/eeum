@@ -305,6 +305,6 @@ export default {
   height: 28vh;
 }
 .geo-full-map-wrap {
-  height: 60vh;
+  height: calc(100vh - 390px);
 }
 </style>
