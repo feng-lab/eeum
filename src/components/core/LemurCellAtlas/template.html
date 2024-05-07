@@ -1,8 +1,9 @@
 <div :class="[$style.root]" ref="elemurChartRef">
     <v-container :class="$style.containerStyle">
-      <v-row no-gutters>
-        <div class="d-flex flex-row align-center">
-          <v-btn-toggle v-model="showType" @change="typeChange" mandatory>
+      <v-row no-gutters >
+        <v-col cols="12"sm="2" md="2" lg="1" class="mr-5 mb-1"
+      >
+          <v-btn-toggle v-model="showType" @change="typeChange" mandatory xs>
             <v-btn :value="1">
               <v-icon>mdi-view-gallery</v-icon>
             </v-btn>
@@ -10,10 +11,11 @@
               <v-icon>mdi-view-comfy</v-icon>
             </v-btn>
           </v-btn-toggle>
-      
+        </v-col>
+        <v-col cols="12" sm="4" md="3" lg="2" class="mr-5 mb-1"
+        >
           <v-select
             :class="$style.selectList"
-            class="ml-5"
             v-model="selectType"
             solo-inverted
             hide-details
@@ -23,13 +25,15 @@
             @change="slideChange"
           >
           </v-select>
+        </v-col>
+        <v-col cols="12" sm="2"  md="1" lg="1"
+        >
           <v-switch
             v-model="isNetOpen"
             label="grid"
-            class="ml-5"
             @change="slideChange"
           ></v-switch>
-        </div>
+        </v-col>
       </v-row>
       <v-row v-if="showType === 1" no-gutters>
         <elemur-chart v-if="!imgLoading" :id="selectImg + 2" :netOpen="isNetOpen" :mtype="selectType" :full="true" :eeumRegionDesc="eeumRegionDesc"></elemur-chart>
@@ -57,8 +61,8 @@
           <v-card
             :color="active ? 'green darken-2' : 'grey lighten-1'"
             class="px-4 py-0 mx-2"
-            height="160"
-            width="200"
+            :height="screenWidth > 600 ? 160 : 100"
+            :width="screenWidth > 600 ? 200 : 120"
             @click="toggle"
             >
             <v-img

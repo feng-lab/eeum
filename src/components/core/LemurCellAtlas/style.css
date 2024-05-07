@@ -13,10 +13,10 @@
   display: inline-block; */
 }
 
-.selectList {
-  width: 300px !important;
+/* .selectList {
+  max-width: 300px !important;
   margin-left: 20px;
-}
+} */
 
 .v-input__slot {
   width: 300px !important;

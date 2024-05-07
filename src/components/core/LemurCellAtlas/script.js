@@ -12,7 +12,7 @@ export default {
     }),
   },
   components: { ElemurChart },
-  data() {
+  data () {
     return {
       options: {
         title: false,
@@ -41,21 +41,26 @@ export default {
     };
   },
   computed: {
-    smallScreen() {
+    smallScreen () {
       return this.$vuetify.breakpoint.width < Breakpoints.md;
     },
-    currentItemTotal() {
+    currentItemTotal () {
       const total = this.itemPage * this.itemPerPage;
       return total >= this.itemTotalNum ? this.itemTotalNum : total;
     },
-    noMore() {
+    noMore () {
       return this.currentItemTotal >= this.itemTotalNum;
     },
+    screenWidth () {
+      const pageWidth =
+        document.documentElement.clientWidth || document.body.clientWidth;
+      return pageWidth;
+    },
   },
-  async created() {
+  async created () {
     this.eeumRegionDesc = await this.getEeumRegionDesc();
   },
-  mounted() {
+  mounted () {
     this.elemurChartRef = this.$refs.elemurChartRef;
     this.elemurChartRef.addEventListener('scroll', () => {
       const scrollTop = this.elemurChartRef.scrollTop;
@@ -65,30 +70,30 @@ export default {
         this.loadMore();
     });
   },
-  destoryed() {
+  destoryed () {
     // eslint-disable-next-line prettier/prettier
     this.elemurChartRef.removeEventListener('scroll', () => { });
     this.elemurChartRef = null;
   },
   methods: {
-    slideChange(timer = 100) {
+    slideChange (timer = 100) {
       this.itemPage = 1;
       this.imgLoading = true;
       setTimeout(() => {
         this.imgLoading = false;
       }, timer);
     },
-    typeChange() {
+    typeChange () {
       this.selectImg = 0;
       this.slideChange(2000);
     },
-    async getEeumRegionDesc() {
+    async getEeumRegionDesc () {
       const res = await axios.get(
         'https://fenglab.xyz/static/lemur/eeum_region_desc.json'
       );
       return res.data;
     },
-    loadMore() {
+    loadMore () {
       if (this.isLazyLoading || this.noMore) return;
       this.isLazyLoading = true;
       setTimeout(() => {

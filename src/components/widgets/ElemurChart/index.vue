@@ -254,6 +254,7 @@ export default {
           calculable: true,
           itemHeight: this.full ? 160 : 80,
           itemWidth: this.full ? 20 : 14,
+          bottom: 20,
           // textStyle: {
           //   color: '#ffdddd',
           // },
@@ -305,6 +306,11 @@ export default {
   height: 28vh;
 }
 .geo-full-map-wrap {
-  height: calc(100vh - 390px);
+  height: calc(100vh - 400px);
+}
+@media (max-width: 600px) {
+  .geo-full-map-wrap {
+    height: calc(100vh - 460px);
+  }
 }
 </style>
