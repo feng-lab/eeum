@@ -88,6 +88,10 @@ export default {
               link: '/lemurcellatlas',
               // link: 'https://eeum-brain.com/nv2.html#/atlas/elemur-cell-atlas',
             },
+            {
+              title: 'eLemur Download',
+              link: '/lemurdownload',
+            },
           ],
         },
         {

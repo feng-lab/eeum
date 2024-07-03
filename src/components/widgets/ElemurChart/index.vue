@@ -163,7 +163,7 @@ export default {
       // );
       // return res.default;
       const res = await axios.get(
-        `https://fenglab.xyz/static/lemur/geojson/eLemur_geojson_slice${mapCode}.json`
+        `https://eeum-brain.com/static/lemur/geojson/eLemur_geojson_slice${mapCode}.json`
       );
       return res.data;
     },

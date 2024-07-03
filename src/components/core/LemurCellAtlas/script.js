@@ -89,7 +89,7 @@ export default {
     },
     async getEeumRegionDesc () {
       const res = await axios.get(
-        'https://fenglab.xyz/static/lemur/eeum_region_desc.json'
+        'https://eeum-brain.com/static/lemur/eeum_region_desc.json'
       );
       return res.data;
     },

@@ -10,6 +10,7 @@ import LemurBrainOntology from '@/components/core/LemurBrainOntology';
 import Lemur2DAtlas from '@/components/core/Lemur2DAtlas';
 import Lemur3DAtlas from '@/components/core/Lemur3DAtlas';
 import LemurCellAtlas from '@/components/core/LemurCellAtlas';
+import LemurDownload from '@/components/core/LemurDownload';
 import mGRASPDetection from '@/components/core/mGRASPDetection';
 import BrainNomenclature from '@/components/core/BrainNomenclature';
 import mGRASPMapping from '@/components/core/mGRASPMapping';
@@ -86,6 +87,11 @@ export default new Router({
       path: '/lemurcellatlas',
       name: 'LemurCellAtlas',
       component: LemurCellAtlas,
+    },
+    {
+      path: '/lemurdownload',
+      name: 'LemurDownload',
+      component: LemurDownload,
     },
     {
       path: '/mgraspdetection',
