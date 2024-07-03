@@ -1,31 +1,40 @@
 <div :class="[$style.root]">
   <v-container class="mb-5 pb-5">
-    <v-row>
+  <v-row>
+    <v-col>
       <v-btn 
-      class="ma-2" 
-      outlined 
-      href="static/lemur/eLemur_3d_atlas_mesh.zip"
-      download>
+        class="ma-2" 
+        outlined 
+        href="static/lemur/eLemur_3d_atlas_mesh.zip"
+        download>
           Download eLemur_3d_atlas_mesh.zip
       </v-btn>
-    </v-row>
-    <v-row>
+      <span class="ml-2">3D meshes of the anatomical structures</span>
+    </v-col>
+  </v-row>
+  <v-row>
+    <v-col>
       <v-btn 
-      class="ma-2" 
-      outlined 
-      href="static/lemur/eLemur_3d_atlas.label"
-      download>
-          Download eLemur_3d_atlas.label
-      </v-btn>
-    </v-row>
-    <v-row>
-      <v-btn 
-      class="ma-2" 
-      outlined 
-      href="static/lemur/eLemur_3d_atlas.mhd.zip"
-      download>
+        class="ma-2" 
+        outlined 
+        href="static/lemur/eLemur_3d_atlas.mhd.zip"
+        download>
           Download eLemur_3d_atlas.mhd.zip
       </v-btn>
-    </v-row>
+      <span class="ml-2">volumetric atlas files</span>
+    </v-col>
+  </v-row>
+  <v-row>
+    <v-col>
+      <v-btn 
+        class="ma-2" 
+        outlined 
+        href="static/lemur/eLemur_3d_atlas.label"
+        download>
+          Download eLemur_3d_atlas.label
+      </v-btn>
+      <span class="ml-2">label file specifying the ID, color code and name of each anatomical structure</span>
+    </v-col>
+  </v-row>
   </v-container>
 </div>
