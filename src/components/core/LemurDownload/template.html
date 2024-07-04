@@ -1,40 +1,82 @@
 <div :class="[$style.root]">
-  <v-container class="mb-5 pb-5">
+<v-container class="mb-5 pb-5">
   <v-row>
-    <v-col>
-      <v-btn 
-        class="ma-2" 
-        outlined 
-        href="static/lemur/eLemur_3d_atlas_mesh.zip"
-        download>
-          Download eLemur_3d_atlas_mesh.zip
-      </v-btn>
-      <span class="ml-2">3D meshes of the anatomical structures</span>
+    <v-col cols="12">
+      <v-card outlined>
+        <v-card-title>Download eLemur Files</v-card-title>
+        <v-card-text>
+          <v-row class="align-center mb-3">
+            <v-col cols="12" md="4">
+              <span class="ml-2 text-body-1">3D meshes of the anatomical structures:</span>
+            </v-col>
+            <v-col cols="12" md="4">
+              <v-btn 
+                class="ma-2" 
+                outlined 
+                href="https://neutracing.com/static/lemur/eLemur_3d_atlas_mesh.zip"
+                download>
+                  Download Link
+              </v-btn>
+            </v-col>
+            <v-col cols="12" md="4">
+              <v-btn 
+                class="ma-2" 
+                outlined 
+                href="static/lemur/eLemur_3d_atlas_mesh.zip"
+                download>
+                  Alternate Link
+              </v-btn>
+            </v-col>
+          </v-row>
+          <v-row class="align-center mb-3">
+            <v-col cols="12" md="4">
+              <span class="ml-2 text-body-1">Volumetric atlas files:</span>
+            </v-col>
+            <v-col cols="12" md="4">
+              <v-btn 
+                class="ma-2" 
+                outlined 
+                href="https://neutracing.com/static/lemur/eLemur_3d_atlas.mhd.zip"
+                download>
+                  Download Link
+              </v-btn>
+            </v-col>
+            <v-col cols="12" md="4">
+              <v-btn 
+                class="ma-2" 
+                outlined 
+                href="static/lemur/eLemur_3d_atlas.mhd.zip"
+                download>
+                  Alternate Link
+              </v-btn>
+            </v-col>
+          </v-row>
+          <v-row class="align-center mb-3">
+            <v-col cols="12" md="4">
+              <span class="ml-2 text-body-1">Label file specifying the ID, color code, and name of each anatomical structure:</span>
+            </v-col>
+            <v-col cols="12" md="4">
+              <v-btn 
+                class="ma-2" 
+                outlined 
+                href="https://neutracing.com/static/lemur/eLemur_3d_atlas.label"
+                download>
+                  Download Link
+              </v-btn>
+            </v-col>
+            <v-col cols="12" md="4">
+              <v-btn 
+                class="ma-2" 
+                outlined 
+                href="static/lemur/eLemur_3d_atlas.label"
+                download>
+                  Alternate Link
+              </v-btn>
+            </v-col>
+          </v-row>
+        </v-card-text>
+      </v-card>
     </v-col>
   </v-row>
-  <v-row>
-    <v-col>
-      <v-btn 
-        class="ma-2" 
-        outlined 
-        href="static/lemur/eLemur_3d_atlas.mhd.zip"
-        download>
-          Download eLemur_3d_atlas.mhd.zip
-      </v-btn>
-      <span class="ml-2">volumetric atlas files</span>
-    </v-col>
-  </v-row>
-  <v-row>
-    <v-col>
-      <v-btn 
-        class="ma-2" 
-        outlined 
-        href="static/lemur/eLemur_3d_atlas.label"
-        download>
-          Download eLemur_3d_atlas.label
-      </v-btn>
-      <span class="ml-2">label file specifying the ID, color code and name of each anatomical structure</span>
-    </v-col>
-  </v-row>
-  </v-container>
+</v-container>
 </div>
