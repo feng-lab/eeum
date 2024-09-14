@@ -23,6 +23,13 @@
         lg="4"
         xl="4"
       >
+      <v-lazy
+            v-model="isActive"
+            :options="{
+          threshold: .5
+        }"
+            transition="fade-transition"
+          >
         <img
           :src="`${item.sliceWithAtlasSrc}${i}.png`"
           :data-source="`${item.sliceWithAtlasSrc}${i}.png`"
@@ -30,6 +37,7 @@
           :key="`slice${i}`"
           :alt="`slice${i}`"
         />
+      </v-lazy>
       </v-col>
     </v-row>
   </v-container>
