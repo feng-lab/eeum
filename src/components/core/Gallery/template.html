@@ -1,4 +1,40 @@
 <div :class="[$style.root]">
+  <template v-if="showAtlas === '1'">
+    <v-container class="mb-5 pb-5">
+    <v-row align-center v-viewer="options" class="images clearfix">
+      <v-col
+        style="position:fixed; z-index:999;"
+      >
+        <v-card style="font-size:2em;"
+                class="d-inline-flex justify-left pa-2">
+          <template v-for="ch in item.channels">
+            <span :style="`color:${ch.color}`">{{ch.name}}&nbsp</span>
+          </template>
+        </v-card>
+      </v-col>
+      <v-col
+        class="mx-0 px-0 my-0 py-0"
+        v-for="i in item.numSlices"
+        :key="i"
+        cols="12"
+        xs="12"
+        sm="6"
+        md="6"
+        lg="4"
+        xl="4"
+      >
+        <img
+          :src="`${item.sliceWithAtlasSrc}${i}.png`"
+          :data-source="`${item.sliceWithAtlasSrc}${i}.png`"
+          :class="$style.image"
+          :key="`slice${i}`"
+          :alt="`slice${i}`"
+        />
+      </v-col>
+    </v-row>
+  </v-container>
+  </template>
+  <template v-else>
   <v-container class="mb-5 pb-5">
     <v-row wrap>
       <v-col
@@ -68,4 +104,5 @@
       </v-col>
     </v-row>
   </v-container>
+  </template>
 </div>

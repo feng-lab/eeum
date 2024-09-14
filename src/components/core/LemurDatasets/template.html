@@ -90,11 +90,21 @@
                     outlined
                     rounded
                     small
-                    :to="{ name: 'Gallery', params: { name: item.name }}"
+                    :to="{ name: 'Gallery', params: { name: item.name, showAtlas: '0' }}"
                   >
                     Gallery View
                   </v-btn>
-                  <a :href="`${item.fullResolutionView}`" target="_blank">
+                  <v-btn
+                    v-if="item.isReady === true"
+                    class="ml-2 mt-5"
+                    outlined
+                    rounded
+                    small
+                    :to="{ name: 'Gallery', params: { name: item.name, showAtlas: '1' }}"
+                  >
+                    Gallery With Atlas
+                  </v-btn>
+                  <!-- <a :href="`${item.fullResolutionView}`" target="_blank">
                     <v-btn
                       v-if="item.isReady == true"
                       class="ml-2 mt-5"
@@ -104,7 +114,7 @@
                     >
                       Full-resolution View
                     </v-btn>
-                  </a>
+                  </a> -->
                   <a :href="`${item.fullResolutionViewv2}`" target="_blank">
                     <v-btn
                       v-if="item.isReady == true"

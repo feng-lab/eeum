@@ -8,6 +8,7 @@ import Home from '@/components/core/Home';
 import LemurDatasets from '@/components/core/LemurDatasets';
 import LemurBrainOntology from '@/components/core/LemurBrainOntology';
 import Lemur2DAtlas from '@/components/core/Lemur2DAtlas';
+import Lemur2DReferenceWithAtlas from '@/components/core/Lemur2DReferenceWithAtlas';
 import Lemur3DAtlas from '@/components/core/Lemur3DAtlas';
 import LemurCellAtlas from '@/components/core/LemurCellAtlas';
 import LemurDownload from '@/components/core/LemurDownload';
@@ -62,7 +63,7 @@ export default new Router({
       component: LemurDatasets,
     },
     {
-      path: '/gallery/:name',
+      path: '/atlas/:showAtlas/gallery/:name',
       name: 'Gallery',
       component: Gallery,
       meta: { requiresCheck: false },
@@ -77,6 +78,11 @@ export default new Router({
       path: '/lemur2datlas',
       name: 'Lemur2DAtlas',
       component: Lemur2DAtlas,
+    },
+    {
+      path: '/lemur2dreferencewithatlas',
+      name: 'Lemur2DReferenceWithAtlas',
+      component: Lemur2DReferenceWithAtlas,
     },
     {
       path: '/lemur3datlas',

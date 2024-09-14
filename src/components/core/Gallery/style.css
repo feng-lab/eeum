@@ -29,3 +29,10 @@
 .text {
   z-index: 2;
 }
+
+.image {
+  width: 100%;
+  cursor: pointer;
+  margin: 5px;
+  display: inline-block;
+}

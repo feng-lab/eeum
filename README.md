@@ -2,7 +2,7 @@ Introduction
 ============
 [Eeum Center][] is an open database of synaptical level connectome. created by [CFC, KIST][], based on [ParaView Glance][].
 
-[Eeum Center]: https://eeum.kist.re.kr
+[Eeum Center]: https://eeum-brain.com
 [CFC, KIST]: http://cfc.kist.re.kr
 [ParaView Glance]: https://kitware.github.io/paraview-glance/
 
