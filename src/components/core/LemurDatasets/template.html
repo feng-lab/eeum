@@ -126,6 +126,16 @@
                       Full-resolution View v2
                     </v-btn>
                   </a>
+                  <v-btn
+                    v-if="item.isReady === true && item.name === 'Reference brain'"
+                    class="ml-2 mt-5"
+                    outlined
+                    rounded
+                    small
+                    :to="{ name: 'LemurFullResolutionViewGuide'}"
+                  >
+                    Full-resolution View Guide
+                  </v-btn>
                   <!--
                   <v-btn
                     v-if="item.name === 'Reference brain'"

@@ -3,7 +3,7 @@ import { Breakpoints } from '@/constants';
 import 'viewerjs/dist/viewer.css';
 
 export default {
-  name: 'Lemur2DReferenceWithAtlas',
+  name: 'LemurFullResolutionViewGuide',
   directives: {
     viewer: viewer({
       debug: true,

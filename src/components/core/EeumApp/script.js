@@ -88,7 +88,6 @@ export default {
               link: '/lemurcellatlas',
               // link: 'https://eeum-brain.com/nv2.html#/atlas/elemur-cell-atlas',
             },
-            // { title: 'eLemur 2D Reference With Atlas', link: '/lemur2dreferencewithatlas' },
             {
               title: 'eLemur Download',
               link: '/lemurdownload',
