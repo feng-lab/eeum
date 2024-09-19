@@ -17,7 +17,7 @@ export default {
     showAtlas: {
       type: String,
       required: true,
-    }
+    },
   },
   data() {
     return {
