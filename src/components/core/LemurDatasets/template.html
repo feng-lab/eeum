@@ -95,14 +95,14 @@
                     Gallery View
                   </v-btn>
                   <v-btn
-                    v-if="item.isReady === true"
+                    v-if="item.isReady === true && item.name === 'Reference brain'"
                     class="ml-2 mt-5"
                     outlined
                     rounded
                     small
                     :to="{ name: 'Gallery', params: { name: item.name, showAtlas: '1' }}"
                   >
-                    Gallery With Atlas
+                    Gallery with Atlas
                   </v-btn>
                   <!-- <a :href="`${item.fullResolutionView}`" target="_blank">
                     <v-btn

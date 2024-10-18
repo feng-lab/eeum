@@ -36,3 +36,22 @@
   margin: 5px;
   display: inline-block;
 }
+.image2 {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.svg-overlay {
+  position: absolute;
+  bottom: 0;
+  /* Position at the bottom */
+  right: 0;
+  /* Position at the right */
+  width: 30%;
+  /* Adjust width as needed */
+  height: auto;
+  pointer-events: none;
+  /* Ensure it doesn't block interactions */
+  z-index: 10;
+}
