@@ -35,7 +35,7 @@ export default {
           sliceSrc:
             'https://eeum-brain.com/static/static/reference_gallery/reference_wo_dapi/slice',
           sliceWithAtlasSrc:
-            'https://neutracing.com/static/static/reference_gallery/elemur_sidebyside_edited_svg/elemur_slice',
+            'https://eeum-brain.com/static/static/reference_gallery/elemur_sidebyside_edited_svg/elemur_slice',
           startSlice: 128,
           sliceLinkPre:
             'neuroglancer/index.html#!%7B%22dimensions%22:%7B%22x%22:%5B0.000010444176%2C%22m%22%5D%2C%22y%22:%5B0.000010444176%2C%22m%22%5D%2C%22z%22:%5B0.0001%2C%22m%22%5D%7D%2C%22position%22:%5B1759.8031005859375%2C616.8143310546875%2C',
@@ -63,7 +63,7 @@ export default {
           numSlices: 166,
           sliceSrc: 'https://eeum-brain.com/static/static/eLemur-A2/slice',
           sliceWithAtlasSrc:
-            'https://neutracing.com/static/static/eLemur-A2_with_atlas/elemur_slice',
+            'https://eeum-brain.com/static/static/eLemur-A2_with_atlas/elemur_slice',
           startSlice: 46,
           sliceLinkPre:
             'neuroglancer/index.html#!%7B%22dimensions%22:%7B%22x%22:%5B0.000010444176%2C%22m%22%5D%2C%22y%22:%5B0.000010444176%2C%22m%22%5D%2C%22z%22:%5B0.0001%2C%22m%22%5D%7D%2C%22position%22:%5B1759.8031005859375%2C616.8143310546875%2C',
@@ -143,7 +143,7 @@ export default {
           numSlices: 179,
           sliceSrc: 'https://eeum-brain.com/static/static/eLemur_B1/slice',
           sliceWithAtlasSrc:
-            'https://neutracing.com/static/static/eLemur_B1_with_atlas/elemur_slice',
+            'https://eeum-brain.com/static/static/eLemur_B1_with_atlas/elemur_slice',
           startSlice: 46,
           sliceLinkPre:
             'neuroglancer/index.html#!%7B%22dimensions%22:%7B%22x%22:%5B0.000010444176%2C%22m%22%5D%2C%22y%22:%5B0.000010444176%2C%22m%22%5D%2C%22z%22:%5B0.0001%2C%22m%22%5D%7D%2C%22position%22:%5B1759.8031005859375%2C616.8143310546875%2C',
@@ -167,7 +167,7 @@ export default {
           numSlices: 178,
           sliceSrc: 'https://eeum-brain.com/static/static/eLemur_B2/slice',
           sliceWithAtlasSrc:
-            'https://neutracing.com/static/static/eLemur_B2_with_atlas/elemur_slice',
+            'https://eeum-brain.com/static/static/eLemur_B2_with_atlas/elemur_slice',
           startSlice: 46,
           sliceLinkPre:
             'neuroglancer/index.html#!%7B%22dimensions%22:%7B%22x%22:%5B0.000010444176%2C%22m%22%5D%2C%22y%22:%5B0.000010444176%2C%22m%22%5D%2C%22z%22:%5B0.0001%2C%22m%22%5D%7D%2C%22position%22:%5B1759.8031005859375%2C616.8143310546875%2C',
